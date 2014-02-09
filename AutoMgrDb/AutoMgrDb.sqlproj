@@ -57,5 +57,37 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Tables" />
+    <Folder Include="StoredProcedure" />
+    <Folder Include="Security" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\branch.sql" />
+    <Build Include="Tables\contact.sql" />
+    <Build Include="Tables\customer.sql" />
+    <Build Include="Tables\customer_contact.sql" />
+    <Build Include="Tables\department.sql" />
+    <Build Include="Tables\express.sql" />
+    <Build Include="Tables\goods.sql" />
+    <Build Include="Tables\inventory.sql" />
+    <Build Include="Tables\procure.sql" />
+    <Build Include="Tables\procure_detail.sql" />
+    <Build Include="Tables\repair.sql" />
+    <Build Include="Tables\repair_cate.sql" />
+    <Build Include="Tables\repair_cate_item.sql" />
+    <Build Include="Tables\repair_item.sql" />
+    <Build Include="Tables\repair_item_detail.sql" />
+    <Build Include="Tables\repair_parts.sql" />
+    <Build Include="Tables\role.sql" />
+    <Build Include="Tables\sale.sql" />
+    <Build Include="Tables\sale_detail.sql" />
+    <Build Include="Tables\shelf.sql" />
+    <Build Include="Tables\shelf_io.sql" />
+    <Build Include="Tables\stuff.sql" />
+    <Build Include="Tables\supplyer.sql" />
+    <Build Include="Tables\supplyer_contact.sql" />
+    <Build Include="Tables\vehicle.sql" />
+    <Build Include="Security\ServerRoleMembership.sql" />
+    <Build Include="Security\zzq01.sql" />
   </ItemGroup>
 </Project>
