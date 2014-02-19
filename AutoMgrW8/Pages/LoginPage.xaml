@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="AutoMgrW8.Pages.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AutoMgrW8.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Style="{StaticResource AppPageStyle}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="300" />
+        </Grid.RowDefinitions>
+
+        <Image Margin="0, 50" Source="ms-appx:///Assets/Hino-logo.png" Stretch="None" />
+        <StackPanel Grid.Row="1">
+            <!--Button x:Name="btn" Content="请读卡登录后操作..." Loaded="Button_Loaded" HorizontalAlignment="Center" /-->
+        </StackPanel>
+        <!--TextBox x:Name="mm" Grid.Row="1" Visibility="Visible" IsEnabled="False" KeyDown="TextBox_KeyDown" /-->
+    </Grid>
+</Page>
