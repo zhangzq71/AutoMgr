@@ -20,14 +20,14 @@ namespace AutoMgrW8.Helpers
             _timer.Interval = new TimeSpan(0, 0, 0, 0, 300);
             _timer.Tick += new EventHandler<object>((sender, eventArgs) =>
                 {
-                    if (_cardId.Length < 8)
-                        _cardId = string.Empty;
-                    else
-                    {
-                        System.Diagnostics.Debug.WriteLine(_cardId);
-                        action();
-                        _cardId = string.Empty;
-                    }
+                    //if (_cardId.Length < 8)
+                    //    _cardId = string.Empty;
+                    //else
+                    //{
+                    //    System.Diagnostics.Debug.WriteLine(_cardId);
+                    //    action();
+                    //    _cardId = string.Empty;
+                    //}
 
                     _timer.Stop();
                 });
@@ -80,6 +80,10 @@ namespace AutoMgrW8.Helpers
 
                 case Windows.System.VirtualKey.Number9:
                     _cardId += '9';
+                    break;
+
+                case Windows.System.VirtualKey.Enter:
+                    _action();
                     break;
             }
 
