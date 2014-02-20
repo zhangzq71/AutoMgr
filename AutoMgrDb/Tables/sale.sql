@@ -7,7 +7,7 @@
     [parts_price] DECIMAL(10, 2) NOT NULL, 
     [express_fee] DECIMAL(6, 2) NULL, 
     [express_id] INT NULL    
-    CONSTRAINT [FK_sale_stuff] FOREIGN KEY ([stuff_id]) REFERENCES [stuff]([id]), 
+    CONSTRAINT [FK_sale_stuff] FOREIGN KEY ([stuff_id]) REFERENCES [staff]([id]), 
     CONSTRAINT [FK_sale_express] FOREIGN KEY ([express_id]) REFERENCES [express]([id]), 
     CONSTRAINT [FK_sale_customer] FOREIGN KEY ([customer_id]) REFERENCES [customer]([id])
 )

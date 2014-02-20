@@ -13,7 +13,7 @@
     [customer_id] INT NOT NULL, 
 	[contact_id] INT NOT NULL, 
     [vehicle_id] INT NOT NULL,
-    CONSTRAINT [FK_repair_stuff] FOREIGN KEY ([recv_stuff_id]) REFERENCES [stuff]([id]), 
+    CONSTRAINT [FK_repair_stuff] FOREIGN KEY ([recv_stuff_id]) REFERENCES [staff]([id]), 
     CONSTRAINT [FK_repair_customer] FOREIGN KEY ([customer_id]) REFERENCES [customer]([id]), 
     CONSTRAINT [FK_repair_vehicle] FOREIGN KEY ([vehicle_id]) REFERENCES [vehicle]([id]), 
     CONSTRAINT [FK_repair_branch] FOREIGN KEY ([branch_id]) REFERENCES [branch]([id]), 

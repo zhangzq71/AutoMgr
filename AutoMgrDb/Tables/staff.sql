@@ -9,9 +9,9 @@
     [iccard_num] NVARCHAR(20) NOT NULL, 
     [deleted] BIT NOT NULL DEFAULT 0, 
     [inserted_time] DATETIME NOT NULL , 
-    CONSTRAINT [FK_stuff_branch] FOREIGN KEY ([branch_id]) REFERENCES [branch]([id]), 
-    CONSTRAINT [FK_stuff_role] FOREIGN KEY ([role_id]) REFERENCES [role]([id]), 
-    CONSTRAINT [FK_stuff_department] FOREIGN KEY ([department_id]) REFERENCES [department]([id]),
+    CONSTRAINT [FK_staff_branch] FOREIGN KEY ([branch_id]) REFERENCES [branch]([id]), 
+    CONSTRAINT [FK_staff_role] FOREIGN KEY ([role_id]) REFERENCES [role]([id]), 
+    CONSTRAINT [FK_staff_department] FOREIGN KEY ([department_id]) REFERENCES [department]([id]),
 )
 
 GO
@@ -20,7 +20,7 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level0type = N'SCHEMA',
     @level0name = N'dbo',
     @level1type = N'TABLE',
-    @level1name = N'stuff',
+    @level1name = N'staff',
     @level2type = N'COLUMN',
     @level2name = N'branch_id'
 GO
@@ -29,7 +29,7 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level0type = N'SCHEMA',
     @level0name = N'dbo',
     @level1type = N'TABLE',
-    @level1name = N'stuff',
+    @level1name = N'staff',
     @level2type = N'COLUMN',
     @level2name = N'idcard_num'
 GO
@@ -38,7 +38,7 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level0type = N'SCHEMA',
     @level0name = N'dbo',
     @level1type = N'TABLE',
-    @level1name = N'stuff',
+    @level1name = N'staff',
     @level2type = N'COLUMN',
     @level2name = N'role_id'
 GO
@@ -47,6 +47,6 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level0type = N'SCHEMA',
     @level0name = N'dbo',
     @level1type = N'TABLE',
-    @level1name = N'stuff',
+    @level1name = N'staff',
     @level2type = N'COLUMN',
     @level2name = N'iccard_num'
