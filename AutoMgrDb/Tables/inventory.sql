@@ -2,7 +2,10 @@
 (
 	[id] INT NOT NULL PRIMARY KEY IDENTITY, 
 	[branch_id] INT NOT NULL, 
-    [date] DATETIME NOT NULL
+    [date] DATETIME NOT NULL, 
+    [staff_id] INT NOT NULL, 
+    CONSTRAINT [FK_inventory_branch] FOREIGN KEY ([branch_id]) REFERENCES [branch]([id]), 
+    CONSTRAINT [FK_inventory_staff] FOREIGN KEY ([staff_id]) REFERENCES [staff]([id]),
 )
 
 GO

@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[stuff]
+﻿CREATE TABLE [dbo].[staff]
 (
 	[id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [branch_id] INT NOT NULL,

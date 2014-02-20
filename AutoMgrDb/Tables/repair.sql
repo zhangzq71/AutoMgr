@@ -92,3 +92,12 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'repair',
     @level2type = N'COLUMN',
     @level2name = N'out_date'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'此次修车的联系人',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'repair',
+    @level2type = N'COLUMN',
+    @level2name = N'contact_id'

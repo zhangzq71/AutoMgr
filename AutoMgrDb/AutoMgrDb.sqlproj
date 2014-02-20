@@ -83,11 +83,16 @@
     <Build Include="Tables\sale_detail.sql" />
     <Build Include="Tables\shelf.sql" />
     <Build Include="Tables\shelf_io.sql" />
-    <Build Include="Tables\stuff.sql" />
+    <Build Include="Tables\staff.sql" />
     <Build Include="Tables\supplyer.sql" />
     <Build Include="Tables\supplyer_contact.sql" />
     <Build Include="Tables\vehicle.sql" />
     <Build Include="Security\ServerRoleMembership.sql" />
     <Build Include="Security\zzq01.sql" />
+    <Build Include="Tables\goods_photo.sql" />
+    <Build Include="Tables\repair_photo.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="AutoMgrDb.refactorlog" />
   </ItemGroup>
 </Project>

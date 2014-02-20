@@ -13,7 +13,6 @@
     [width] REAL NULL, 
     [height] REAL NULL, 
     [weight] REAL NULL, 
-    [photo] IMAGE NULL
 )
 
 GO
