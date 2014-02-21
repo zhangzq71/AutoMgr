@@ -92,8 +92,12 @@
     <Build Include="Tables\goods_photo.sql" />
     <Build Include="Tables\repair_photo.sql" />
     <Build Include="Tables\goods_alias.sql" />
+    <Build Include="Tables\barcode_goods.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AutoMgrDb.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AutoMgrDb.publish.xml" />
   </ItemGroup>
 </Project>
