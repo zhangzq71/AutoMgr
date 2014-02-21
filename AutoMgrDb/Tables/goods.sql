@@ -2,7 +2,6 @@
 (
 	[id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [name] NVARCHAR(50) NOT NULL, 
-    [barcode] NVARCHAR(50) NOT NULL, 
     [unit] NVARCHAR(6) NOT NULL, 
     [price] DECIMAL(8, 2) NOT NULL, 
     [brand] NVARCHAR(20) NULL, 
