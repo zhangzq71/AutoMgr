@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data.Services.Client;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace DataImport
@@ -12,6 +13,8 @@ namespace DataImport
     {
         static void Main(string[] args)
         {
+            TestSvc();
+            return;
             //Import();
 
             //return;
@@ -248,6 +251,19 @@ namespace DataImport
             catch (Exception ex)
             {
                 int i = 0;
+            }
+        }
+
+        static public void TestSvc()
+        {
+            AutoMgrDbSvc.AutoMgrDbEntities ctx = new AutoMgrDbSvc.AutoMgrDbEntities(new Uri("http://localhost:23796/Service/AutoMgrDbSvc.svc/"));
+
+            AutoMgrDbSvc.inventory inventory = new AutoMgrDbSvc.inventory();
+            DataServiceCollection<AutoMgrDbSvc.inventory> inventories = new DataServiceCollection<AutoMgrDbSvc.inventory>();
+            inventories.Load(from inv in ctx.inventory.Expand("shelf_io/shelf/goods") select inv);
+            foreach (var inv in inventories)
+            {
+                int i = inv.id;
             }
         }
     }

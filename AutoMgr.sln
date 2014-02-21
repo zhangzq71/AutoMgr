@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMgrW8", "AutoMgrW8\Auto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataImport", "DataImport\DataImport.csproj", "{B1869D9E-A322-4B10-B3EC-22332415BA85}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMgrWeb", "AutoMgrWeb\AutoMgrWeb.csproj", "{A02FEDC7-1E1A-452A-AE4D-7C84C5F251A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,6 +91,16 @@ Global
 		{B1869D9E-A322-4B10-B3EC-22332415BA85}.Release|ARM.ActiveCfg = Release|Any CPU
 		{B1869D9E-A322-4B10-B3EC-22332415BA85}.Release|x64.ActiveCfg = Release|Any CPU
 		{B1869D9E-A322-4B10-B3EC-22332415BA85}.Release|x86.ActiveCfg = Release|Any CPU
+		{A02FEDC7-1E1A-452A-AE4D-7C84C5F251A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A02FEDC7-1E1A-452A-AE4D-7C84C5F251A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A02FEDC7-1E1A-452A-AE4D-7C84C5F251A8}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{A02FEDC7-1E1A-452A-AE4D-7C84C5F251A8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A02FEDC7-1E1A-452A-AE4D-7C84C5F251A8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A02FEDC7-1E1A-452A-AE4D-7C84C5F251A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A02FEDC7-1E1A-452A-AE4D-7C84C5F251A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A02FEDC7-1E1A-452A-AE4D-7C84C5F251A8}.Release|ARM.ActiveCfg = Release|Any CPU
+		{A02FEDC7-1E1A-452A-AE4D-7C84C5F251A8}.Release|x64.ActiveCfg = Release|Any CPU
+		{A02FEDC7-1E1A-452A-AE4D-7C84C5F251A8}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

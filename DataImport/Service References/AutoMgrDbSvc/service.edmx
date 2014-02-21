@@ -1,0 +1,1184 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+    <Schema Namespace="AutoMgrDbModel" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <EntityType Name="C__RefactorLog">
+        <Key>
+          <PropertyRef Name="OperationKey" />
+        </Key>
+        <Property Name="OperationKey" Type="Edm.Guid" Nullable="false" />
+      </EntityType>
+      <EntityType Name="barcode_goods">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="barcode" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="goods_id" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="goods" Relationship="AutoMgrDbModel.FK_barcode_goods_goods" ToRole="goods" FromRole="barcode_goods" />
+      </EntityType>
+      <EntityType Name="branch">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        <NavigationProperty Name="inventory" Relationship="AutoMgrDbModel.FK_inventory_branch" ToRole="inventory" FromRole="branch" />
+        <NavigationProperty Name="procure" Relationship="AutoMgrDbModel.FK_procure_branch" ToRole="procure" FromRole="branch" />
+        <NavigationProperty Name="repair" Relationship="AutoMgrDbModel.FK_repair_branch" ToRole="repair" FromRole="branch" />
+        <NavigationProperty Name="shelf" Relationship="AutoMgrDbModel.FK_shelf_branch" ToRole="shelf" FromRole="branch" />
+        <NavigationProperty Name="staff" Relationship="AutoMgrDbModel.FK_staff_branch" ToRole="staff" FromRole="branch" />
+      </EntityType>
+      <EntityType Name="contact">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+        <Property Name="mobile" Type="Edm.String" MaxLength="20" FixedLength="false" Unicode="false" />
+        <Property Name="phone" Type="Edm.String" MaxLength="20" FixedLength="false" Unicode="false" />
+        <Property Name="email" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
+        <NavigationProperty Name="customer_contact" Relationship="AutoMgrDbModel.FK_customer_contact_contact" ToRole="customer_contact" FromRole="contact" />
+        <NavigationProperty Name="procure" Relationship="AutoMgrDbModel.FK_procure_contact" ToRole="procure" FromRole="contact" />
+        <NavigationProperty Name="repair" Relationship="AutoMgrDbModel.FK_repair_contact" ToRole="repair" FromRole="contact" />
+        <NavigationProperty Name="supplyer_contact" Relationship="AutoMgrDbModel.FK_supplyer_contact_contact" ToRole="supplyer_contact" FromRole="contact" />
+      </EntityType>
+      <EntityType Name="customer">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="company" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        <Property Name="address" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="true" />
+        <Property Name="phone" Type="Edm.String" MaxLength="20" FixedLength="false" Unicode="true" />
+        <NavigationProperty Name="customer_contact" Relationship="AutoMgrDbModel.FK_customer_contact_customer" ToRole="customer_contact" FromRole="customer" />
+        <NavigationProperty Name="repair" Relationship="AutoMgrDbModel.FK_repair_customer" ToRole="repair" FromRole="customer" />
+        <NavigationProperty Name="sale" Relationship="AutoMgrDbModel.FK_sale_customer" ToRole="sale" FromRole="customer" />
+        <NavigationProperty Name="vehicle" Relationship="AutoMgrDbModel.FK_vehicle_customer" ToRole="vehicle" FromRole="customer" />
+      </EntityType>
+      <EntityType Name="customer_contact">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="customer_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="contact_id" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="contact" Relationship="AutoMgrDbModel.FK_customer_contact_contact" ToRole="contact" FromRole="customer_contact" />
+        <NavigationProperty Name="customer" Relationship="AutoMgrDbModel.FK_customer_contact_customer" ToRole="customer" FromRole="customer_contact" />
+      </EntityType>
+      <EntityType Name="department">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        <NavigationProperty Name="repair_item_detail" Relationship="AutoMgrDbModel.FK_repair_item_detail_department" ToRole="repair_item_detail" FromRole="department" />
+        <NavigationProperty Name="staff" Relationship="AutoMgrDbModel.FK_staff_department" ToRole="staff" FromRole="department" />
+      </EntityType>
+      <EntityType Name="express">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+        <NavigationProperty Name="sale" Relationship="AutoMgrDbModel.FK_sale_express" ToRole="sale" FromRole="express" />
+      </EntityType>
+      <EntityType Name="goods">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        <Property Name="unit" Type="Edm.String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+        <Property Name="price" Type="Edm.Decimal" Nullable="false" Precision="8" Scale="2" />
+        <Property Name="brand" Type="Edm.String" MaxLength="20" FixedLength="false" Unicode="true" />
+        <Property Name="origin" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="true" />
+        <Property Name="model" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="true" />
+        <Property Name="limit" Type="Edm.Decimal" Precision="12" Scale="2" />
+        <Property Name="length" Type="Edm.Single" />
+        <Property Name="width" Type="Edm.Single" />
+        <Property Name="height" Type="Edm.Single" />
+        <Property Name="weight" Type="Edm.Single" />
+        <NavigationProperty Name="barcode_goods" Relationship="AutoMgrDbModel.FK_barcode_goods_goods" ToRole="barcode_goods" FromRole="goods" />
+        <NavigationProperty Name="goods_alias" Relationship="AutoMgrDbModel.FK_goods_alias_goods" ToRole="goods_alias" FromRole="goods" />
+        <NavigationProperty Name="goods_photo" Relationship="AutoMgrDbModel.FK_goods_photo_goods" ToRole="goods_photo" FromRole="goods" />
+        <NavigationProperty Name="procure_detail" Relationship="AutoMgrDbModel.FK_procure_detail_goods" ToRole="procure_detail" FromRole="goods" />
+        <NavigationProperty Name="repair_parts" Relationship="AutoMgrDbModel.FK_repair_parts_goods" ToRole="repair_parts" FromRole="goods" />
+        <NavigationProperty Name="sale_detail" Relationship="AutoMgrDbModel.FK_sale_detail_goods" ToRole="sale_detail" FromRole="goods" />
+        <NavigationProperty Name="shelf" Relationship="AutoMgrDbModel.FK_shelf_goods" ToRole="shelf" FromRole="goods" />
+      </EntityType>
+      <EntityType Name="goods_alias">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="goods_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="alias" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        <NavigationProperty Name="goods" Relationship="AutoMgrDbModel.FK_goods_alias_goods" ToRole="goods" FromRole="goods_alias" />
+      </EntityType>
+      <EntityType Name="goods_photo">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="goods_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="photo" Type="Edm.Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+        <NavigationProperty Name="goods" Relationship="AutoMgrDbModel.FK_goods_photo_goods" ToRole="goods" FromRole="goods_photo" />
+      </EntityType>
+      <EntityType Name="inventory">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="branch_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="date" Type="Edm.DateTime" Nullable="false" Precision="3" />
+        <Property Name="staff_id" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="branch" Relationship="AutoMgrDbModel.FK_inventory_branch" ToRole="branch" FromRole="inventory" />
+        <NavigationProperty Name="staff" Relationship="AutoMgrDbModel.FK_inventory_staff" ToRole="staff" FromRole="inventory" />
+        <NavigationProperty Name="shelf_io" Relationship="AutoMgrDbModel.FK_shelf_io_inventory" ToRole="shelf_io" FromRole="inventory" />
+      </EntityType>
+      <EntityType Name="procure">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="branch_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="stuff_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="supplyer_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="contact_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="date" Type="Edm.DateTime" Nullable="false" Precision="3" />
+        <Property Name="closed" Type="Edm.Boolean" Nullable="false" />
+        <NavigationProperty Name="branch" Relationship="AutoMgrDbModel.FK_procure_branch" ToRole="branch" FromRole="procure" />
+        <NavigationProperty Name="contact" Relationship="AutoMgrDbModel.FK_procure_contact" ToRole="contact" FromRole="procure" />
+        <NavigationProperty Name="procure_detail" Relationship="AutoMgrDbModel.FK_procure_detail_procure" ToRole="procure_detail" FromRole="procure" />
+        <NavigationProperty Name="staff" Relationship="AutoMgrDbModel.FK_procure_stuff" ToRole="staff" FromRole="procure" />
+        <NavigationProperty Name="supplyer" Relationship="AutoMgrDbModel.FK_procure_supplyer" ToRole="supplyer" FromRole="procure" />
+        <NavigationProperty Name="shelf_io" Relationship="AutoMgrDbModel.FK_shelf_io_procure" ToRole="shelf_io" FromRole="procure" />
+      </EntityType>
+      <EntityType Name="procure_detail">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="procure_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="goods_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="quantity" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" />
+        <Property Name="price" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" />
+        <NavigationProperty Name="goods" Relationship="AutoMgrDbModel.FK_procure_detail_goods" ToRole="goods" FromRole="procure_detail" />
+        <NavigationProperty Name="procure" Relationship="AutoMgrDbModel.FK_procure_detail_procure" ToRole="procure" FromRole="procure_detail" />
+      </EntityType>
+      <EntityType Name="repair">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="branch_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="recv_stuff_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="recv_date" Type="Edm.DateTime" Nullable="false" Precision="3" />
+        <Property Name="quote_only" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="parts_price" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" />
+        <Property Name="repair_price" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" />
+        <Property Name="discount" Type="Edm.Decimal" Nullable="false" Precision="4" Scale="2" />
+        <Property Name="real_price" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" />
+        <Property Name="out_date" Type="Edm.DateTime" Precision="3" />
+        <Property Name="customer_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="contact_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="vehicle_id" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="branch" Relationship="AutoMgrDbModel.FK_repair_branch" ToRole="branch" FromRole="repair" />
+        <NavigationProperty Name="contact" Relationship="AutoMgrDbModel.FK_repair_contact" ToRole="contact" FromRole="repair" />
+        <NavigationProperty Name="customer" Relationship="AutoMgrDbModel.FK_repair_customer" ToRole="customer" FromRole="repair" />
+        <NavigationProperty Name="repair_item_detail" Relationship="AutoMgrDbModel.FK_repair_item_detail_repair" ToRole="repair_item_detail" FromRole="repair" />
+        <NavigationProperty Name="repair_parts" Relationship="AutoMgrDbModel.FK_repair_parts_repair" ToRole="repair_parts" FromRole="repair" />
+        <NavigationProperty Name="repair_photo" Relationship="AutoMgrDbModel.FK_repair_photo_repair" ToRole="repair_photo" FromRole="repair" />
+        <NavigationProperty Name="staff" Relationship="AutoMgrDbModel.FK_repair_stuff" ToRole="staff" FromRole="repair" />
+        <NavigationProperty Name="vehicle" Relationship="AutoMgrDbModel.FK_repair_vehicle" ToRole="vehicle" FromRole="repair" />
+        <NavigationProperty Name="shelf_io" Relationship="AutoMgrDbModel.FK_shelf_io_repair" ToRole="shelf_io" FromRole="repair" />
+      </EntityType>
+      <EntityType Name="repair_cate">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        <NavigationProperty Name="repair_cate_item" Relationship="AutoMgrDbModel.FK_repair_cate_item_repair_cate" ToRole="repair_cate_item" FromRole="repair_cate" />
+        <NavigationProperty Name="repair_item_detail" Relationship="AutoMgrDbModel.FK_repair_item_detail_repair_cate" ToRole="repair_item_detail" FromRole="repair_cate" />
+      </EntityType>
+      <EntityType Name="repair_cate_item">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="cate_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="item_id" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="repair_cate" Relationship="AutoMgrDbModel.FK_repair_cate_item_repair_cate" ToRole="repair_cate" FromRole="repair_cate_item" />
+        <NavigationProperty Name="repair_item" Relationship="AutoMgrDbModel.FK_repair_cate_item_repair_item" ToRole="repair_item" FromRole="repair_cate_item" />
+      </EntityType>
+      <EntityType Name="repair_item">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        <Property Name="warking_hour" Type="Edm.Decimal" Precision="6" Scale="2" />
+        <Property Name="price" Type="Edm.Decimal" Precision="8" Scale="2" />
+        <NavigationProperty Name="repair_cate_item" Relationship="AutoMgrDbModel.FK_repair_cate_item_repair_item" ToRole="repair_cate_item" FromRole="repair_item" />
+        <NavigationProperty Name="repair_item_detail" Relationship="AutoMgrDbModel.FK_repair_item_detail_repair_item" ToRole="repair_item_detail" FromRole="repair_item" />
+      </EntityType>
+      <EntityType Name="repair_item_detail">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="repair_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="cate_id" Type="Edm.Int32" />
+        <Property Name="item_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="department_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="start_time" Type="Edm.DateTime" Precision="3" />
+        <Property Name="end_time" Type="Edm.DateTime" Precision="3" />
+        <NavigationProperty Name="department" Relationship="AutoMgrDbModel.FK_repair_item_detail_department" ToRole="department" FromRole="repair_item_detail" />
+        <NavigationProperty Name="repair" Relationship="AutoMgrDbModel.FK_repair_item_detail_repair" ToRole="repair" FromRole="repair_item_detail" />
+        <NavigationProperty Name="repair_cate" Relationship="AutoMgrDbModel.FK_repair_item_detail_repair_cate" ToRole="repair_cate" FromRole="repair_item_detail" />
+        <NavigationProperty Name="repair_item" Relationship="AutoMgrDbModel.FK_repair_item_detail_repair_item" ToRole="repair_item" FromRole="repair_item_detail" />
+      </EntityType>
+      <EntityType Name="repair_parts">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="repair_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="goods_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="price" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" />
+        <Property Name="quote_only" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="shelf_io_id" Type="Edm.Int32" />
+        <NavigationProperty Name="goods" Relationship="AutoMgrDbModel.FK_repair_parts_goods" ToRole="goods" FromRole="repair_parts" />
+        <NavigationProperty Name="repair" Relationship="AutoMgrDbModel.FK_repair_parts_repair" ToRole="repair" FromRole="repair_parts" />
+        <NavigationProperty Name="shelf_io" Relationship="AutoMgrDbModel.FK_repair_parts_shelf_io" ToRole="shelf_io" FromRole="repair_parts" />
+      </EntityType>
+      <EntityType Name="repair_photo">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="repair_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="photo" Type="Edm.Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+        <NavigationProperty Name="repair" Relationship="AutoMgrDbModel.FK_repair_photo_repair" ToRole="repair" FromRole="repair_photo" />
+      </EntityType>
+      <EntityType Name="role">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+        <NavigationProperty Name="staff" Relationship="AutoMgrDbModel.FK_staff_role" ToRole="staff" FromRole="role" />
+      </EntityType>
+      <EntityType Name="sale">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="branch_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="stuff_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="customer_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="parts_price" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" />
+        <Property Name="express_fee" Type="Edm.Decimal" Precision="6" Scale="2" />
+        <Property Name="express_id" Type="Edm.Int32" />
+        <NavigationProperty Name="customer" Relationship="AutoMgrDbModel.FK_sale_customer" ToRole="customer" FromRole="sale" />
+        <NavigationProperty Name="express" Relationship="AutoMgrDbModel.FK_sale_express" ToRole="express" FromRole="sale" />
+        <NavigationProperty Name="sale_detail" Relationship="AutoMgrDbModel.FK_sale_detail_sale" ToRole="sale_detail" FromRole="sale" />
+        <NavigationProperty Name="staff" Relationship="AutoMgrDbModel.FK_sale_stuff" ToRole="staff" FromRole="sale" />
+        <NavigationProperty Name="shelf_io" Relationship="AutoMgrDbModel.FK_shelf_io_sale" ToRole="shelf_io" FromRole="sale" />
+      </EntityType>
+      <EntityType Name="sale_detail">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="sale_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="goods_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="price" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" />
+        <Property Name="order_quantity" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" />
+        <Property Name="stock_quantity" Type="Edm.Decimal" Precision="10" Scale="2" />
+        <Property Name="packet" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="shelf_io_id" Type="Edm.Int32" />
+        <NavigationProperty Name="goods" Relationship="AutoMgrDbModel.FK_sale_detail_goods" ToRole="goods" FromRole="sale_detail" />
+        <NavigationProperty Name="sale" Relationship="AutoMgrDbModel.FK_sale_detail_sale" ToRole="sale" FromRole="sale_detail" />
+        <NavigationProperty Name="shelf_io" Relationship="AutoMgrDbModel.FK_sale_detail_shelf_io" ToRole="shelf_io" FromRole="sale_detail" />
+      </EntityType>
+      <EntityType Name="shelf">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="branch_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="barcode" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        <Property Name="goods_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="quantity" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" />
+        <NavigationProperty Name="branch" Relationship="AutoMgrDbModel.FK_shelf_branch" ToRole="branch" FromRole="shelf" />
+        <NavigationProperty Name="goods" Relationship="AutoMgrDbModel.FK_shelf_goods" ToRole="goods" FromRole="shelf" />
+        <NavigationProperty Name="shelf_io" Relationship="AutoMgrDbModel.FK_shelf_io_shelf" ToRole="shelf_io" FromRole="shelf" />
+      </EntityType>
+      <EntityType Name="shelf_io">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="repair_id" Type="Edm.Int32" />
+        <Property Name="sale_id" Type="Edm.Int32" />
+        <Property Name="procure_id" Type="Edm.Int32" />
+        <Property Name="inventory_id" Type="Edm.Int32" />
+        <Property Name="shelf_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="quantity" Type="Edm.Decimal" Nullable="false" Precision="8" Scale="2" />
+        <Property Name="datetime" Type="Edm.DateTime" Nullable="false" Precision="3" />
+        <NavigationProperty Name="inventory" Relationship="AutoMgrDbModel.FK_shelf_io_inventory" ToRole="inventory" FromRole="shelf_io" />
+        <NavigationProperty Name="procure" Relationship="AutoMgrDbModel.FK_shelf_io_procure" ToRole="procure" FromRole="shelf_io" />
+        <NavigationProperty Name="repair" Relationship="AutoMgrDbModel.FK_shelf_io_repair" ToRole="repair" FromRole="shelf_io" />
+        <NavigationProperty Name="repair_parts" Relationship="AutoMgrDbModel.FK_repair_parts_shelf_io" ToRole="repair_parts" FromRole="shelf_io" />
+        <NavigationProperty Name="sale" Relationship="AutoMgrDbModel.FK_shelf_io_sale" ToRole="sale" FromRole="shelf_io" />
+        <NavigationProperty Name="sale_detail" Relationship="AutoMgrDbModel.FK_sale_detail_shelf_io" ToRole="sale_detail" FromRole="shelf_io" />
+        <NavigationProperty Name="shelf" Relationship="AutoMgrDbModel.FK_shelf_io_shelf" ToRole="shelf" FromRole="shelf_io" />
+      </EntityType>
+      <EntityType Name="staff">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="branch_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+        <Property Name="idcard_num" Type="Edm.String" MaxLength="25" FixedLength="false" Unicode="true" />
+        <Property Name="department_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="role_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="iccard_num" Type="Edm.String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        <Property Name="deleted" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="inserted_time" Type="Edm.DateTime" Nullable="false" Precision="3" />
+        <NavigationProperty Name="branch" Relationship="AutoMgrDbModel.FK_staff_branch" ToRole="branch" FromRole="staff" />
+        <NavigationProperty Name="department" Relationship="AutoMgrDbModel.FK_staff_department" ToRole="department" FromRole="staff" />
+        <NavigationProperty Name="inventory" Relationship="AutoMgrDbModel.FK_inventory_staff" ToRole="inventory" FromRole="staff" />
+        <NavigationProperty Name="procure" Relationship="AutoMgrDbModel.FK_procure_stuff" ToRole="procure" FromRole="staff" />
+        <NavigationProperty Name="repair" Relationship="AutoMgrDbModel.FK_repair_stuff" ToRole="repair" FromRole="staff" />
+        <NavigationProperty Name="role" Relationship="AutoMgrDbModel.FK_staff_role" ToRole="role" FromRole="staff" />
+        <NavigationProperty Name="sale" Relationship="AutoMgrDbModel.FK_sale_stuff" ToRole="sale" FromRole="staff" />
+      </EntityType>
+      <EntityType Name="supplyer">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="company" Type="Edm.String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        <Property Name="address" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="true" />
+        <Property Name="phone" Type="Edm.String" MaxLength="20" FixedLength="false" Unicode="true" />
+        <NavigationProperty Name="procure" Relationship="AutoMgrDbModel.FK_procure_supplyer" ToRole="procure" FromRole="supplyer" />
+        <NavigationProperty Name="supplyer_contact" Relationship="AutoMgrDbModel.FK_supplyer_contact_supplyer" ToRole="supplyer_contact" FromRole="supplyer" />
+      </EntityType>
+      <EntityType Name="supplyer_contact">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="supplyer_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="contact_id" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="contact" Relationship="AutoMgrDbModel.FK_supplyer_contact_contact" ToRole="contact" FromRole="supplyer_contact" />
+        <NavigationProperty Name="supplyer" Relationship="AutoMgrDbModel.FK_supplyer_contact_supplyer" ToRole="supplyer" FromRole="supplyer_contact" />
+      </EntityType>
+      <EntityType Name="vehicle">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="car_num" Type="Edm.String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+        <Property Name="engine_num" Type="Edm.String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        <Property Name="frame_num" Type="Edm.String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        <Property Name="brand" Type="Edm.String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+        <Property Name="model" Type="Edm.String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+        <Property Name="customer_id" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="customer" Relationship="AutoMgrDbModel.FK_vehicle_customer" ToRole="customer" FromRole="vehicle" />
+        <NavigationProperty Name="repair" Relationship="AutoMgrDbModel.FK_repair_vehicle" ToRole="repair" FromRole="vehicle" />
+      </EntityType>
+      <Association Name="FK_barcode_goods_goods">
+        <End Type="AutoMgrDbModel.goods" Role="goods" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.barcode_goods" Role="barcode_goods" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="goods">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="barcode_goods">
+            <PropertyRef Name="goods_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_inventory_branch">
+        <End Type="AutoMgrDbModel.branch" Role="branch" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.inventory" Role="inventory" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="branch">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="inventory">
+            <PropertyRef Name="branch_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_procure_branch">
+        <End Type="AutoMgrDbModel.branch" Role="branch" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.procure" Role="procure" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="branch">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="procure">
+            <PropertyRef Name="branch_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_repair_branch">
+        <End Type="AutoMgrDbModel.branch" Role="branch" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.repair" Role="repair" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="branch">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="repair">
+            <PropertyRef Name="branch_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_shelf_branch">
+        <End Type="AutoMgrDbModel.branch" Role="branch" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.shelf" Role="shelf" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="branch">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="shelf">
+            <PropertyRef Name="branch_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_staff_branch">
+        <End Type="AutoMgrDbModel.branch" Role="branch" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.staff" Role="staff" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="branch">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="staff">
+            <PropertyRef Name="branch_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_customer_contact_contact">
+        <End Type="AutoMgrDbModel.contact" Role="contact" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.customer_contact" Role="customer_contact" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="contact">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="customer_contact">
+            <PropertyRef Name="contact_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_procure_contact">
+        <End Type="AutoMgrDbModel.contact" Role="contact" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.procure" Role="procure" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="contact">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="procure">
+            <PropertyRef Name="contact_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_repair_contact">
+        <End Type="AutoMgrDbModel.contact" Role="contact" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.repair" Role="repair" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="contact">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="repair">
+            <PropertyRef Name="contact_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_supplyer_contact_contact">
+        <End Type="AutoMgrDbModel.contact" Role="contact" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.supplyer_contact" Role="supplyer_contact" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="contact">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="supplyer_contact">
+            <PropertyRef Name="contact_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_customer_contact_customer">
+        <End Type="AutoMgrDbModel.customer" Role="customer" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.customer_contact" Role="customer_contact" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="customer">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="customer_contact">
+            <PropertyRef Name="customer_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_repair_customer">
+        <End Type="AutoMgrDbModel.customer" Role="customer" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.repair" Role="repair" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="customer">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="repair">
+            <PropertyRef Name="customer_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_sale_customer">
+        <End Type="AutoMgrDbModel.customer" Role="customer" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.sale" Role="sale" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="customer">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="sale">
+            <PropertyRef Name="customer_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_vehicle_customer">
+        <End Type="AutoMgrDbModel.customer" Role="customer" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.vehicle" Role="vehicle" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="customer">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="vehicle">
+            <PropertyRef Name="customer_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_repair_item_detail_department">
+        <End Type="AutoMgrDbModel.department" Role="department" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.repair_item_detail" Role="repair_item_detail" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="department">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="repair_item_detail">
+            <PropertyRef Name="department_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_staff_department">
+        <End Type="AutoMgrDbModel.department" Role="department" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.staff" Role="staff" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="department">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="staff">
+            <PropertyRef Name="department_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_sale_express">
+        <End Type="AutoMgrDbModel.express" Role="express" Multiplicity="0..1" />
+        <End Type="AutoMgrDbModel.sale" Role="sale" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="express">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="sale">
+            <PropertyRef Name="express_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_goods_alias_goods">
+        <End Type="AutoMgrDbModel.goods" Role="goods" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.goods_alias" Role="goods_alias" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="goods">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="goods_alias">
+            <PropertyRef Name="goods_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_goods_photo_goods">
+        <End Type="AutoMgrDbModel.goods" Role="goods" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.goods_photo" Role="goods_photo" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="goods">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="goods_photo">
+            <PropertyRef Name="goods_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_procure_detail_goods">
+        <End Type="AutoMgrDbModel.goods" Role="goods" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.procure_detail" Role="procure_detail" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="goods">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="procure_detail">
+            <PropertyRef Name="goods_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_repair_parts_goods">
+        <End Type="AutoMgrDbModel.goods" Role="goods" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.repair_parts" Role="repair_parts" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="goods">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="repair_parts">
+            <PropertyRef Name="goods_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_sale_detail_goods">
+        <End Type="AutoMgrDbModel.goods" Role="goods" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.sale_detail" Role="sale_detail" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="goods">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="sale_detail">
+            <PropertyRef Name="goods_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_shelf_goods">
+        <End Type="AutoMgrDbModel.goods" Role="goods" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.shelf" Role="shelf" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="goods">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="shelf">
+            <PropertyRef Name="goods_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_inventory_staff">
+        <End Type="AutoMgrDbModel.staff" Role="staff" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.inventory" Role="inventory" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="staff">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="inventory">
+            <PropertyRef Name="staff_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_shelf_io_inventory">
+        <End Type="AutoMgrDbModel.inventory" Role="inventory" Multiplicity="0..1" />
+        <End Type="AutoMgrDbModel.shelf_io" Role="shelf_io" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="inventory">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="shelf_io">
+            <PropertyRef Name="inventory_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_procure_detail_procure">
+        <End Type="AutoMgrDbModel.procure" Role="procure" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.procure_detail" Role="procure_detail" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="procure">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="procure_detail">
+            <PropertyRef Name="procure_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_procure_stuff">
+        <End Type="AutoMgrDbModel.staff" Role="staff" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.procure" Role="procure" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="staff">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="procure">
+            <PropertyRef Name="stuff_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_procure_supplyer">
+        <End Type="AutoMgrDbModel.supplyer" Role="supplyer" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.procure" Role="procure" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="supplyer">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="procure">
+            <PropertyRef Name="supplyer_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_shelf_io_procure">
+        <End Type="AutoMgrDbModel.procure" Role="procure" Multiplicity="0..1" />
+        <End Type="AutoMgrDbModel.shelf_io" Role="shelf_io" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="procure">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="shelf_io">
+            <PropertyRef Name="procure_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_repair_item_detail_repair">
+        <End Type="AutoMgrDbModel.repair" Role="repair" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.repair_item_detail" Role="repair_item_detail" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="repair">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="repair_item_detail">
+            <PropertyRef Name="repair_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_repair_parts_repair">
+        <End Type="AutoMgrDbModel.repair" Role="repair" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.repair_parts" Role="repair_parts" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="repair">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="repair_parts">
+            <PropertyRef Name="repair_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_repair_photo_repair">
+        <End Type="AutoMgrDbModel.repair" Role="repair" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.repair_photo" Role="repair_photo" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="repair">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="repair_photo">
+            <PropertyRef Name="repair_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_repair_stuff">
+        <End Type="AutoMgrDbModel.staff" Role="staff" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.repair" Role="repair" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="staff">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="repair">
+            <PropertyRef Name="recv_stuff_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_repair_vehicle">
+        <End Type="AutoMgrDbModel.vehicle" Role="vehicle" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.repair" Role="repair" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="vehicle">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="repair">
+            <PropertyRef Name="vehicle_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_shelf_io_repair">
+        <End Type="AutoMgrDbModel.repair" Role="repair" Multiplicity="0..1" />
+        <End Type="AutoMgrDbModel.shelf_io" Role="shelf_io" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="repair">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="shelf_io">
+            <PropertyRef Name="repair_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_repair_cate_item_repair_cate">
+        <End Type="AutoMgrDbModel.repair_cate" Role="repair_cate" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.repair_cate_item" Role="repair_cate_item" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="repair_cate">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="repair_cate_item">
+            <PropertyRef Name="cate_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_repair_item_detail_repair_cate">
+        <End Type="AutoMgrDbModel.repair_cate" Role="repair_cate" Multiplicity="0..1" />
+        <End Type="AutoMgrDbModel.repair_item_detail" Role="repair_item_detail" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="repair_cate">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="repair_item_detail">
+            <PropertyRef Name="cate_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_repair_cate_item_repair_item">
+        <End Type="AutoMgrDbModel.repair_item" Role="repair_item" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.repair_cate_item" Role="repair_cate_item" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="repair_item">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="repair_cate_item">
+            <PropertyRef Name="item_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_repair_item_detail_repair_item">
+        <End Type="AutoMgrDbModel.repair_item" Role="repair_item" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.repair_item_detail" Role="repair_item_detail" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="repair_item">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="repair_item_detail">
+            <PropertyRef Name="item_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_repair_parts_shelf_io">
+        <End Type="AutoMgrDbModel.shelf_io" Role="shelf_io" Multiplicity="0..1" />
+        <End Type="AutoMgrDbModel.repair_parts" Role="repair_parts" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="shelf_io">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="repair_parts">
+            <PropertyRef Name="shelf_io_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_staff_role">
+        <End Type="AutoMgrDbModel.role" Role="role" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.staff" Role="staff" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="role">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="staff">
+            <PropertyRef Name="role_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_sale_detail_sale">
+        <End Type="AutoMgrDbModel.sale" Role="sale" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.sale_detail" Role="sale_detail" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="sale">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="sale_detail">
+            <PropertyRef Name="sale_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_sale_stuff">
+        <End Type="AutoMgrDbModel.staff" Role="staff" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.sale" Role="sale" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="staff">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="sale">
+            <PropertyRef Name="stuff_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_shelf_io_sale">
+        <End Type="AutoMgrDbModel.sale" Role="sale" Multiplicity="0..1" />
+        <End Type="AutoMgrDbModel.shelf_io" Role="shelf_io" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="sale">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="shelf_io">
+            <PropertyRef Name="sale_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_sale_detail_shelf_io">
+        <End Type="AutoMgrDbModel.shelf_io" Role="shelf_io" Multiplicity="0..1" />
+        <End Type="AutoMgrDbModel.sale_detail" Role="sale_detail" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="shelf_io">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="sale_detail">
+            <PropertyRef Name="shelf_io_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_shelf_io_shelf">
+        <End Type="AutoMgrDbModel.shelf" Role="shelf" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.shelf_io" Role="shelf_io" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="shelf">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="shelf_io">
+            <PropertyRef Name="shelf_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_supplyer_contact_supplyer">
+        <End Type="AutoMgrDbModel.supplyer" Role="supplyer" Multiplicity="1" />
+        <End Type="AutoMgrDbModel.supplyer_contact" Role="supplyer_contact" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="supplyer">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="supplyer_contact">
+            <PropertyRef Name="supplyer_id" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+    </Schema>
+    <Schema Namespace="AutoMgrWeb.Db" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <EntityContainer Name="AutoMgrDbEntities" m:IsDefaultEntityContainer="true" p6:LazyLoadingEnabled="true" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntitySet Name="C__RefactorLog" EntityType="AutoMgrDbModel.C__RefactorLog" />
+        <EntitySet Name="barcode_goods" EntityType="AutoMgrDbModel.barcode_goods" />
+        <EntitySet Name="branch" EntityType="AutoMgrDbModel.branch" />
+        <EntitySet Name="contact" EntityType="AutoMgrDbModel.contact" />
+        <EntitySet Name="customer" EntityType="AutoMgrDbModel.customer" />
+        <EntitySet Name="customer_contact" EntityType="AutoMgrDbModel.customer_contact" />
+        <EntitySet Name="department" EntityType="AutoMgrDbModel.department" />
+        <EntitySet Name="express" EntityType="AutoMgrDbModel.express" />
+        <EntitySet Name="goods" EntityType="AutoMgrDbModel.goods" />
+        <EntitySet Name="goods_alias" EntityType="AutoMgrDbModel.goods_alias" />
+        <EntitySet Name="goods_photo" EntityType="AutoMgrDbModel.goods_photo" />
+        <EntitySet Name="inventory" EntityType="AutoMgrDbModel.inventory" />
+        <EntitySet Name="procure" EntityType="AutoMgrDbModel.procure" />
+        <EntitySet Name="procure_detail" EntityType="AutoMgrDbModel.procure_detail" />
+        <EntitySet Name="repair" EntityType="AutoMgrDbModel.repair" />
+        <EntitySet Name="repair_cate" EntityType="AutoMgrDbModel.repair_cate" />
+        <EntitySet Name="repair_cate_item" EntityType="AutoMgrDbModel.repair_cate_item" />
+        <EntitySet Name="repair_item" EntityType="AutoMgrDbModel.repair_item" />
+        <EntitySet Name="repair_item_detail" EntityType="AutoMgrDbModel.repair_item_detail" />
+        <EntitySet Name="repair_parts" EntityType="AutoMgrDbModel.repair_parts" />
+        <EntitySet Name="repair_photo" EntityType="AutoMgrDbModel.repair_photo" />
+        <EntitySet Name="role" EntityType="AutoMgrDbModel.role" />
+        <EntitySet Name="sale" EntityType="AutoMgrDbModel.sale" />
+        <EntitySet Name="sale_detail" EntityType="AutoMgrDbModel.sale_detail" />
+        <EntitySet Name="shelf" EntityType="AutoMgrDbModel.shelf" />
+        <EntitySet Name="shelf_io" EntityType="AutoMgrDbModel.shelf_io" />
+        <EntitySet Name="staff" EntityType="AutoMgrDbModel.staff" />
+        <EntitySet Name="supplyer" EntityType="AutoMgrDbModel.supplyer" />
+        <EntitySet Name="supplyer_contact" EntityType="AutoMgrDbModel.supplyer_contact" />
+        <EntitySet Name="vehicle" EntityType="AutoMgrDbModel.vehicle" />
+        <AssociationSet Name="FK_barcode_goods_goods" Association="AutoMgrDbModel.FK_barcode_goods_goods">
+          <End Role="barcode_goods" EntitySet="barcode_goods" />
+          <End Role="goods" EntitySet="goods" />
+        </AssociationSet>
+        <AssociationSet Name="FK_inventory_branch" Association="AutoMgrDbModel.FK_inventory_branch">
+          <End Role="branch" EntitySet="branch" />
+          <End Role="inventory" EntitySet="inventory" />
+        </AssociationSet>
+        <AssociationSet Name="FK_procure_branch" Association="AutoMgrDbModel.FK_procure_branch">
+          <End Role="branch" EntitySet="branch" />
+          <End Role="procure" EntitySet="procure" />
+        </AssociationSet>
+        <AssociationSet Name="FK_repair_branch" Association="AutoMgrDbModel.FK_repair_branch">
+          <End Role="branch" EntitySet="branch" />
+          <End Role="repair" EntitySet="repair" />
+        </AssociationSet>
+        <AssociationSet Name="FK_shelf_branch" Association="AutoMgrDbModel.FK_shelf_branch">
+          <End Role="branch" EntitySet="branch" />
+          <End Role="shelf" EntitySet="shelf" />
+        </AssociationSet>
+        <AssociationSet Name="FK_staff_branch" Association="AutoMgrDbModel.FK_staff_branch">
+          <End Role="branch" EntitySet="branch" />
+          <End Role="staff" EntitySet="staff" />
+        </AssociationSet>
+        <AssociationSet Name="FK_customer_contact_contact" Association="AutoMgrDbModel.FK_customer_contact_contact">
+          <End Role="contact" EntitySet="contact" />
+          <End Role="customer_contact" EntitySet="customer_contact" />
+        </AssociationSet>
+        <AssociationSet Name="FK_procure_contact" Association="AutoMgrDbModel.FK_procure_contact">
+          <End Role="contact" EntitySet="contact" />
+          <End Role="procure" EntitySet="procure" />
+        </AssociationSet>
+        <AssociationSet Name="FK_repair_contact" Association="AutoMgrDbModel.FK_repair_contact">
+          <End Role="contact" EntitySet="contact" />
+          <End Role="repair" EntitySet="repair" />
+        </AssociationSet>
+        <AssociationSet Name="FK_supplyer_contact_contact" Association="AutoMgrDbModel.FK_supplyer_contact_contact">
+          <End Role="contact" EntitySet="contact" />
+          <End Role="supplyer_contact" EntitySet="supplyer_contact" />
+        </AssociationSet>
+        <AssociationSet Name="FK_customer_contact_customer" Association="AutoMgrDbModel.FK_customer_contact_customer">
+          <End Role="customer" EntitySet="customer" />
+          <End Role="customer_contact" EntitySet="customer_contact" />
+        </AssociationSet>
+        <AssociationSet Name="FK_repair_customer" Association="AutoMgrDbModel.FK_repair_customer">
+          <End Role="customer" EntitySet="customer" />
+          <End Role="repair" EntitySet="repair" />
+        </AssociationSet>
+        <AssociationSet Name="FK_sale_customer" Association="AutoMgrDbModel.FK_sale_customer">
+          <End Role="customer" EntitySet="customer" />
+          <End Role="sale" EntitySet="sale" />
+        </AssociationSet>
+        <AssociationSet Name="FK_vehicle_customer" Association="AutoMgrDbModel.FK_vehicle_customer">
+          <End Role="customer" EntitySet="customer" />
+          <End Role="vehicle" EntitySet="vehicle" />
+        </AssociationSet>
+        <AssociationSet Name="FK_repair_item_detail_department" Association="AutoMgrDbModel.FK_repair_item_detail_department">
+          <End Role="department" EntitySet="department" />
+          <End Role="repair_item_detail" EntitySet="repair_item_detail" />
+        </AssociationSet>
+        <AssociationSet Name="FK_staff_department" Association="AutoMgrDbModel.FK_staff_department">
+          <End Role="department" EntitySet="department" />
+          <End Role="staff" EntitySet="staff" />
+        </AssociationSet>
+        <AssociationSet Name="FK_sale_express" Association="AutoMgrDbModel.FK_sale_express">
+          <End Role="express" EntitySet="express" />
+          <End Role="sale" EntitySet="sale" />
+        </AssociationSet>
+        <AssociationSet Name="FK_goods_alias_goods" Association="AutoMgrDbModel.FK_goods_alias_goods">
+          <End Role="goods" EntitySet="goods" />
+          <End Role="goods_alias" EntitySet="goods_alias" />
+        </AssociationSet>
+        <AssociationSet Name="FK_goods_photo_goods" Association="AutoMgrDbModel.FK_goods_photo_goods">
+          <End Role="goods" EntitySet="goods" />
+          <End Role="goods_photo" EntitySet="goods_photo" />
+        </AssociationSet>
+        <AssociationSet Name="FK_procure_detail_goods" Association="AutoMgrDbModel.FK_procure_detail_goods">
+          <End Role="goods" EntitySet="goods" />
+          <End Role="procure_detail" EntitySet="procure_detail" />
+        </AssociationSet>
+        <AssociationSet Name="FK_repair_parts_goods" Association="AutoMgrDbModel.FK_repair_parts_goods">
+          <End Role="goods" EntitySet="goods" />
+          <End Role="repair_parts" EntitySet="repair_parts" />
+        </AssociationSet>
+        <AssociationSet Name="FK_sale_detail_goods" Association="AutoMgrDbModel.FK_sale_detail_goods">
+          <End Role="goods" EntitySet="goods" />
+          <End Role="sale_detail" EntitySet="sale_detail" />
+        </AssociationSet>
+        <AssociationSet Name="FK_shelf_goods" Association="AutoMgrDbModel.FK_shelf_goods">
+          <End Role="goods" EntitySet="goods" />
+          <End Role="shelf" EntitySet="shelf" />
+        </AssociationSet>
+        <AssociationSet Name="FK_inventory_staff" Association="AutoMgrDbModel.FK_inventory_staff">
+          <End Role="inventory" EntitySet="inventory" />
+          <End Role="staff" EntitySet="staff" />
+        </AssociationSet>
+        <AssociationSet Name="FK_shelf_io_inventory" Association="AutoMgrDbModel.FK_shelf_io_inventory">
+          <End Role="inventory" EntitySet="inventory" />
+          <End Role="shelf_io" EntitySet="shelf_io" />
+        </AssociationSet>
+        <AssociationSet Name="FK_procure_detail_procure" Association="AutoMgrDbModel.FK_procure_detail_procure">
+          <End Role="procure" EntitySet="procure" />
+          <End Role="procure_detail" EntitySet="procure_detail" />
+        </AssociationSet>
+        <AssociationSet Name="FK_procure_stuff" Association="AutoMgrDbModel.FK_procure_stuff">
+          <End Role="procure" EntitySet="procure" />
+          <End Role="staff" EntitySet="staff" />
+        </AssociationSet>
+        <AssociationSet Name="FK_procure_supplyer" Association="AutoMgrDbModel.FK_procure_supplyer">
+          <End Role="procure" EntitySet="procure" />
+          <End Role="supplyer" EntitySet="supplyer" />
+        </AssociationSet>
+        <AssociationSet Name="FK_shelf_io_procure" Association="AutoMgrDbModel.FK_shelf_io_procure">
+          <End Role="procure" EntitySet="procure" />
+          <End Role="shelf_io" EntitySet="shelf_io" />
+        </AssociationSet>
+        <AssociationSet Name="FK_repair_item_detail_repair" Association="AutoMgrDbModel.FK_repair_item_detail_repair">
+          <End Role="repair" EntitySet="repair" />
+          <End Role="repair_item_detail" EntitySet="repair_item_detail" />
+        </AssociationSet>
+        <AssociationSet Name="FK_repair_parts_repair" Association="AutoMgrDbModel.FK_repair_parts_repair">
+          <End Role="repair" EntitySet="repair" />
+          <End Role="repair_parts" EntitySet="repair_parts" />
+        </AssociationSet>
+        <AssociationSet Name="FK_repair_photo_repair" Association="AutoMgrDbModel.FK_repair_photo_repair">
+          <End Role="repair" EntitySet="repair" />
+          <End Role="repair_photo" EntitySet="repair_photo" />
+        </AssociationSet>
+        <AssociationSet Name="FK_repair_stuff" Association="AutoMgrDbModel.FK_repair_stuff">
+          <End Role="repair" EntitySet="repair" />
+          <End Role="staff" EntitySet="staff" />
+        </AssociationSet>
+        <AssociationSet Name="FK_repair_vehicle" Association="AutoMgrDbModel.FK_repair_vehicle">
+          <End Role="repair" EntitySet="repair" />
+          <End Role="vehicle" EntitySet="vehicle" />
+        </AssociationSet>
+        <AssociationSet Name="FK_shelf_io_repair" Association="AutoMgrDbModel.FK_shelf_io_repair">
+          <End Role="repair" EntitySet="repair" />
+          <End Role="shelf_io" EntitySet="shelf_io" />
+        </AssociationSet>
+        <AssociationSet Name="FK_repair_cate_item_repair_cate" Association="AutoMgrDbModel.FK_repair_cate_item_repair_cate">
+          <End Role="repair_cate" EntitySet="repair_cate" />
+          <End Role="repair_cate_item" EntitySet="repair_cate_item" />
+        </AssociationSet>
+        <AssociationSet Name="FK_repair_item_detail_repair_cate" Association="AutoMgrDbModel.FK_repair_item_detail_repair_cate">
+          <End Role="repair_cate" EntitySet="repair_cate" />
+          <End Role="repair_item_detail" EntitySet="repair_item_detail" />
+        </AssociationSet>
+        <AssociationSet Name="FK_repair_cate_item_repair_item" Association="AutoMgrDbModel.FK_repair_cate_item_repair_item">
+          <End Role="repair_cate_item" EntitySet="repair_cate_item" />
+          <End Role="repair_item" EntitySet="repair_item" />
+        </AssociationSet>
+        <AssociationSet Name="FK_repair_item_detail_repair_item" Association="AutoMgrDbModel.FK_repair_item_detail_repair_item">
+          <End Role="repair_item" EntitySet="repair_item" />
+          <End Role="repair_item_detail" EntitySet="repair_item_detail" />
+        </AssociationSet>
+        <AssociationSet Name="FK_repair_parts_shelf_io" Association="AutoMgrDbModel.FK_repair_parts_shelf_io">
+          <End Role="repair_parts" EntitySet="repair_parts" />
+          <End Role="shelf_io" EntitySet="shelf_io" />
+        </AssociationSet>
+        <AssociationSet Name="FK_staff_role" Association="AutoMgrDbModel.FK_staff_role">
+          <End Role="role" EntitySet="role" />
+          <End Role="staff" EntitySet="staff" />
+        </AssociationSet>
+        <AssociationSet Name="FK_sale_detail_sale" Association="AutoMgrDbModel.FK_sale_detail_sale">
+          <End Role="sale" EntitySet="sale" />
+          <End Role="sale_detail" EntitySet="sale_detail" />
+        </AssociationSet>
+        <AssociationSet Name="FK_sale_stuff" Association="AutoMgrDbModel.FK_sale_stuff">
+          <End Role="sale" EntitySet="sale" />
+          <End Role="staff" EntitySet="staff" />
+        </AssociationSet>
+        <AssociationSet Name="FK_shelf_io_sale" Association="AutoMgrDbModel.FK_shelf_io_sale">
+          <End Role="sale" EntitySet="sale" />
+          <End Role="shelf_io" EntitySet="shelf_io" />
+        </AssociationSet>
+        <AssociationSet Name="FK_sale_detail_shelf_io" Association="AutoMgrDbModel.FK_sale_detail_shelf_io">
+          <End Role="sale_detail" EntitySet="sale_detail" />
+          <End Role="shelf_io" EntitySet="shelf_io" />
+        </AssociationSet>
+        <AssociationSet Name="FK_shelf_io_shelf" Association="AutoMgrDbModel.FK_shelf_io_shelf">
+          <End Role="shelf" EntitySet="shelf" />
+          <End Role="shelf_io" EntitySet="shelf_io" />
+        </AssociationSet>
+        <AssociationSet Name="FK_supplyer_contact_supplyer" Association="AutoMgrDbModel.FK_supplyer_contact_supplyer">
+          <End Role="supplyer" EntitySet="supplyer" />
+          <End Role="supplyer_contact" EntitySet="supplyer_contact" />
+        </AssociationSet>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

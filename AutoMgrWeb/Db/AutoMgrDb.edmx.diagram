@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a83b8ce8c8054338b425882b6be9fd08" Name="Diagram1">
+        <EntityTypeShape EntityType="AutoMgrDbModel.C__RefactorLog" Width="1.5" PointX="10.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.barcode_goods" Width="1.5" PointX="3" PointY="27.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.branch" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.contact" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.customer" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.customer_contact" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.department" Width="1.5" PointX="3.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.express" Width="1.5" PointX="9" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.goods" Width="1.5" PointX="0.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.goods_alias" Width="1.5" PointX="3" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.goods_photo" Width="1.5" PointX="3" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.inventory" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.procure" Width="1.5" PointX="6" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.procure_detail" Width="1.5" PointX="8.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.repair" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.repair_cate" Width="1.5" PointX="6" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.repair_cate_item" Width="1.5" PointX="8.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.repair_item" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.repair_item_detail" Width="1.5" PointX="8.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.repair_parts" Width="1.5" PointX="15.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.repair_photo" Width="1.5" PointX="5.25" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.role" Width="1.5" PointX="3.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.sale" Width="1.5" PointX="11.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.sale_detail" Width="1.5" PointX="18.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.shelf" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.shelf_io" Width="1.5" PointX="13.5" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.staff" Width="1.5" PointX="6" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.supplyer" Width="1.5" PointX="3.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.supplyer_contact" Width="1.5" PointX="8" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.vehicle" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_barcode_goods_goods" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_inventory_branch" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_procure_branch" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_repair_branch" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_shelf_branch" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_staff_branch" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_customer_contact_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_procure_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_repair_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_supplyer_contact_contact" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_customer_contact_customer" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_repair_customer" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_sale_customer" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_vehicle_customer" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_repair_item_detail_department" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_staff_department" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_sale_express" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_goods_alias_goods" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_goods_photo_goods" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_procure_detail_goods" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_repair_parts_goods" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_sale_detail_goods" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_shelf_goods" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_inventory_staff" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_shelf_io_inventory" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_procure_detail_procure" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_procure_stuff" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_procure_supplyer" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_shelf_io_procure" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_repair_item_detail_repair" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_repair_parts_repair" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_repair_photo_repair" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_repair_stuff" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_repair_vehicle" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_shelf_io_repair" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_repair_cate_item_repair_cate" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_repair_item_detail_repair_cate" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_repair_cate_item_repair_item" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_repair_item_detail_repair_item" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_repair_parts_shelf_io" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_staff_role" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_sale_detail_sale" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_sale_stuff" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_shelf_io_sale" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_sale_detail_shelf_io" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_shelf_io_shelf" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoMgrDbModel.FK_supplyer_contact_supplyer" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
