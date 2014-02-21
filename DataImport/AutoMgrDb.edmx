@@ -1,0 +1,2607 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AutoMgrDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="barcode_goods">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="barcode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="goods_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="branch">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="mobile" Type="varchar" MaxLength="20" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="company" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="customer_contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="contact_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="express">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="goods">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="unit" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="brand" Type="nvarchar" MaxLength="20" />
+          <Property Name="origin" Type="nvarchar" MaxLength="50" />
+          <Property Name="model" Type="nvarchar" MaxLength="50" />
+          <Property Name="limit" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="length" Type="real" />
+          <Property Name="width" Type="real" />
+          <Property Name="height" Type="real" />
+          <Property Name="weight" Type="real" />
+        </EntityType>
+        <EntityType Name="goods_alias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="goods_id" Type="int" Nullable="false" />
+          <Property Name="alias" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="goods_photo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="goods_id" Type="int" Nullable="false" />
+          <Property Name="photo" Type="image" Nullable="false" />
+        </EntityType>
+        <EntityType Name="inventory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="branch_id" Type="int" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="staff_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="procure">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="branch_id" Type="int" Nullable="false" />
+          <Property Name="stuff_id" Type="int" Nullable="false" />
+          <Property Name="supplyer_id" Type="int" Nullable="false" />
+          <Property Name="contact_id" Type="int" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="closed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="procure_detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="procure_id" Type="int" Nullable="false" />
+          <Property Name="goods_id" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="repair">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="branch_id" Type="int" Nullable="false" />
+          <Property Name="recv_stuff_id" Type="int" Nullable="false" />
+          <Property Name="recv_date" Type="datetime" Nullable="false" />
+          <Property Name="quote_only" Type="bit" Nullable="false" />
+          <Property Name="parts_price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="repair_price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="discount" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="real_price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="out_date" Type="datetime" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="contact_id" Type="int" Nullable="false" />
+          <Property Name="vehicle_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="repair_cate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="repair_cate_item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cate_id" Type="int" Nullable="false" />
+          <Property Name="item_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="repair_item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="warking_hour" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="price" Type="decimal" Precision="8" Scale="2" />
+        </EntityType>
+        <EntityType Name="repair_item_detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="repair_id" Type="int" Nullable="false" />
+          <Property Name="cate_id" Type="int" />
+          <Property Name="item_id" Type="int" Nullable="false" />
+          <Property Name="department_id" Type="int" Nullable="false" />
+          <Property Name="start_time" Type="datetime" />
+          <Property Name="end_time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="repair_parts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="repair_id" Type="int" Nullable="false" />
+          <Property Name="goods_id" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="quote_only" Type="bit" Nullable="false" />
+          <Property Name="shelf_io_id" Type="int" />
+        </EntityType>
+        <EntityType Name="repair_photo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="repair_id" Type="int" Nullable="false" />
+          <Property Name="photo" Type="image" Nullable="false" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sale">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="branch_id" Type="int" Nullable="false" />
+          <Property Name="stuff_id" Type="int" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="parts_price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="express_fee" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="express_id" Type="int" />
+        </EntityType>
+        <EntityType Name="sale_detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sale_id" Type="int" Nullable="false" />
+          <Property Name="goods_id" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="order_quantity" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="stock_quantity" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="packet" Type="bit" Nullable="false" />
+          <Property Name="shelf_io_id" Type="int" />
+        </EntityType>
+        <EntityType Name="shelf">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="branch_id" Type="int" Nullable="false" />
+          <Property Name="barcode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="goods_id" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="shelf_io">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="repair_id" Type="int" />
+          <Property Name="sale_id" Type="int" />
+          <Property Name="procure_id" Type="int" />
+          <Property Name="inventory_id" Type="int" />
+          <Property Name="shelf_id" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="branch_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="idcard_num" Type="nvarchar" MaxLength="25" />
+          <Property Name="department_id" Type="int" Nullable="false" />
+          <Property Name="role_id" Type="int" Nullable="false" />
+          <Property Name="iccard_num" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="deleted" Type="bit" Nullable="false" />
+          <Property Name="inserted_time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="supplyer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="company" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="supplyer_contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="supplyer_id" Type="int" Nullable="false" />
+          <Property Name="contact_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vehicle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="car_num" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="engine_num" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="frame_num" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="brand" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="model" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_barcode_goods_goods">
+          <End Role="goods" Type="Self.goods" Multiplicity="1" />
+          <End Role="barcode_goods" Type="Self.barcode_goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goods">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="barcode_goods">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_customer_contact_contact">
+          <End Role="contact" Type="Self.contact" Multiplicity="1" />
+          <End Role="customer_contact" Type="Self.customer_contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer_contact">
+              <PropertyRef Name="contact_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_customer_contact_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="customer_contact" Type="Self.customer_contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer_contact">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_goods_alias_goods">
+          <End Role="goods" Type="Self.goods" Multiplicity="1" />
+          <End Role="goods_alias" Type="Self.goods_alias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goods">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="goods_alias">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_goods_photo_goods">
+          <End Role="goods" Type="Self.goods" Multiplicity="1" />
+          <End Role="goods_photo" Type="Self.goods_photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goods">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="goods_photo">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inventory_branch">
+          <End Role="branch" Type="Self.branch" Multiplicity="1" />
+          <End Role="inventory" Type="Self.inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="inventory">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inventory_staff">
+          <End Role="staff" Type="Self.staff" Multiplicity="1" />
+          <End Role="inventory" Type="Self.inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="inventory">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procure_branch">
+          <End Role="branch" Type="Self.branch" Multiplicity="1" />
+          <End Role="procure" Type="Self.procure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="procure">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procure_contact">
+          <End Role="contact" Type="Self.contact" Multiplicity="1" />
+          <End Role="procure" Type="Self.procure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="procure">
+              <PropertyRef Name="contact_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procure_detail_goods">
+          <End Role="goods" Type="Self.goods" Multiplicity="1" />
+          <End Role="procure_detail" Type="Self.procure_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goods">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="procure_detail">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procure_detail_procure">
+          <End Role="procure" Type="Self.procure" Multiplicity="1" />
+          <End Role="procure_detail" Type="Self.procure_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="procure">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="procure_detail">
+              <PropertyRef Name="procure_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procure_stuff">
+          <End Role="staff" Type="Self.staff" Multiplicity="1" />
+          <End Role="procure" Type="Self.procure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="procure">
+              <PropertyRef Name="stuff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procure_supplyer">
+          <End Role="supplyer" Type="Self.supplyer" Multiplicity="1" />
+          <End Role="procure" Type="Self.procure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="supplyer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="procure">
+              <PropertyRef Name="supplyer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_branch">
+          <End Role="branch" Type="Self.branch" Multiplicity="1" />
+          <End Role="repair" Type="Self.repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_cate_item_repair_cate">
+          <End Role="repair_cate" Type="Self.repair_cate" Multiplicity="1" />
+          <End Role="repair_cate_item" Type="Self.repair_cate_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="repair_cate">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_cate_item">
+              <PropertyRef Name="cate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_cate_item_repair_item">
+          <End Role="repair_item" Type="Self.repair_item" Multiplicity="1" />
+          <End Role="repair_cate_item" Type="Self.repair_cate_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="repair_item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_cate_item">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_contact">
+          <End Role="contact" Type="Self.contact" Multiplicity="1" />
+          <End Role="repair" Type="Self.repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair">
+              <PropertyRef Name="contact_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="repair" Type="Self.repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_item_detail_department">
+          <End Role="department" Type="Self.department" Multiplicity="1" />
+          <End Role="repair_item_detail" Type="Self.repair_item_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_item_detail">
+              <PropertyRef Name="department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_item_detail_repair">
+          <End Role="repair" Type="Self.repair" Multiplicity="1" />
+          <End Role="repair_item_detail" Type="Self.repair_item_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="repair">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_item_detail">
+              <PropertyRef Name="repair_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_item_detail_repair_cate">
+          <End Role="repair_cate" Type="Self.repair_cate" Multiplicity="0..1" />
+          <End Role="repair_item_detail" Type="Self.repair_item_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="repair_cate">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_item_detail">
+              <PropertyRef Name="cate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_item_detail_repair_item">
+          <End Role="repair_item" Type="Self.repair_item" Multiplicity="1" />
+          <End Role="repair_item_detail" Type="Self.repair_item_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="repair_item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_item_detail">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_parts_goods">
+          <End Role="goods" Type="Self.goods" Multiplicity="1" />
+          <End Role="repair_parts" Type="Self.repair_parts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goods">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_parts">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_parts_repair">
+          <End Role="repair" Type="Self.repair" Multiplicity="1" />
+          <End Role="repair_parts" Type="Self.repair_parts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="repair">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_parts">
+              <PropertyRef Name="repair_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_parts_shelf_io">
+          <End Role="shelf_io" Type="Self.shelf_io" Multiplicity="0..1" />
+          <End Role="repair_parts" Type="Self.repair_parts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shelf_io">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_parts">
+              <PropertyRef Name="shelf_io_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_photo_repair">
+          <End Role="repair" Type="Self.repair" Multiplicity="1" />
+          <End Role="repair_photo" Type="Self.repair_photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="repair">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_photo">
+              <PropertyRef Name="repair_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_stuff">
+          <End Role="staff" Type="Self.staff" Multiplicity="1" />
+          <End Role="repair" Type="Self.repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair">
+              <PropertyRef Name="recv_stuff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_vehicle">
+          <End Role="vehicle" Type="Self.vehicle" Multiplicity="1" />
+          <End Role="repair" Type="Self.repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vehicle">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair">
+              <PropertyRef Name="vehicle_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sale_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="sale" Type="Self.sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sale">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sale_detail_goods">
+          <End Role="goods" Type="Self.goods" Multiplicity="1" />
+          <End Role="sale_detail" Type="Self.sale_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goods">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sale_detail">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sale_detail_sale">
+          <End Role="sale" Type="Self.sale" Multiplicity="1" />
+          <End Role="sale_detail" Type="Self.sale_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sale">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sale_detail">
+              <PropertyRef Name="sale_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sale_detail_shelf_io">
+          <End Role="shelf_io" Type="Self.shelf_io" Multiplicity="0..1" />
+          <End Role="sale_detail" Type="Self.sale_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shelf_io">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sale_detail">
+              <PropertyRef Name="shelf_io_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sale_express">
+          <End Role="express" Type="Self.express" Multiplicity="0..1" />
+          <End Role="sale" Type="Self.sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="express">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sale">
+              <PropertyRef Name="express_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sale_stuff">
+          <End Role="staff" Type="Self.staff" Multiplicity="1" />
+          <End Role="sale" Type="Self.sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sale">
+              <PropertyRef Name="stuff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shelf_branch">
+          <End Role="branch" Type="Self.branch" Multiplicity="1" />
+          <End Role="shelf" Type="Self.shelf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shelf">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shelf_goods">
+          <End Role="goods" Type="Self.goods" Multiplicity="1" />
+          <End Role="shelf" Type="Self.shelf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goods">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shelf">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shelf_io_inventory">
+          <End Role="inventory" Type="Self.inventory" Multiplicity="0..1" />
+          <End Role="shelf_io" Type="Self.shelf_io" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="inventory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shelf_io">
+              <PropertyRef Name="inventory_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shelf_io_procure">
+          <End Role="procure" Type="Self.procure" Multiplicity="0..1" />
+          <End Role="shelf_io" Type="Self.shelf_io" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="procure">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shelf_io">
+              <PropertyRef Name="procure_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shelf_io_repair">
+          <End Role="repair" Type="Self.repair" Multiplicity="0..1" />
+          <End Role="shelf_io" Type="Self.shelf_io" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="repair">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shelf_io">
+              <PropertyRef Name="repair_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shelf_io_sale">
+          <End Role="sale" Type="Self.sale" Multiplicity="0..1" />
+          <End Role="shelf_io" Type="Self.shelf_io" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sale">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shelf_io">
+              <PropertyRef Name="sale_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shelf_io_shelf">
+          <End Role="shelf" Type="Self.shelf" Multiplicity="1" />
+          <End Role="shelf_io" Type="Self.shelf_io" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shelf">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shelf_io">
+              <PropertyRef Name="shelf_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_staff_branch">
+          <End Role="branch" Type="Self.branch" Multiplicity="1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_staff_department">
+          <End Role="department" Type="Self.department" Multiplicity="1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_staff_role">
+          <End Role="role" Type="Self.role" Multiplicity="1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_supplyer_contact_contact">
+          <End Role="contact" Type="Self.contact" Multiplicity="1" />
+          <End Role="supplyer_contact" Type="Self.supplyer_contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="supplyer_contact">
+              <PropertyRef Name="contact_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_supplyer_contact_supplyer">
+          <End Role="supplyer" Type="Self.supplyer" Multiplicity="1" />
+          <End Role="supplyer_contact" Type="Self.supplyer_contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="supplyer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="supplyer_contact">
+              <PropertyRef Name="supplyer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vehicle_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="vehicle" Type="Self.vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vehicle">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AutoMgrDbModelStoreContainer">
+          <EntitySet Name="barcode_goods" EntityType="Self.barcode_goods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="branch" EntityType="Self.branch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contact" EntityType="Self.contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customer_contact" EntityType="Self.customer_contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="department" EntityType="Self.department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="express" EntityType="Self.express" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="goods" EntityType="Self.goods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="goods_alias" EntityType="Self.goods_alias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="goods_photo" EntityType="Self.goods_photo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="inventory" EntityType="Self.inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="procure" EntityType="Self.procure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="procure_detail" EntityType="Self.procure_detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="repair" EntityType="Self.repair" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="repair_cate" EntityType="Self.repair_cate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="repair_cate_item" EntityType="Self.repair_cate_item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="repair_item" EntityType="Self.repair_item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="repair_item_detail" EntityType="Self.repair_item_detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="repair_parts" EntityType="Self.repair_parts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="repair_photo" EntityType="Self.repair_photo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sale" EntityType="Self.sale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sale_detail" EntityType="Self.sale_detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shelf" EntityType="Self.shelf" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shelf_io" EntityType="Self.shelf_io" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="staff" EntityType="Self.staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="supplyer" EntityType="Self.supplyer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="supplyer_contact" EntityType="Self.supplyer_contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vehicle" EntityType="Self.vehicle" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_barcode_goods_goods" Association="Self.FK_barcode_goods_goods">
+            <End Role="goods" EntitySet="goods" />
+            <End Role="barcode_goods" EntitySet="barcode_goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_customer_contact_contact" Association="Self.FK_customer_contact_contact">
+            <End Role="contact" EntitySet="contact" />
+            <End Role="customer_contact" EntitySet="customer_contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_customer_contact_customer" Association="Self.FK_customer_contact_customer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="customer_contact" EntitySet="customer_contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_goods_alias_goods" Association="Self.FK_goods_alias_goods">
+            <End Role="goods" EntitySet="goods" />
+            <End Role="goods_alias" EntitySet="goods_alias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_goods_photo_goods" Association="Self.FK_goods_photo_goods">
+            <End Role="goods" EntitySet="goods" />
+            <End Role="goods_photo" EntitySet="goods_photo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inventory_branch" Association="Self.FK_inventory_branch">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="inventory" EntitySet="inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inventory_staff" Association="Self.FK_inventory_staff">
+            <End Role="staff" EntitySet="staff" />
+            <End Role="inventory" EntitySet="inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procure_branch" Association="Self.FK_procure_branch">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="procure" EntitySet="procure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procure_contact" Association="Self.FK_procure_contact">
+            <End Role="contact" EntitySet="contact" />
+            <End Role="procure" EntitySet="procure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procure_detail_goods" Association="Self.FK_procure_detail_goods">
+            <End Role="goods" EntitySet="goods" />
+            <End Role="procure_detail" EntitySet="procure_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procure_detail_procure" Association="Self.FK_procure_detail_procure">
+            <End Role="procure" EntitySet="procure" />
+            <End Role="procure_detail" EntitySet="procure_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procure_stuff" Association="Self.FK_procure_stuff">
+            <End Role="staff" EntitySet="staff" />
+            <End Role="procure" EntitySet="procure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procure_supplyer" Association="Self.FK_procure_supplyer">
+            <End Role="supplyer" EntitySet="supplyer" />
+            <End Role="procure" EntitySet="procure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_branch" Association="Self.FK_repair_branch">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="repair" EntitySet="repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_cate_item_repair_cate" Association="Self.FK_repair_cate_item_repair_cate">
+            <End Role="repair_cate" EntitySet="repair_cate" />
+            <End Role="repair_cate_item" EntitySet="repair_cate_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_cate_item_repair_item" Association="Self.FK_repair_cate_item_repair_item">
+            <End Role="repair_item" EntitySet="repair_item" />
+            <End Role="repair_cate_item" EntitySet="repair_cate_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_contact" Association="Self.FK_repair_contact">
+            <End Role="contact" EntitySet="contact" />
+            <End Role="repair" EntitySet="repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_customer" Association="Self.FK_repair_customer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="repair" EntitySet="repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_item_detail_department" Association="Self.FK_repair_item_detail_department">
+            <End Role="department" EntitySet="department" />
+            <End Role="repair_item_detail" EntitySet="repair_item_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_item_detail_repair" Association="Self.FK_repair_item_detail_repair">
+            <End Role="repair" EntitySet="repair" />
+            <End Role="repair_item_detail" EntitySet="repair_item_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_item_detail_repair_cate" Association="Self.FK_repair_item_detail_repair_cate">
+            <End Role="repair_cate" EntitySet="repair_cate" />
+            <End Role="repair_item_detail" EntitySet="repair_item_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_item_detail_repair_item" Association="Self.FK_repair_item_detail_repair_item">
+            <End Role="repair_item" EntitySet="repair_item" />
+            <End Role="repair_item_detail" EntitySet="repair_item_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_parts_goods" Association="Self.FK_repair_parts_goods">
+            <End Role="goods" EntitySet="goods" />
+            <End Role="repair_parts" EntitySet="repair_parts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_parts_repair" Association="Self.FK_repair_parts_repair">
+            <End Role="repair" EntitySet="repair" />
+            <End Role="repair_parts" EntitySet="repair_parts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_parts_shelf_io" Association="Self.FK_repair_parts_shelf_io">
+            <End Role="shelf_io" EntitySet="shelf_io" />
+            <End Role="repair_parts" EntitySet="repair_parts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_photo_repair" Association="Self.FK_repair_photo_repair">
+            <End Role="repair" EntitySet="repair" />
+            <End Role="repair_photo" EntitySet="repair_photo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_stuff" Association="Self.FK_repair_stuff">
+            <End Role="staff" EntitySet="staff" />
+            <End Role="repair" EntitySet="repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_vehicle" Association="Self.FK_repair_vehicle">
+            <End Role="vehicle" EntitySet="vehicle" />
+            <End Role="repair" EntitySet="repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sale_customer" Association="Self.FK_sale_customer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="sale" EntitySet="sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sale_detail_goods" Association="Self.FK_sale_detail_goods">
+            <End Role="goods" EntitySet="goods" />
+            <End Role="sale_detail" EntitySet="sale_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sale_detail_sale" Association="Self.FK_sale_detail_sale">
+            <End Role="sale" EntitySet="sale" />
+            <End Role="sale_detail" EntitySet="sale_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sale_detail_shelf_io" Association="Self.FK_sale_detail_shelf_io">
+            <End Role="shelf_io" EntitySet="shelf_io" />
+            <End Role="sale_detail" EntitySet="sale_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sale_express" Association="Self.FK_sale_express">
+            <End Role="express" EntitySet="express" />
+            <End Role="sale" EntitySet="sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sale_stuff" Association="Self.FK_sale_stuff">
+            <End Role="staff" EntitySet="staff" />
+            <End Role="sale" EntitySet="sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shelf_branch" Association="Self.FK_shelf_branch">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="shelf" EntitySet="shelf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shelf_goods" Association="Self.FK_shelf_goods">
+            <End Role="goods" EntitySet="goods" />
+            <End Role="shelf" EntitySet="shelf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shelf_io_inventory" Association="Self.FK_shelf_io_inventory">
+            <End Role="inventory" EntitySet="inventory" />
+            <End Role="shelf_io" EntitySet="shelf_io" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shelf_io_procure" Association="Self.FK_shelf_io_procure">
+            <End Role="procure" EntitySet="procure" />
+            <End Role="shelf_io" EntitySet="shelf_io" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shelf_io_repair" Association="Self.FK_shelf_io_repair">
+            <End Role="repair" EntitySet="repair" />
+            <End Role="shelf_io" EntitySet="shelf_io" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shelf_io_sale" Association="Self.FK_shelf_io_sale">
+            <End Role="sale" EntitySet="sale" />
+            <End Role="shelf_io" EntitySet="shelf_io" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shelf_io_shelf" Association="Self.FK_shelf_io_shelf">
+            <End Role="shelf" EntitySet="shelf" />
+            <End Role="shelf_io" EntitySet="shelf_io" />
+          </AssociationSet>
+          <AssociationSet Name="FK_staff_branch" Association="Self.FK_staff_branch">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_staff_department" Association="Self.FK_staff_department">
+            <End Role="department" EntitySet="department" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_staff_role" Association="Self.FK_staff_role">
+            <End Role="role" EntitySet="role" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_supplyer_contact_contact" Association="Self.FK_supplyer_contact_contact">
+            <End Role="contact" EntitySet="contact" />
+            <End Role="supplyer_contact" EntitySet="supplyer_contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_supplyer_contact_supplyer" Association="Self.FK_supplyer_contact_supplyer">
+            <End Role="supplyer" EntitySet="supplyer" />
+            <End Role="supplyer_contact" EntitySet="supplyer_contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vehicle_customer" Association="Self.FK_vehicle_customer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="vehicle" EntitySet="vehicle" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AutoMgrDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="barcode_goods">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="goods_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="goods" Relationship="Self.FK_barcode_goods_goods" FromRole="barcode_goods" ToRole="goods" />
+        </EntityType>
+        <EntityType Name="branch">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="inventory" Relationship="Self.FK_inventory_branch" FromRole="branch" ToRole="inventory" />
+          <NavigationProperty Name="procure" Relationship="Self.FK_procure_branch" FromRole="branch" ToRole="procure" />
+          <NavigationProperty Name="repair" Relationship="Self.FK_repair_branch" FromRole="branch" ToRole="repair" />
+          <NavigationProperty Name="shelf" Relationship="Self.FK_shelf_branch" FromRole="branch" ToRole="shelf" />
+          <NavigationProperty Name="staff" Relationship="Self.FK_staff_branch" FromRole="branch" ToRole="staff" />
+        </EntityType>
+        <EntityType Name="contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="customer_contact" Relationship="Self.FK_customer_contact_contact" FromRole="contact" ToRole="customer_contact" />
+          <NavigationProperty Name="procure" Relationship="Self.FK_procure_contact" FromRole="contact" ToRole="procure" />
+          <NavigationProperty Name="repair" Relationship="Self.FK_repair_contact" FromRole="contact" ToRole="repair" />
+          <NavigationProperty Name="supplyer_contact" Relationship="Self.FK_supplyer_contact_contact" FromRole="contact" ToRole="supplyer_contact" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="customer_contact" Relationship="Self.FK_customer_contact_customer" FromRole="customer" ToRole="customer_contact" />
+          <NavigationProperty Name="repair" Relationship="Self.FK_repair_customer" FromRole="customer" ToRole="repair" />
+          <NavigationProperty Name="sale" Relationship="Self.FK_sale_customer" FromRole="customer" ToRole="sale" />
+          <NavigationProperty Name="vehicle" Relationship="Self.FK_vehicle_customer" FromRole="customer" ToRole="vehicle" />
+        </EntityType>
+        <EntityType Name="customer_contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="contact_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="contact" Relationship="Self.FK_customer_contact_contact" FromRole="customer_contact" ToRole="contact" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_customer_contact_customer" FromRole="customer_contact" ToRole="customer" />
+        </EntityType>
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="repair_item_detail" Relationship="Self.FK_repair_item_detail_department" FromRole="department" ToRole="repair_item_detail" />
+          <NavigationProperty Name="staff" Relationship="Self.FK_staff_department" FromRole="department" ToRole="staff" />
+        </EntityType>
+        <EntityType Name="express">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="sale" Relationship="Self.FK_sale_express" FromRole="express" ToRole="sale" />
+        </EntityType>
+        <EntityType Name="goods">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="unit" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="brand" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="origin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="limit" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="length" Type="Single" />
+          <Property Name="width" Type="Single" />
+          <Property Name="height" Type="Single" />
+          <Property Name="weight" Type="Single" />
+          <NavigationProperty Name="barcode_goods" Relationship="Self.FK_barcode_goods_goods" FromRole="goods" ToRole="barcode_goods" />
+          <NavigationProperty Name="goods_alias" Relationship="Self.FK_goods_alias_goods" FromRole="goods" ToRole="goods_alias" />
+          <NavigationProperty Name="goods_photo" Relationship="Self.FK_goods_photo_goods" FromRole="goods" ToRole="goods_photo" />
+          <NavigationProperty Name="procure_detail" Relationship="Self.FK_procure_detail_goods" FromRole="goods" ToRole="procure_detail" />
+          <NavigationProperty Name="repair_parts" Relationship="Self.FK_repair_parts_goods" FromRole="goods" ToRole="repair_parts" />
+          <NavigationProperty Name="sale_detail" Relationship="Self.FK_sale_detail_goods" FromRole="goods" ToRole="sale_detail" />
+          <NavigationProperty Name="shelf" Relationship="Self.FK_shelf_goods" FromRole="goods" ToRole="shelf" />
+        </EntityType>
+        <EntityType Name="goods_alias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="goods_id" Type="Int32" Nullable="false" />
+          <Property Name="alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="goods" Relationship="Self.FK_goods_alias_goods" FromRole="goods_alias" ToRole="goods" />
+        </EntityType>
+        <EntityType Name="goods_photo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="goods_id" Type="Int32" Nullable="false" />
+          <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="goods" Relationship="Self.FK_goods_photo_goods" FromRole="goods_photo" ToRole="goods" />
+        </EntityType>
+        <EntityType Name="inventory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="branch_id" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="staff_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="branch" Relationship="Self.FK_inventory_branch" FromRole="inventory" ToRole="branch" />
+          <NavigationProperty Name="staff" Relationship="Self.FK_inventory_staff" FromRole="inventory" ToRole="staff" />
+          <NavigationProperty Name="shelf_io" Relationship="Self.FK_shelf_io_inventory" FromRole="inventory" ToRole="shelf_io" />
+        </EntityType>
+        <EntityType Name="procure">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="branch_id" Type="Int32" Nullable="false" />
+          <Property Name="stuff_id" Type="Int32" Nullable="false" />
+          <Property Name="supplyer_id" Type="Int32" Nullable="false" />
+          <Property Name="contact_id" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="closed" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="branch" Relationship="Self.FK_procure_branch" FromRole="procure" ToRole="branch" />
+          <NavigationProperty Name="contact" Relationship="Self.FK_procure_contact" FromRole="procure" ToRole="contact" />
+          <NavigationProperty Name="procure_detail" Relationship="Self.FK_procure_detail_procure" FromRole="procure" ToRole="procure_detail" />
+          <NavigationProperty Name="staff" Relationship="Self.FK_procure_stuff" FromRole="procure" ToRole="staff" />
+          <NavigationProperty Name="supplyer" Relationship="Self.FK_procure_supplyer" FromRole="procure" ToRole="supplyer" />
+          <NavigationProperty Name="shelf_io" Relationship="Self.FK_shelf_io_procure" FromRole="procure" ToRole="shelf_io" />
+        </EntityType>
+        <EntityType Name="procure_detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="procure_id" Type="Int32" Nullable="false" />
+          <Property Name="goods_id" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="goods" Relationship="Self.FK_procure_detail_goods" FromRole="procure_detail" ToRole="goods" />
+          <NavigationProperty Name="procure" Relationship="Self.FK_procure_detail_procure" FromRole="procure_detail" ToRole="procure" />
+        </EntityType>
+        <EntityType Name="repair">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="branch_id" Type="Int32" Nullable="false" />
+          <Property Name="recv_stuff_id" Type="Int32" Nullable="false" />
+          <Property Name="recv_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="quote_only" Type="Boolean" Nullable="false" />
+          <Property Name="parts_price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="repair_price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="discount" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="real_price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="out_date" Type="DateTime" Precision="3" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="contact_id" Type="Int32" Nullable="false" />
+          <Property Name="vehicle_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="branch" Relationship="Self.FK_repair_branch" FromRole="repair" ToRole="branch" />
+          <NavigationProperty Name="contact" Relationship="Self.FK_repair_contact" FromRole="repair" ToRole="contact" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_repair_customer" FromRole="repair" ToRole="customer" />
+          <NavigationProperty Name="repair_item_detail" Relationship="Self.FK_repair_item_detail_repair" FromRole="repair" ToRole="repair_item_detail" />
+          <NavigationProperty Name="repair_parts" Relationship="Self.FK_repair_parts_repair" FromRole="repair" ToRole="repair_parts" />
+          <NavigationProperty Name="repair_photo" Relationship="Self.FK_repair_photo_repair" FromRole="repair" ToRole="repair_photo" />
+          <NavigationProperty Name="staff" Relationship="Self.FK_repair_stuff" FromRole="repair" ToRole="staff" />
+          <NavigationProperty Name="vehicle" Relationship="Self.FK_repair_vehicle" FromRole="repair" ToRole="vehicle" />
+          <NavigationProperty Name="shelf_io" Relationship="Self.FK_shelf_io_repair" FromRole="repair" ToRole="shelf_io" />
+        </EntityType>
+        <EntityType Name="repair_cate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="repair_cate_item" Relationship="Self.FK_repair_cate_item_repair_cate" FromRole="repair_cate" ToRole="repair_cate_item" />
+          <NavigationProperty Name="repair_item_detail" Relationship="Self.FK_repair_item_detail_repair_cate" FromRole="repair_cate" ToRole="repair_item_detail" />
+        </EntityType>
+        <EntityType Name="repair_cate_item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cate_id" Type="Int32" Nullable="false" />
+          <Property Name="item_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="repair_cate" Relationship="Self.FK_repair_cate_item_repair_cate" FromRole="repair_cate_item" ToRole="repair_cate" />
+          <NavigationProperty Name="repair_item" Relationship="Self.FK_repair_cate_item_repair_item" FromRole="repair_cate_item" ToRole="repair_item" />
+        </EntityType>
+        <EntityType Name="repair_item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="warking_hour" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="price" Type="Decimal" Precision="8" Scale="2" />
+          <NavigationProperty Name="repair_cate_item" Relationship="Self.FK_repair_cate_item_repair_item" FromRole="repair_item" ToRole="repair_cate_item" />
+          <NavigationProperty Name="repair_item_detail" Relationship="Self.FK_repair_item_detail_repair_item" FromRole="repair_item" ToRole="repair_item_detail" />
+        </EntityType>
+        <EntityType Name="repair_item_detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="repair_id" Type="Int32" Nullable="false" />
+          <Property Name="cate_id" Type="Int32" />
+          <Property Name="item_id" Type="Int32" Nullable="false" />
+          <Property Name="department_id" Type="Int32" Nullable="false" />
+          <Property Name="start_time" Type="DateTime" Precision="3" />
+          <Property Name="end_time" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="department" Relationship="Self.FK_repair_item_detail_department" FromRole="repair_item_detail" ToRole="department" />
+          <NavigationProperty Name="repair" Relationship="Self.FK_repair_item_detail_repair" FromRole="repair_item_detail" ToRole="repair" />
+          <NavigationProperty Name="repair_cate" Relationship="Self.FK_repair_item_detail_repair_cate" FromRole="repair_item_detail" ToRole="repair_cate" />
+          <NavigationProperty Name="repair_item" Relationship="Self.FK_repair_item_detail_repair_item" FromRole="repair_item_detail" ToRole="repair_item" />
+        </EntityType>
+        <EntityType Name="repair_parts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="repair_id" Type="Int32" Nullable="false" />
+          <Property Name="goods_id" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="quote_only" Type="Boolean" Nullable="false" />
+          <Property Name="shelf_io_id" Type="Int32" />
+          <NavigationProperty Name="goods" Relationship="Self.FK_repair_parts_goods" FromRole="repair_parts" ToRole="goods" />
+          <NavigationProperty Name="repair" Relationship="Self.FK_repair_parts_repair" FromRole="repair_parts" ToRole="repair" />
+          <NavigationProperty Name="shelf_io" Relationship="Self.FK_repair_parts_shelf_io" FromRole="repair_parts" ToRole="shelf_io" />
+        </EntityType>
+        <EntityType Name="repair_photo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="repair_id" Type="Int32" Nullable="false" />
+          <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="repair" Relationship="Self.FK_repair_photo_repair" FromRole="repair_photo" ToRole="repair" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="staff" Relationship="Self.FK_staff_role" FromRole="role" ToRole="staff" />
+        </EntityType>
+        <EntityType Name="sale">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="branch_id" Type="Int32" Nullable="false" />
+          <Property Name="stuff_id" Type="Int32" Nullable="false" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="parts_price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="express_fee" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="express_id" Type="Int32" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_sale_customer" FromRole="sale" ToRole="customer" />
+          <NavigationProperty Name="express" Relationship="Self.FK_sale_express" FromRole="sale" ToRole="express" />
+          <NavigationProperty Name="sale_detail" Relationship="Self.FK_sale_detail_sale" FromRole="sale" ToRole="sale_detail" />
+          <NavigationProperty Name="staff" Relationship="Self.FK_sale_stuff" FromRole="sale" ToRole="staff" />
+          <NavigationProperty Name="shelf_io" Relationship="Self.FK_shelf_io_sale" FromRole="sale" ToRole="shelf_io" />
+        </EntityType>
+        <EntityType Name="sale_detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sale_id" Type="Int32" Nullable="false" />
+          <Property Name="goods_id" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="order_quantity" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="stock_quantity" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="packet" Type="Boolean" Nullable="false" />
+          <Property Name="shelf_io_id" Type="Int32" />
+          <NavigationProperty Name="goods" Relationship="Self.FK_sale_detail_goods" FromRole="sale_detail" ToRole="goods" />
+          <NavigationProperty Name="sale" Relationship="Self.FK_sale_detail_sale" FromRole="sale_detail" ToRole="sale" />
+          <NavigationProperty Name="shelf_io" Relationship="Self.FK_sale_detail_shelf_io" FromRole="sale_detail" ToRole="shelf_io" />
+        </EntityType>
+        <EntityType Name="shelf">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="branch_id" Type="Int32" Nullable="false" />
+          <Property Name="barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="goods_id" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="branch" Relationship="Self.FK_shelf_branch" FromRole="shelf" ToRole="branch" />
+          <NavigationProperty Name="goods" Relationship="Self.FK_shelf_goods" FromRole="shelf" ToRole="goods" />
+          <NavigationProperty Name="shelf_io" Relationship="Self.FK_shelf_io_shelf" FromRole="shelf" ToRole="shelf_io" />
+        </EntityType>
+        <EntityType Name="shelf_io">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="repair_id" Type="Int32" />
+          <Property Name="sale_id" Type="Int32" />
+          <Property Name="procure_id" Type="Int32" />
+          <Property Name="inventory_id" Type="Int32" />
+          <Property Name="shelf_id" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="inventory" Relationship="Self.FK_shelf_io_inventory" FromRole="shelf_io" ToRole="inventory" />
+          <NavigationProperty Name="procure" Relationship="Self.FK_shelf_io_procure" FromRole="shelf_io" ToRole="procure" />
+          <NavigationProperty Name="repair" Relationship="Self.FK_shelf_io_repair" FromRole="shelf_io" ToRole="repair" />
+          <NavigationProperty Name="repair_parts" Relationship="Self.FK_repair_parts_shelf_io" FromRole="shelf_io" ToRole="repair_parts" />
+          <NavigationProperty Name="sale" Relationship="Self.FK_shelf_io_sale" FromRole="shelf_io" ToRole="sale" />
+          <NavigationProperty Name="sale_detail" Relationship="Self.FK_sale_detail_shelf_io" FromRole="shelf_io" ToRole="sale_detail" />
+          <NavigationProperty Name="shelf" Relationship="Self.FK_shelf_io_shelf" FromRole="shelf_io" ToRole="shelf" />
+        </EntityType>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="branch_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idcard_num" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="department_id" Type="Int32" Nullable="false" />
+          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <Property Name="iccard_num" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <Property Name="inserted_time" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="branch" Relationship="Self.FK_staff_branch" FromRole="staff" ToRole="branch" />
+          <NavigationProperty Name="department" Relationship="Self.FK_staff_department" FromRole="staff" ToRole="department" />
+          <NavigationProperty Name="inventory" Relationship="Self.FK_inventory_staff" FromRole="staff" ToRole="inventory" />
+          <NavigationProperty Name="procure" Relationship="Self.FK_procure_stuff" FromRole="staff" ToRole="procure" />
+          <NavigationProperty Name="repair" Relationship="Self.FK_repair_stuff" FromRole="staff" ToRole="repair" />
+          <NavigationProperty Name="role" Relationship="Self.FK_staff_role" FromRole="staff" ToRole="role" />
+          <NavigationProperty Name="sale" Relationship="Self.FK_sale_stuff" FromRole="staff" ToRole="sale" />
+        </EntityType>
+        <EntityType Name="supplyer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="company" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="procure" Relationship="Self.FK_procure_supplyer" FromRole="supplyer" ToRole="procure" />
+          <NavigationProperty Name="supplyer_contact" Relationship="Self.FK_supplyer_contact_supplyer" FromRole="supplyer" ToRole="supplyer_contact" />
+        </EntityType>
+        <EntityType Name="supplyer_contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="supplyer_id" Type="Int32" Nullable="false" />
+          <Property Name="contact_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="contact" Relationship="Self.FK_supplyer_contact_contact" FromRole="supplyer_contact" ToRole="contact" />
+          <NavigationProperty Name="supplyer" Relationship="Self.FK_supplyer_contact_supplyer" FromRole="supplyer_contact" ToRole="supplyer" />
+        </EntityType>
+        <EntityType Name="vehicle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="car_num" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="engine_num" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="frame_num" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="brand" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="model" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_vehicle_customer" FromRole="vehicle" ToRole="customer" />
+          <NavigationProperty Name="repair" Relationship="Self.FK_repair_vehicle" FromRole="vehicle" ToRole="repair" />
+        </EntityType>
+        <Association Name="FK_barcode_goods_goods">
+          <End Role="goods" Type="Self.goods" Multiplicity="1" />
+          <End Role="barcode_goods" Type="Self.barcode_goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goods">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="barcode_goods">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inventory_branch">
+          <End Role="branch" Type="Self.branch" Multiplicity="1" />
+          <End Role="inventory" Type="Self.inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="inventory">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procure_branch">
+          <End Role="branch" Type="Self.branch" Multiplicity="1" />
+          <End Role="procure" Type="Self.procure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="procure">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_branch">
+          <End Role="branch" Type="Self.branch" Multiplicity="1" />
+          <End Role="repair" Type="Self.repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shelf_branch">
+          <End Role="branch" Type="Self.branch" Multiplicity="1" />
+          <End Role="shelf" Type="Self.shelf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shelf">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_staff_branch">
+          <End Role="branch" Type="Self.branch" Multiplicity="1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_customer_contact_contact">
+          <End Role="contact" Type="Self.contact" Multiplicity="1" />
+          <End Role="customer_contact" Type="Self.customer_contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer_contact">
+              <PropertyRef Name="contact_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procure_contact">
+          <End Role="contact" Type="Self.contact" Multiplicity="1" />
+          <End Role="procure" Type="Self.procure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="procure">
+              <PropertyRef Name="contact_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_contact">
+          <End Role="contact" Type="Self.contact" Multiplicity="1" />
+          <End Role="repair" Type="Self.repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair">
+              <PropertyRef Name="contact_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_supplyer_contact_contact">
+          <End Role="contact" Type="Self.contact" Multiplicity="1" />
+          <End Role="supplyer_contact" Type="Self.supplyer_contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="supplyer_contact">
+              <PropertyRef Name="contact_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_customer_contact_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="customer_contact" Type="Self.customer_contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer_contact">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="repair" Type="Self.repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sale_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="sale" Type="Self.sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sale">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vehicle_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="vehicle" Type="Self.vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vehicle">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_item_detail_department">
+          <End Role="department" Type="Self.department" Multiplicity="1" />
+          <End Role="repair_item_detail" Type="Self.repair_item_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_item_detail">
+              <PropertyRef Name="department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_staff_department">
+          <End Role="department" Type="Self.department" Multiplicity="1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sale_express">
+          <End Role="express" Type="Self.express" Multiplicity="0..1" />
+          <End Role="sale" Type="Self.sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="express">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sale">
+              <PropertyRef Name="express_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_goods_alias_goods">
+          <End Role="goods" Type="Self.goods" Multiplicity="1" />
+          <End Role="goods_alias" Type="Self.goods_alias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goods">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="goods_alias">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_goods_photo_goods">
+          <End Role="goods" Type="Self.goods" Multiplicity="1" />
+          <End Role="goods_photo" Type="Self.goods_photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goods">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="goods_photo">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procure_detail_goods">
+          <End Role="goods" Type="Self.goods" Multiplicity="1" />
+          <End Role="procure_detail" Type="Self.procure_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goods">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="procure_detail">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_parts_goods">
+          <End Role="goods" Type="Self.goods" Multiplicity="1" />
+          <End Role="repair_parts" Type="Self.repair_parts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goods">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_parts">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sale_detail_goods">
+          <End Role="goods" Type="Self.goods" Multiplicity="1" />
+          <End Role="sale_detail" Type="Self.sale_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goods">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sale_detail">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shelf_goods">
+          <End Role="goods" Type="Self.goods" Multiplicity="1" />
+          <End Role="shelf" Type="Self.shelf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goods">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shelf">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inventory_staff">
+          <End Role="staff" Type="Self.staff" Multiplicity="1" />
+          <End Role="inventory" Type="Self.inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="inventory">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shelf_io_inventory">
+          <End Role="inventory" Type="Self.inventory" Multiplicity="0..1" />
+          <End Role="shelf_io" Type="Self.shelf_io" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="inventory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shelf_io">
+              <PropertyRef Name="inventory_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procure_detail_procure">
+          <End Role="procure" Type="Self.procure" Multiplicity="1" />
+          <End Role="procure_detail" Type="Self.procure_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="procure">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="procure_detail">
+              <PropertyRef Name="procure_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procure_stuff">
+          <End Role="staff" Type="Self.staff" Multiplicity="1" />
+          <End Role="procure" Type="Self.procure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="procure">
+              <PropertyRef Name="stuff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procure_supplyer">
+          <End Role="supplyer" Type="Self.supplyer" Multiplicity="1" />
+          <End Role="procure" Type="Self.procure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="supplyer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="procure">
+              <PropertyRef Name="supplyer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shelf_io_procure">
+          <End Role="procure" Type="Self.procure" Multiplicity="0..1" />
+          <End Role="shelf_io" Type="Self.shelf_io" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="procure">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shelf_io">
+              <PropertyRef Name="procure_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_item_detail_repair">
+          <End Role="repair" Type="Self.repair" Multiplicity="1" />
+          <End Role="repair_item_detail" Type="Self.repair_item_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="repair">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_item_detail">
+              <PropertyRef Name="repair_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_parts_repair">
+          <End Role="repair" Type="Self.repair" Multiplicity="1" />
+          <End Role="repair_parts" Type="Self.repair_parts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="repair">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_parts">
+              <PropertyRef Name="repair_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_photo_repair">
+          <End Role="repair" Type="Self.repair" Multiplicity="1" />
+          <End Role="repair_photo" Type="Self.repair_photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="repair">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_photo">
+              <PropertyRef Name="repair_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_stuff">
+          <End Role="staff" Type="Self.staff" Multiplicity="1" />
+          <End Role="repair" Type="Self.repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair">
+              <PropertyRef Name="recv_stuff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_vehicle">
+          <End Role="vehicle" Type="Self.vehicle" Multiplicity="1" />
+          <End Role="repair" Type="Self.repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vehicle">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair">
+              <PropertyRef Name="vehicle_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shelf_io_repair">
+          <End Role="repair" Type="Self.repair" Multiplicity="0..1" />
+          <End Role="shelf_io" Type="Self.shelf_io" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="repair">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shelf_io">
+              <PropertyRef Name="repair_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_cate_item_repair_cate">
+          <End Role="repair_cate" Type="Self.repair_cate" Multiplicity="1" />
+          <End Role="repair_cate_item" Type="Self.repair_cate_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="repair_cate">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_cate_item">
+              <PropertyRef Name="cate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_item_detail_repair_cate">
+          <End Role="repair_cate" Type="Self.repair_cate" Multiplicity="0..1" />
+          <End Role="repair_item_detail" Type="Self.repair_item_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="repair_cate">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_item_detail">
+              <PropertyRef Name="cate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_cate_item_repair_item">
+          <End Role="repair_item" Type="Self.repair_item" Multiplicity="1" />
+          <End Role="repair_cate_item" Type="Self.repair_cate_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="repair_item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_cate_item">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_item_detail_repair_item">
+          <End Role="repair_item" Type="Self.repair_item" Multiplicity="1" />
+          <End Role="repair_item_detail" Type="Self.repair_item_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="repair_item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_item_detail">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_repair_parts_shelf_io">
+          <End Role="shelf_io" Type="Self.shelf_io" Multiplicity="0..1" />
+          <End Role="repair_parts" Type="Self.repair_parts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shelf_io">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="repair_parts">
+              <PropertyRef Name="shelf_io_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_staff_role">
+          <End Role="role" Type="Self.role" Multiplicity="1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sale_detail_sale">
+          <End Role="sale" Type="Self.sale" Multiplicity="1" />
+          <End Role="sale_detail" Type="Self.sale_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sale">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sale_detail">
+              <PropertyRef Name="sale_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sale_stuff">
+          <End Role="staff" Type="Self.staff" Multiplicity="1" />
+          <End Role="sale" Type="Self.sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sale">
+              <PropertyRef Name="stuff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shelf_io_sale">
+          <End Role="sale" Type="Self.sale" Multiplicity="0..1" />
+          <End Role="shelf_io" Type="Self.shelf_io" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sale">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shelf_io">
+              <PropertyRef Name="sale_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sale_detail_shelf_io">
+          <End Role="shelf_io" Type="Self.shelf_io" Multiplicity="0..1" />
+          <End Role="sale_detail" Type="Self.sale_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shelf_io">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sale_detail">
+              <PropertyRef Name="shelf_io_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shelf_io_shelf">
+          <End Role="shelf" Type="Self.shelf" Multiplicity="1" />
+          <End Role="shelf_io" Type="Self.shelf_io" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shelf">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="shelf_io">
+              <PropertyRef Name="shelf_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_supplyer_contact_supplyer">
+          <End Role="supplyer" Type="Self.supplyer" Multiplicity="1" />
+          <End Role="supplyer_contact" Type="Self.supplyer_contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="supplyer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="supplyer_contact">
+              <PropertyRef Name="supplyer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AutoMgrDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="barcode_goods" EntityType="Self.barcode_goods" />
+          <EntitySet Name="branch" EntityType="Self.branch" />
+          <EntitySet Name="contact" EntityType="Self.contact" />
+          <EntitySet Name="customer" EntityType="Self.customer" />
+          <EntitySet Name="customer_contact" EntityType="Self.customer_contact" />
+          <EntitySet Name="department" EntityType="Self.department" />
+          <EntitySet Name="express" EntityType="Self.express" />
+          <EntitySet Name="goods" EntityType="Self.goods" />
+          <EntitySet Name="goods_alias" EntityType="Self.goods_alias" />
+          <EntitySet Name="goods_photo" EntityType="Self.goods_photo" />
+          <EntitySet Name="inventory" EntityType="Self.inventory" />
+          <EntitySet Name="procure" EntityType="Self.procure" />
+          <EntitySet Name="procure_detail" EntityType="Self.procure_detail" />
+          <EntitySet Name="repair" EntityType="Self.repair" />
+          <EntitySet Name="repair_cate" EntityType="Self.repair_cate" />
+          <EntitySet Name="repair_cate_item" EntityType="Self.repair_cate_item" />
+          <EntitySet Name="repair_item" EntityType="Self.repair_item" />
+          <EntitySet Name="repair_item_detail" EntityType="Self.repair_item_detail" />
+          <EntitySet Name="repair_parts" EntityType="Self.repair_parts" />
+          <EntitySet Name="repair_photo" EntityType="Self.repair_photo" />
+          <EntitySet Name="role" EntityType="Self.role" />
+          <EntitySet Name="sale" EntityType="Self.sale" />
+          <EntitySet Name="sale_detail" EntityType="Self.sale_detail" />
+          <EntitySet Name="shelf" EntityType="Self.shelf" />
+          <EntitySet Name="shelf_io" EntityType="Self.shelf_io" />
+          <EntitySet Name="staff" EntityType="Self.staff" />
+          <EntitySet Name="supplyer" EntityType="Self.supplyer" />
+          <EntitySet Name="supplyer_contact" EntityType="Self.supplyer_contact" />
+          <EntitySet Name="vehicle" EntityType="Self.vehicle" />
+          <AssociationSet Name="FK_barcode_goods_goods" Association="Self.FK_barcode_goods_goods">
+            <End Role="goods" EntitySet="goods" />
+            <End Role="barcode_goods" EntitySet="barcode_goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inventory_branch" Association="Self.FK_inventory_branch">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="inventory" EntitySet="inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procure_branch" Association="Self.FK_procure_branch">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="procure" EntitySet="procure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_branch" Association="Self.FK_repair_branch">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="repair" EntitySet="repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shelf_branch" Association="Self.FK_shelf_branch">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="shelf" EntitySet="shelf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_staff_branch" Association="Self.FK_staff_branch">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_customer_contact_contact" Association="Self.FK_customer_contact_contact">
+            <End Role="contact" EntitySet="contact" />
+            <End Role="customer_contact" EntitySet="customer_contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procure_contact" Association="Self.FK_procure_contact">
+            <End Role="contact" EntitySet="contact" />
+            <End Role="procure" EntitySet="procure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_contact" Association="Self.FK_repair_contact">
+            <End Role="contact" EntitySet="contact" />
+            <End Role="repair" EntitySet="repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK_supplyer_contact_contact" Association="Self.FK_supplyer_contact_contact">
+            <End Role="contact" EntitySet="contact" />
+            <End Role="supplyer_contact" EntitySet="supplyer_contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_customer_contact_customer" Association="Self.FK_customer_contact_customer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="customer_contact" EntitySet="customer_contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_customer" Association="Self.FK_repair_customer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="repair" EntitySet="repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sale_customer" Association="Self.FK_sale_customer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="sale" EntitySet="sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vehicle_customer" Association="Self.FK_vehicle_customer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="vehicle" EntitySet="vehicle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_item_detail_department" Association="Self.FK_repair_item_detail_department">
+            <End Role="department" EntitySet="department" />
+            <End Role="repair_item_detail" EntitySet="repair_item_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_staff_department" Association="Self.FK_staff_department">
+            <End Role="department" EntitySet="department" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sale_express" Association="Self.FK_sale_express">
+            <End Role="express" EntitySet="express" />
+            <End Role="sale" EntitySet="sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_goods_alias_goods" Association="Self.FK_goods_alias_goods">
+            <End Role="goods" EntitySet="goods" />
+            <End Role="goods_alias" EntitySet="goods_alias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_goods_photo_goods" Association="Self.FK_goods_photo_goods">
+            <End Role="goods" EntitySet="goods" />
+            <End Role="goods_photo" EntitySet="goods_photo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procure_detail_goods" Association="Self.FK_procure_detail_goods">
+            <End Role="goods" EntitySet="goods" />
+            <End Role="procure_detail" EntitySet="procure_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_parts_goods" Association="Self.FK_repair_parts_goods">
+            <End Role="goods" EntitySet="goods" />
+            <End Role="repair_parts" EntitySet="repair_parts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sale_detail_goods" Association="Self.FK_sale_detail_goods">
+            <End Role="goods" EntitySet="goods" />
+            <End Role="sale_detail" EntitySet="sale_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shelf_goods" Association="Self.FK_shelf_goods">
+            <End Role="goods" EntitySet="goods" />
+            <End Role="shelf" EntitySet="shelf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inventory_staff" Association="Self.FK_inventory_staff">
+            <End Role="staff" EntitySet="staff" />
+            <End Role="inventory" EntitySet="inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shelf_io_inventory" Association="Self.FK_shelf_io_inventory">
+            <End Role="inventory" EntitySet="inventory" />
+            <End Role="shelf_io" EntitySet="shelf_io" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procure_detail_procure" Association="Self.FK_procure_detail_procure">
+            <End Role="procure" EntitySet="procure" />
+            <End Role="procure_detail" EntitySet="procure_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procure_stuff" Association="Self.FK_procure_stuff">
+            <End Role="staff" EntitySet="staff" />
+            <End Role="procure" EntitySet="procure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procure_supplyer" Association="Self.FK_procure_supplyer">
+            <End Role="supplyer" EntitySet="supplyer" />
+            <End Role="procure" EntitySet="procure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shelf_io_procure" Association="Self.FK_shelf_io_procure">
+            <End Role="procure" EntitySet="procure" />
+            <End Role="shelf_io" EntitySet="shelf_io" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_item_detail_repair" Association="Self.FK_repair_item_detail_repair">
+            <End Role="repair" EntitySet="repair" />
+            <End Role="repair_item_detail" EntitySet="repair_item_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_parts_repair" Association="Self.FK_repair_parts_repair">
+            <End Role="repair" EntitySet="repair" />
+            <End Role="repair_parts" EntitySet="repair_parts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_photo_repair" Association="Self.FK_repair_photo_repair">
+            <End Role="repair" EntitySet="repair" />
+            <End Role="repair_photo" EntitySet="repair_photo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_stuff" Association="Self.FK_repair_stuff">
+            <End Role="staff" EntitySet="staff" />
+            <End Role="repair" EntitySet="repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_vehicle" Association="Self.FK_repair_vehicle">
+            <End Role="vehicle" EntitySet="vehicle" />
+            <End Role="repair" EntitySet="repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shelf_io_repair" Association="Self.FK_shelf_io_repair">
+            <End Role="repair" EntitySet="repair" />
+            <End Role="shelf_io" EntitySet="shelf_io" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_cate_item_repair_cate" Association="Self.FK_repair_cate_item_repair_cate">
+            <End Role="repair_cate" EntitySet="repair_cate" />
+            <End Role="repair_cate_item" EntitySet="repair_cate_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_item_detail_repair_cate" Association="Self.FK_repair_item_detail_repair_cate">
+            <End Role="repair_cate" EntitySet="repair_cate" />
+            <End Role="repair_item_detail" EntitySet="repair_item_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_cate_item_repair_item" Association="Self.FK_repair_cate_item_repair_item">
+            <End Role="repair_item" EntitySet="repair_item" />
+            <End Role="repair_cate_item" EntitySet="repair_cate_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_item_detail_repair_item" Association="Self.FK_repair_item_detail_repair_item">
+            <End Role="repair_item" EntitySet="repair_item" />
+            <End Role="repair_item_detail" EntitySet="repair_item_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_repair_parts_shelf_io" Association="Self.FK_repair_parts_shelf_io">
+            <End Role="shelf_io" EntitySet="shelf_io" />
+            <End Role="repair_parts" EntitySet="repair_parts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_staff_role" Association="Self.FK_staff_role">
+            <End Role="role" EntitySet="role" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sale_detail_sale" Association="Self.FK_sale_detail_sale">
+            <End Role="sale" EntitySet="sale" />
+            <End Role="sale_detail" EntitySet="sale_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sale_stuff" Association="Self.FK_sale_stuff">
+            <End Role="staff" EntitySet="staff" />
+            <End Role="sale" EntitySet="sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shelf_io_sale" Association="Self.FK_shelf_io_sale">
+            <End Role="sale" EntitySet="sale" />
+            <End Role="shelf_io" EntitySet="shelf_io" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sale_detail_shelf_io" Association="Self.FK_sale_detail_shelf_io">
+            <End Role="shelf_io" EntitySet="shelf_io" />
+            <End Role="sale_detail" EntitySet="sale_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shelf_io_shelf" Association="Self.FK_shelf_io_shelf">
+            <End Role="shelf" EntitySet="shelf" />
+            <End Role="shelf_io" EntitySet="shelf_io" />
+          </AssociationSet>
+          <AssociationSet Name="FK_supplyer_contact_supplyer" Association="Self.FK_supplyer_contact_supplyer">
+            <End Role="supplyer" EntitySet="supplyer" />
+            <End Role="supplyer_contact" EntitySet="supplyer_contact" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AutoMgrDbModelStoreContainer" CdmEntityContainer="AutoMgrDbEntities">
+          <EntitySetMapping Name="barcode_goods">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.barcode_goods">
+              <MappingFragment StoreEntitySet="barcode_goods">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="goods_id" ColumnName="goods_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="branch">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.branch">
+              <MappingFragment StoreEntitySet="branch">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contact">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.contact">
+              <MappingFragment StoreEntitySet="contact">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customer">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customer_contact">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.customer_contact">
+              <MappingFragment StoreEntitySet="customer_contact">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="contact_id" ColumnName="contact_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="department">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.department">
+              <MappingFragment StoreEntitySet="department">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="express">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.express">
+              <MappingFragment StoreEntitySet="express">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="goods">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.goods">
+              <MappingFragment StoreEntitySet="goods">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="brand" ColumnName="brand" />
+                <ScalarProperty Name="origin" ColumnName="origin" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="limit" ColumnName="limit" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="goods_alias">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.goods_alias">
+              <MappingFragment StoreEntitySet="goods_alias">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="goods_id" ColumnName="goods_id" />
+                <ScalarProperty Name="alias" ColumnName="alias" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="goods_photo">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.goods_photo">
+              <MappingFragment StoreEntitySet="goods_photo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="goods_id" ColumnName="goods_id" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inventory">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.inventory">
+              <MappingFragment StoreEntitySet="inventory">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="procure">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.procure">
+              <MappingFragment StoreEntitySet="procure">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+                <ScalarProperty Name="stuff_id" ColumnName="stuff_id" />
+                <ScalarProperty Name="supplyer_id" ColumnName="supplyer_id" />
+                <ScalarProperty Name="contact_id" ColumnName="contact_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="closed" ColumnName="closed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="procure_detail">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.procure_detail">
+              <MappingFragment StoreEntitySet="procure_detail">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="procure_id" ColumnName="procure_id" />
+                <ScalarProperty Name="goods_id" ColumnName="goods_id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="repair">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.repair">
+              <MappingFragment StoreEntitySet="repair">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+                <ScalarProperty Name="recv_stuff_id" ColumnName="recv_stuff_id" />
+                <ScalarProperty Name="recv_date" ColumnName="recv_date" />
+                <ScalarProperty Name="quote_only" ColumnName="quote_only" />
+                <ScalarProperty Name="parts_price" ColumnName="parts_price" />
+                <ScalarProperty Name="repair_price" ColumnName="repair_price" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="real_price" ColumnName="real_price" />
+                <ScalarProperty Name="out_date" ColumnName="out_date" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="contact_id" ColumnName="contact_id" />
+                <ScalarProperty Name="vehicle_id" ColumnName="vehicle_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="repair_cate">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.repair_cate">
+              <MappingFragment StoreEntitySet="repair_cate">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="repair_cate_item">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.repair_cate_item">
+              <MappingFragment StoreEntitySet="repair_cate_item">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cate_id" ColumnName="cate_id" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="repair_item">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.repair_item">
+              <MappingFragment StoreEntitySet="repair_item">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="warking_hour" ColumnName="warking_hour" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="repair_item_detail">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.repair_item_detail">
+              <MappingFragment StoreEntitySet="repair_item_detail">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="repair_id" ColumnName="repair_id" />
+                <ScalarProperty Name="cate_id" ColumnName="cate_id" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="repair_parts">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.repair_parts">
+              <MappingFragment StoreEntitySet="repair_parts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="repair_id" ColumnName="repair_id" />
+                <ScalarProperty Name="goods_id" ColumnName="goods_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="quote_only" ColumnName="quote_only" />
+                <ScalarProperty Name="shelf_io_id" ColumnName="shelf_io_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="repair_photo">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.repair_photo">
+              <MappingFragment StoreEntitySet="repair_photo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="repair_id" ColumnName="repair_id" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="role">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sale">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.sale">
+              <MappingFragment StoreEntitySet="sale">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+                <ScalarProperty Name="stuff_id" ColumnName="stuff_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="parts_price" ColumnName="parts_price" />
+                <ScalarProperty Name="express_fee" ColumnName="express_fee" />
+                <ScalarProperty Name="express_id" ColumnName="express_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sale_detail">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.sale_detail">
+              <MappingFragment StoreEntitySet="sale_detail">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sale_id" ColumnName="sale_id" />
+                <ScalarProperty Name="goods_id" ColumnName="goods_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="order_quantity" ColumnName="order_quantity" />
+                <ScalarProperty Name="stock_quantity" ColumnName="stock_quantity" />
+                <ScalarProperty Name="packet" ColumnName="packet" />
+                <ScalarProperty Name="shelf_io_id" ColumnName="shelf_io_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shelf">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.shelf">
+              <MappingFragment StoreEntitySet="shelf">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="goods_id" ColumnName="goods_id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shelf_io">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.shelf_io">
+              <MappingFragment StoreEntitySet="shelf_io">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="repair_id" ColumnName="repair_id" />
+                <ScalarProperty Name="sale_id" ColumnName="sale_id" />
+                <ScalarProperty Name="procure_id" ColumnName="procure_id" />
+                <ScalarProperty Name="inventory_id" ColumnName="inventory_id" />
+                <ScalarProperty Name="shelf_id" ColumnName="shelf_id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="staff">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.staff">
+              <MappingFragment StoreEntitySet="staff">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="idcard_num" ColumnName="idcard_num" />
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="iccard_num" ColumnName="iccard_num" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="inserted_time" ColumnName="inserted_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="supplyer">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.supplyer">
+              <MappingFragment StoreEntitySet="supplyer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="supplyer_contact">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.supplyer_contact">
+              <MappingFragment StoreEntitySet="supplyer_contact">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="supplyer_id" ColumnName="supplyer_id" />
+                <ScalarProperty Name="contact_id" ColumnName="contact_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vehicle">
+            <EntityTypeMapping TypeName="AutoMgrDbModel.vehicle">
+              <MappingFragment StoreEntitySet="vehicle">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="car_num" ColumnName="car_num" />
+                <ScalarProperty Name="engine_num" ColumnName="engine_num" />
+                <ScalarProperty Name="frame_num" ColumnName="frame_num" />
+                <ScalarProperty Name="brand" ColumnName="brand" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
