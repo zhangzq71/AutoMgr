@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMgrWP", "AutoMgrWP\Auto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMgrW8", "AutoMgrW8\AutoMgrW8.csproj", "{A3BA64FE-FA5C-4A65-89A5-849D31A6DF35}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataImport", "DataImport\DataImport.csproj", "{B1869D9E-A322-4B10-B3EC-22332415BA85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,16 @@ Global
 		{A3BA64FE-FA5C-4A65-89A5-849D31A6DF35}.Release|x86.ActiveCfg = Release|x86
 		{A3BA64FE-FA5C-4A65-89A5-849D31A6DF35}.Release|x86.Build.0 = Release|x86
 		{A3BA64FE-FA5C-4A65-89A5-849D31A6DF35}.Release|x86.Deploy.0 = Release|x86
+		{B1869D9E-A322-4B10-B3EC-22332415BA85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1869D9E-A322-4B10-B3EC-22332415BA85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1869D9E-A322-4B10-B3EC-22332415BA85}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{B1869D9E-A322-4B10-B3EC-22332415BA85}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B1869D9E-A322-4B10-B3EC-22332415BA85}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B1869D9E-A322-4B10-B3EC-22332415BA85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1869D9E-A322-4B10-B3EC-22332415BA85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1869D9E-A322-4B10-B3EC-22332415BA85}.Release|ARM.ActiveCfg = Release|Any CPU
+		{B1869D9E-A322-4B10-B3EC-22332415BA85}.Release|x64.ActiveCfg = Release|Any CPU
+		{B1869D9E-A322-4B10-B3EC-22332415BA85}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

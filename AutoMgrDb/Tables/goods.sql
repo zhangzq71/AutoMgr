@@ -7,7 +7,7 @@
     [brand] NVARCHAR(20) NULL, 
     [origin] NVARCHAR(50) NULL, 
     [model] NVARCHAR(50) NULL, 
-    [limit] REAL NULL, 
+    [limit] DECIMAL(12, 2) NULL, 
     [length] REAL NULL, 
     [width] REAL NULL, 
     [height] REAL NULL, 

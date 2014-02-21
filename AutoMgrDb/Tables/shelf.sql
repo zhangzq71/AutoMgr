@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[shelf]
 (
-	[id] INT NOT NULL PRIMARY KEY, 
+	[id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [branch_id] INT NOT NULL, 
     [barcode] VARCHAR(50) NOT NULL, 
 	[name] NVARCHAR(20) NOT NULL,
