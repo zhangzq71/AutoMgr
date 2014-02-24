@@ -20,9 +20,12 @@ namespace AutoMgrWeb.Service
         {
             // TODO: set rules to indicate which entity sets and service operations are visible, updatable, etc.
             // Examples:
+            config.UseVerboseErrors = true;
             config.SetEntitySetAccessRule("*", EntitySetRights.AllRead);
             config.SetServiceOperationAccessRule("*", ServiceOperationRights.All);
             config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V3;
+
+            //config.SetEntitySetPageSize("Inventory", 2);
         }
     }
 }

@@ -8,11 +8,15 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using AutoMgrWP.Resources;
+using System.Data.Services.Client;
 
 namespace AutoMgrWP
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        DataServiceCollection<AutoMgrSvc.inventory> inventories;
+        AutoMgrSvc.AutoMgrDbEntities ctx;
+
         // Constructor
         public MainPage()
         {
@@ -23,7 +27,51 @@ namespace AutoMgrWP
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
+            db();
         }
+
+        async void db()
+        {
+            ctx = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
+
+            //AutoMgrSvc.inventory inventory = new AutoMgrSvc.inventory();
+            //var goods = from g in ctx.goods where g.id < 100 select g;
+            //foreach (var gg in goods)
+            //{
+            //    if (gg.id == 1100)
+            //        break;
+            //}
+
+            inventories = new DataServiceCollection<AutoMgrSvc.inventory>();
+            inventories.LoadCompleted += new EventHandler<LoadCompletedEventArgs>(complete);
+            var query = from inv in ctx.inventory.Expand("shelf_io/shelf/goods") select inv;
+            inventories.LoadAsync(query);
+            //inventories.Load(from inv in ctx.inventory select inv);
+            //foreach (var inv in inventories)
+            //{
+            //    int i = inv.id;
+            //}
+        }
+
+        private void complete(object sender, LoadCompletedEventArgs e)
+        {
+            if (e.Error == null)
+            {
+                if (inventories.Continuation != null)
+                {
+                    inventories.LoadNextPartialSetAsync();
+                }
+                else
+                {
+                    foreach (var inv in inventories)
+                    {
+                        if (inv.id == 1000)
+                            break;
+                    }
+                }
+            }
+        }
+
 
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)

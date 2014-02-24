@@ -29,7 +29,9 @@ namespace DataImport
             xlWorkSheet = xlWorkBook.Worksheets.get_Item(1);
             range = xlWorkSheet.UsedRange;
 
-            using (var conn = new SqlConnection(@"Data Source=(localdb)\Projects;Initial Catalog=AutoMgrDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False"))
+            //string strConn = @"Data Source=(localdb)\Projects;Initial Catalog=AutoMgrDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
+            string strConn = @"Data Source=192.168.1.200;Initial Catalog=AutoMgrDb;Persist Security Info=True;User ID=sa;Password=85bc3e30";
+            using (var conn = new SqlConnection(strConn))
             {
                 conn.Open();
 
@@ -256,11 +258,12 @@ namespace DataImport
 
         static public void TestSvc()
         {
-            AutoMgrDbSvc.AutoMgrDbEntities ctx = new AutoMgrDbSvc.AutoMgrDbEntities(new Uri("http://localhost:23796/Service/AutoMgrDbSvc.svc/"));
+            AutoMgrDbSvc.AutoMgrDbEntities ctx = new AutoMgrDbSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
 
             AutoMgrDbSvc.inventory inventory = new AutoMgrDbSvc.inventory();
-            DataServiceCollection<AutoMgrDbSvc.inventory> inventories = new DataServiceCollection<AutoMgrDbSvc.inventory>();
-            inventories.Load(from inv in ctx.inventory.Expand("shelf_io/shelf/goods") select inv);
+            DataServiceCollection<AutoMgrDbSvc.inventory> inventories = new DataServiceCollection<AutoMgrDbSvc.inventory>(ctx);
+            //inventories.Load(from inv in ctx.inventory.Expand("shelf_io/shelf/goods") select inv);
+            inventories.Load(from inv in ctx.inventory select inv);
             foreach (var inv in inventories)
             {
                 int i = inv.id;

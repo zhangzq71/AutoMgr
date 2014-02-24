@@ -101,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AutoMgrDb.publish.xml" />
+    <None Include="Server.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script\InsertData.sql" />

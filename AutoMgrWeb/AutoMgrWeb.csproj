@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -105,8 +106,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Service\AutoMgrDbSvc.svc" />
+    <Content Include="Service\TestSvc.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -216,12 +219,23 @@
     <Compile Include="Db\vehicle.cs">
       <DependentUpon>AutoMgrDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AutoMgrDbSvc.svc.cs">
       <DependentUpon>AutoMgrDbSvc.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ITestSvc.cs" />
+    <Compile Include="Service\TestSvc.svc.cs">
+      <DependentUpon>TestSvc.svc</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Data.Services.Client;
 
 // The Hub Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=321224
 
@@ -24,6 +25,9 @@ namespace AutoMgrW8.Pages
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
+
+        AutoMgrSvc.AutoMgrDbEntities _ctx;
+        DataServiceCollection<AutoMgrSvc.inventory> inventories;
 
         /// <summary>
         /// This can be changed to a strongly typed view model.
@@ -80,11 +84,35 @@ namespace AutoMgrW8.Pages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedTo(e);
+
+            _ctx = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
+            inventories = new DataServiceCollection<AutoMgrSvc.inventory>(_ctx);
+            inventories.LoadCompleted += inventories_LoadCompleted;
+            inventories.LoadAsync(from inv in _ctx.inventory.Expand("shelf_io/shelf/goods") select inv);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedFrom(e);
+        }
+
+        void inventories_LoadCompleted(object sender, LoadCompletedEventArgs e)
+        {
+            if (e.Error == null)
+            {
+                if (inventories.Continuation != null)
+                {
+                    inventories.LoadNextPartialSetAsync();
+                }
+                else
+                {
+                    foreach (var inv in inventories)
+                    {
+                        if (inv.id == 1000)
+                            break;
+                    }
+                }
+            }
         }
 
         #endregion
