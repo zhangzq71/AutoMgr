@@ -1,8 +1,10 @@
 ﻿using AutoMgrW8.Common;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -12,22 +14,19 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using System.Data.Services.Client;
 
-// The Hub Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=321224
+// The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
 namespace AutoMgrW8.Pages
 {
     /// <summary>
-    /// A page that displays a grouped collection of items.
+    /// A basic page that provides characteristics common to most applications.
     /// </summary>
     public sealed partial class ReposityMgrPage : Page
     {
+
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
-
-        AutoMgrSvc.AutoMgrDbEntities _ctx;
-        DataServiceCollection<AutoMgrSvc.inventory> inventories;
 
         /// <summary>
         /// This can be changed to a strongly typed view model.
@@ -46,16 +45,17 @@ namespace AutoMgrW8.Pages
             get { return this.navigationHelper; }
         }
 
+
         public ReposityMgrPage()
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
+            this.navigationHelper.SaveState += navigationHelper_SaveState;
         }
 
-
         /// <summary>
-        /// Populates the page with content passed during navigation.  Any saved state is also
+        /// Populates the page with content passed during navigation. Any saved state is also
         /// provided when recreating a page from a prior session.
         /// </summary>
         /// <param name="sender">
@@ -64,11 +64,33 @@ namespace AutoMgrW8.Pages
         /// <param name="e">Event data that provides both the navigation parameter passed to
         /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested and
         /// a dictionary of state preserved by this page during an earlier
-        /// session.  The state will be null the first time a page is visited.</param>
+        /// session. The state will be null the first time a page is visited.</param>
         private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            // TODO: Assign a collection of bindable groups to this.DefaultViewModel["Groups"]
+            this.DefaultViewModel["Groups"] = ViewModel.UIData.GetReposityMgrUIData();
         }
+
+        /// <summary>
+        /// Preserves state associated with this page in case the application is suspended or the
+        /// page is discarded from the navigation cache.  Values must conform to the serialization
+        /// requirements of <see cref="SuspensionManager.SessionState"/>.
+        /// </summary>
+        /// <param name="sender">The source of the event; typically <see cref="NavigationHelper"/></param>
+        /// <param name="e">Event data that provides an empty dictionary to be populated with
+        /// serializable state.</param>
+        private void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Invoked when a group header is clicked.
+        /// </summary>
+        /// <param name="sender">The Button used as a group header for the selected group.</param>
+        /// <param name="e">Event data that describes how the click was initiated.</param>
+        void Header_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
 
         #region NavigationHelper registration
 
@@ -84,11 +106,6 @@ namespace AutoMgrW8.Pages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedTo(e);
-
-            _ctx = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
-            inventories = new DataServiceCollection<AutoMgrSvc.inventory>(_ctx);
-            inventories.LoadCompleted += inventories_LoadCompleted;
-            inventories.LoadAsync(from inv in _ctx.inventory.Expand("shelf_io/shelf/goods") select inv);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -96,25 +113,7 @@ namespace AutoMgrW8.Pages
             navigationHelper.OnNavigatedFrom(e);
         }
 
-        void inventories_LoadCompleted(object sender, LoadCompletedEventArgs e)
-        {
-            if (e.Error == null)
-            {
-                if (inventories.Continuation != null)
-                {
-                    inventories.LoadNextPartialSetAsync();
-                }
-                else
-                {
-                    foreach (var inv in inventories)
-                    {
-                        if (inv.id == 1000)
-                            break;
-                    }
-                }
-            }
-        }
-
         #endregion
     }
+
 }

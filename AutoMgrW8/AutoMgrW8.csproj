@@ -109,6 +109,18 @@
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Controls\ReposityIn.xaml.cs">
+      <DependentUpon>ReposityIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ReposityInventory.xaml.cs">
+      <DependentUpon>ReposityInventory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ReposityOut.xaml.cs">
+      <DependentUpon>ReposityOut.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UIContainer.xaml.cs">
+      <DependentUpon>UIContainer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Design\DesignNavigationService.cs" />
     <Compile Include="Helpers\INavigationService.cs" />
     <Compile Include="Helpers\NavigationService.cs" />
@@ -132,6 +144,7 @@
       <DependentUpon>Reference.datasvcmap</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\UIData.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +187,22 @@
     <Page Include="Common\StandardStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ReposityIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ReposityInventory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ReposityOut.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\UIContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
