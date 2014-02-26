@@ -7,21 +7,25 @@ using System.Data.Services.Client;
 
 namespace AutoMgrW8
 {
-    public class IncrementalDbLoading<T>: IncrementalLoadingBase<T>
+    public class IncrementalDbLoading<T>: IncrementalLoadingBase
     {
         bool _hasMoreItems = true;
         AutoMgrSvc.AutoMgrDbEntities _context = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
         IQueryable<T> _query;
+
+        int _cnt = 0;
 
         public IncrementalDbLoading(IQueryable<T> query)
         {
             _query = query;
         }
 
-        protected async override Task<IList<T>> LoadMoreItemsOverrideAsync(System.Threading.CancellationToken c, uint count)
+        protected async override Task<IList<object>> LoadMoreItemsOverrideAsync(System.Threading.CancellationToken c, uint count)
         {
             DataServiceCollection<T> results = new DataServiceCollection<T>();
             await results.AsyncQuery(_query);
+
+            System.Diagnostics.Debug.WriteLine("count:{0}, cnt:{1}", count, _cnt);
             //results.LoadCompleted += new EventHandler<LoadCompletedEventArgs>((sender, e) => 
             //{ 
             //    if (e.Error == null)
@@ -39,11 +43,20 @@ namespace AutoMgrW8
 
             _hasMoreItems = results.Count >= count ? true : false;
 
-            return results;
+            _cnt++;
+
+            List<object> aa = new List<object>();
+            foreach (var result in results)
+                aa.Add(result);
+
+            return aa;
         }
 
         protected override bool HasMoreItemsOverride()
         {
+            if (_cnt > 30)
+                return false;
+
             return _hasMoreItems;
         }
     }

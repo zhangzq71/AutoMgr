@@ -24,11 +24,11 @@ namespace AutoMgrW8
     // This class can used as a jumpstart for implementing ISupportIncrementalLoading. 
     // Implementing the ISupportIncrementalLoading interfaces allows you to create a list that loads
     //  more data automatically when the user scrolls to the end of of a GridView or ListView.
-    public abstract class IncrementalLoadingBase<T>: IList<T>, ISupportIncrementalLoading, INotifyCollectionChanged
+    public abstract class IncrementalLoadingBase : IList, ISupportIncrementalLoading, INotifyCollectionChanged
     {
         #region IList
 
-        public int Add(T value)
+        public int Add(object value)
         {
             throw new NotImplementedException();
         }
@@ -38,17 +38,17 @@ namespace AutoMgrW8
             throw new NotImplementedException();
         }
 
-        public bool Contains(T value)
+        public bool Contains(object value)
         {
             return _storage.Contains(value);
         }
 
-        public int IndexOf(T value)
+        public int IndexOf(object value)
         {
             return _storage.IndexOf(value);
         }
 
-        public void Insert(int index, T value)
+        public void Insert(int index, object value)
         {
             throw new NotImplementedException();
         }
@@ -63,7 +63,7 @@ namespace AutoMgrW8
             get { return true; }
         }
 
-        public void Remove(T value)
+        public void Remove(object value)
         {
             throw new NotImplementedException();
         }
@@ -73,7 +73,7 @@ namespace AutoMgrW8
             throw new NotImplementedException();
         }
 
-        public T this[int index]
+        public object this[int index]
         {
             get
             {
@@ -107,11 +107,13 @@ namespace AutoMgrW8
 
         public IEnumerator GetEnumerator()
         {
+            System.Diagnostics.Debug.WriteLine("storage:{0}", _storage.Count);
+
             return _storage.GetEnumerator();
         }
 
-        #endregion 
-    
+        #endregion
+
         #region ISupportIncrementalLoading
 
         public bool HasMoreItems
@@ -131,13 +133,13 @@ namespace AutoMgrW8
             return AsyncInfo.Run((c) => LoadMoreItemsAsync(c, count));
         }
 
-        #endregion 
+        #endregion
 
         #region INotifyCollectionChanged
 
         public event NotifyCollectionChangedEventHandler CollectionChanged;
 
-        #endregion 
+        #endregion
 
         #region Private methods
 
@@ -179,38 +181,16 @@ namespace AutoMgrW8
 
         #region Overridable methods
 
-        protected abstract Task<IList<T>> LoadMoreItemsOverrideAsync(CancellationToken c, uint count);
+        protected abstract Task<IList<object>> LoadMoreItemsOverrideAsync(CancellationToken c, uint count);
         protected abstract bool HasMoreItemsOverride();
 
-        #endregion 
+        #endregion
 
         #region State
 
-        List<T> _storage = new List<T>();
+        List<object> _storage = new List<object>();
         bool _busy = false;
 
-        #endregion 
-    
-
-
-        void ICollection<T>.Add(T item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CopyTo(T[] array, int arrayIndex)
-        {
-            throw new NotImplementedException();
-        }
-
-        bool ICollection<T>.Remove(T item)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
     }
 }
