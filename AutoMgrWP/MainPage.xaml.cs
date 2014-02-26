@@ -15,6 +15,7 @@ namespace AutoMgrWP
     public partial class MainPage : PhoneApplicationPage
     {
         DataServiceCollection<AutoMgrSvc.inventory> inventories;
+        DataServiceCollection<AutoMgrSvc.goods> goodses;
         AutoMgrSvc.AutoMgrDbEntities ctx;
 
         // Constructor
@@ -42,15 +43,44 @@ namespace AutoMgrWP
             //        break;
             //}
 
-            inventories = new DataServiceCollection<AutoMgrSvc.inventory>();
-            inventories.LoadCompleted += new EventHandler<LoadCompletedEventArgs>(complete);
-            var query = from inv in ctx.inventory.Expand("shelf_io/shelf/goods") select inv;
-            inventories.LoadAsync(query);
-            //inventories.Load(from inv in ctx.inventory select inv);
-            //foreach (var inv in inventories)
-            //{
-            //    int i = inv.id;
-            //}
+            //inventories = new DataServiceCollection<AutoMgrSvc.inventory>();
+            //inventories.LoadCompleted += new EventHandler<LoadCompletedEventArgs>(complete);
+            //var query = from inv in ctx.inventory select inv;
+            //inventories.LoadAsync(query);
+            ////inventories.Load(from inv in ctx.inventory select inv);
+            ////foreach (var inv in inventories)
+            ////{
+            ////    int i = inv.id;
+            ////}
+
+            goodses = new DataServiceCollection<AutoMgrSvc.goods>();
+            //goodses.LoadCompleted += new EventHandler<LoadCompletedEventArgs>(goods_complete);
+            var qry = (from goods in ctx.goods.Expand("shelf") select goods).Skip(1).Take(10);
+            await goodses.AsyncQuery(qry);
+            //goodses.LoadAsync(qry);
+            foreach (var goods in goodses)
+            {
+                int i = goods.id;
+            }
+        }
+
+        private void goods_complete(object sender, LoadCompletedEventArgs e)
+        {
+            if (e.Error == null)
+            {
+                if (goodses.Continuation != null)
+                {
+                    goodses.LoadNextPartialSetAsync();
+                }
+                else
+                {
+                    foreach (var goods in goodses)
+                    {
+                        if (goods.id == 9999)
+                            break;
+                    }
+                }
+            }
         }
 
         private void complete(object sender, LoadCompletedEventArgs e)

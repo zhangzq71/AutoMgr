@@ -124,6 +124,7 @@
     <Compile Include="Design\DesignNavigationService.cs" />
     <Compile Include="Helpers\INavigationService.cs" />
     <Compile Include="Helpers\NavigationService.cs" />
+    <Compile Include="Helpers\ODataAsync.cs" />
     <Compile Include="Helpers\RFCardReader.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -152,9 +153,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.datasvcmap</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\IncrementalDbLoading.cs" />
+    <Compile Include="ViewModel\IncrementalLoadingBase.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\UIData.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="ViewModel\VMReposityOutput.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
