@@ -134,6 +134,15 @@
     <Compile Include="Pages\RepairFtyPage.xaml.cs">
       <DependentUpon>RepairFtyPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RepositoryIncome.xaml.cs">
+      <DependentUpon>RepositoryIncome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RepositoryInventory.xaml.cs">
+      <DependentUpon>RepositoryInventory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RepositoryOutput.xaml.cs">
+      <DependentUpon>RepositoryOutput.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ReposityMgrPage.xaml.cs">
       <DependentUpon>ReposityMgrPage.xaml</DependentUpon>
     </Compile>
@@ -213,6 +222,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RepairFtyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RepositoryIncome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RepositoryInventory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RepositoryOutput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

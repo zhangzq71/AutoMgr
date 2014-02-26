@@ -1,7 +1,6 @@
 ﻿using AutoMgrW8.Common;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,7 +21,7 @@ namespace AutoMgrW8.Pages
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>
-    public sealed partial class ReposityMgrPage : Page
+    public sealed partial class RepositoryInventory : Page
     {
 
         private NavigationHelper navigationHelper;
@@ -46,7 +45,7 @@ namespace AutoMgrW8.Pages
         }
 
 
-        public ReposityMgrPage()
+        public RepositoryInventory()
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
@@ -67,7 +66,6 @@ namespace AutoMgrW8.Pages
         /// session. The state will be null the first time a page is visited.</param>
         private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            this.DefaultViewModel["Groups"] = ViewModel.UIData.GetReposityMgrUIData();
         }
 
         /// <summary>
@@ -81,33 +79,6 @@ namespace AutoMgrW8.Pages
         private void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
         }
-
-        /// <summary>
-        /// Invoked when a group header is clicked.
-        /// </summary>
-        /// <param name="sender">The Button used as a group header for the selected group.</param>
-        /// <param name="e">Event data that describes how the click was initiated.</param>
-        void Header_Click(object sender, RoutedEventArgs e)
-        {
-            // Determine what group the Button instance represents
-            var group = (sender as FrameworkElement).DataContext;
-
-            switch (((ViewModel.UIItemGroup)group).Title)
-            {
-                case "出仓":
-                    this.Frame.Navigate(typeof(Pages.RepositoryOutput));
-                    break;
-
-                case "入仓":
-                    this.Frame.Navigate(typeof(Pages.RepositoryIncome));
-                    break;
-
-                case "盘点":
-                    this.Frame.Navigate(typeof(Pages.RepositoryInventory));
-                    break;
-            }
-        }
-
 
         #region NavigationHelper registration
 
@@ -132,5 +103,4 @@ namespace AutoMgrW8.Pages
 
         #endregion
     }
-
 }
