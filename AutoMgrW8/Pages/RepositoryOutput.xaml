@@ -78,10 +78,13 @@
                         <TextBox Width="200" Margin="8, 0" FontSize="22" />
                     </StackPanel>
                     <StackPanel Margin="8" Grid.Row="1" Background="White">
-                        <ListView ItemsSource="{Binding Goodses}">
+                        <ListView ItemsSource="{Binding Goodses}" Height="500">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding name}" Foreground="Red" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding id}" Foreground="Black" />
+                                        <TextBlock Text="{Binding name}" Foreground="Red" />
+                                    </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
