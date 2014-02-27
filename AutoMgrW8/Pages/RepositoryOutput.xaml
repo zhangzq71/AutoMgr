@@ -75,7 +75,7 @@
                         <TextBlock Text="零件编码: " FontSize="30" />
                         <TextBox Width="200" Margin="8, 0" FontSize="22" />
                         <TextBlock Text="零件名称: " FontSize="30" Margin="8, 0" />
-                        <TextBox Width="200" Margin="8, 0" FontSize="22" />
+                        <TextBox Text="{Binding GoodsName, Mode=TwoWay}" Width="200" Margin="8, 0" FontSize="22" />
                     </StackPanel>
                     <StackPanel Margin="8" Grid.Row="1" Background="White" SizeChanged="StackPanel_SizeChanged">
                         <ListView x:Name="goodsLV" ItemsSource="{Binding Goodses}" Height="522" SelectionMode="None">
@@ -105,7 +105,7 @@
                                             </StackPanel>
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="别名:" />
-                                                <TextBlock Margin="5, 0" Text="无" />
+                                                <TextBlock Margin="5, 0" Text="{Binding alias}" />
                                                 <TextBlock Margin="20, 0, 0, 0" Text="库存:" />
                                                 <TextBlock Margin="5, 0" Text="{Binding shelf, Converter={StaticResource InvertoryConverter}}" />
                                                 <TextBlock Text="{Binding unit}" />

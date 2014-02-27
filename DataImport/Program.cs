@@ -29,8 +29,8 @@ namespace DataImport
             xlWorkSheet = xlWorkBook.Worksheets.get_Item(1);
             range = xlWorkSheet.UsedRange;
 
-            string strConn = @"Data Source=(localdb)\Projects;Initial Catalog=AutoMgrDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
-            //string strConn = @"Data Source=192.168.1.200;Initial Catalog=AutoMgrDb;Persist Security Info=True;User ID=sa;Password=85bc3e30";
+            //string strConn = @"Data Source=(localdb)\Projects;Initial Catalog=AutoMgrDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
+            string strConn = @"Data Source=192.168.1.200;Initial Catalog=AutoMgrDb;Persist Security Info=True;User ID=sa;Password=85bc3e30";
             using (var conn = new SqlConnection(strConn))
             {
                 conn.Open();
