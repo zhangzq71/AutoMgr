@@ -19,8 +19,8 @@ namespace AutoMgrW8.ViewModel
     public class VMReposityOutput : ViewModelBase
     {
         private readonly INavigationService _navigationService;
-        private readonly AutoMgrSvc.AutoMgrDbEntities _context = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.1.200/Service/AutoMgrDbSvc.svc/"));
-        //private readonly AutoMgrSvc.AutoMgrDbEntities _context = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
+        //private readonly AutoMgrSvc.AutoMgrDbEntities _context = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.1.200/Service/AutoMgrDbSvc.svc/"));
+        private readonly AutoMgrSvc.AutoMgrDbEntities _context = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
 
         public VMReposityOutput(INavigationService navigationService)
         {
@@ -72,7 +72,7 @@ namespace AutoMgrW8.ViewModel
 
                 if (_goodses == null)
                 {
-                    var query = from goods in _context.goods select goods;
+                    var query = from goods in _context.goods.Expand("shelf") select goods;
                     //await _goodses.AsyncQuery(query);
                     _goodses = new IncrementalDbLoading<AutoMgrSvc.goods>(query);
                 }

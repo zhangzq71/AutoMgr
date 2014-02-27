@@ -1,4 +1,6 @@
-<Application x:Class="AutoMgrW8.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AutoMgrW8">
+<Application x:Class="AutoMgrW8.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:AutoMgrW8"
+             xmlns:converter="using:AutoMgrW8.Converter">
   <Application.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
@@ -12,6 +14,8 @@
         <Setter Property="Background" Value="#33b5e5" />
       </Style>
       <vm:ViewModelLocator x:Key="Locator" xmlns:vm="using:AutoMgrW8.ViewModel" />
+
+            <converter:InvertoryConverter x:Key="InvertoryConverter" />
     </ResourceDictionary>
   </Application.Resources>
 </Application>

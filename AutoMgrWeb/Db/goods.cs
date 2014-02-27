@@ -37,6 +37,7 @@ namespace AutoMgrWeb.Db
         public Nullable<float> width { get; set; }
         public Nullable<float> height { get; set; }
         public Nullable<float> weight { get; set; }
+        public string alias { get; set; }
     
         public virtual ICollection<barcode_goods> barcode_goods { get; set; }
         public virtual ICollection<goods_alias> goods_alias { get; set; }

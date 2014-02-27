@@ -83,6 +83,7 @@
           <Property Name="width" Type="real" />
           <Property Name="height" Type="real" />
           <Property Name="weight" Type="real" />
+          <Property Name="alias" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="goods_alias">
           <Key>
@@ -1189,6 +1190,7 @@
           <Property Name="width" Type="Single" />
           <Property Name="height" Type="Single" />
           <Property Name="weight" Type="Single" />
+          <Property Name="alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="barcode_goods" Relationship="Self.FK_barcode_goods_goods" FromRole="goods" ToRole="barcode_goods" />
           <NavigationProperty Name="goods_alias" Relationship="Self.FK_goods_alias_goods" FromRole="goods" ToRole="goods_alias" />
           <NavigationProperty Name="goods_photo" Relationship="Self.FK_goods_photo_goods" FromRole="goods" ToRole="goods_photo" />
@@ -2359,6 +2361,7 @@
                 <ScalarProperty Name="width" ColumnName="width" />
                 <ScalarProperty Name="height" ColumnName="height" />
                 <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="alias" ColumnName="alias" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

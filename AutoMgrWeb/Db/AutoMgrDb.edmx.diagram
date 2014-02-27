@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a83b8ce8c8054338b425882b6be9fd08" Name="Diagram1">
+      <Diagram DiagramId="192e8867c99241c49c38129c4019f533" Name="Diagram1">
         <EntityTypeShape EntityType="AutoMgrDbModel.C__RefactorLog" Width="1.5" PointX="10.75" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="AutoMgrDbModel.barcode_goods" Width="1.5" PointX="3" PointY="27.5" IsExpanded="true" />
         <EntityTypeShape EntityType="AutoMgrDbModel.branch" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />

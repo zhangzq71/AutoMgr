@@ -12,6 +12,7 @@
     [width] REAL NULL, 
     [height] REAL NULL, 
     [weight] REAL NULL, 
+    [alias] NVARCHAR(50) NULL, 
 )
 
 GO
@@ -104,3 +105,12 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'goods',
     @level2type = N'COLUMN',
     @level2name = N'weight'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'别名',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'goods',
+    @level2type = N'COLUMN',
+    @level2name = N'alias'

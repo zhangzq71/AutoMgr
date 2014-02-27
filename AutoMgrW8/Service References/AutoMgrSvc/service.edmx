@@ -98,6 +98,7 @@
         <Property Name="width" Type="Edm.Single" />
         <Property Name="height" Type="Edm.Single" />
         <Property Name="weight" Type="Edm.Single" />
+        <Property Name="alias" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="true" />
         <NavigationProperty Name="barcode_goods" Relationship="AutoMgrDbModel.FK_barcode_goods_goods" ToRole="barcode_goods" FromRole="goods" />
         <NavigationProperty Name="goods_alias" Relationship="AutoMgrDbModel.FK_goods_alias_goods" ToRole="goods_alias" FromRole="goods" />
         <NavigationProperty Name="goods_photo" Relationship="AutoMgrDbModel.FK_goods_photo_goods" ToRole="goods_photo" FromRole="goods" />

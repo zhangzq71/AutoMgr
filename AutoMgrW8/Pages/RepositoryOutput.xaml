@@ -8,7 +8,7 @@
     xmlns:common="using:AutoMgrW8.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" SizeChanged="pageRoot_SizeChanged">
 
     <Page.Resources>
         <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
@@ -47,8 +47,8 @@
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
         </Grid>
 
-        <ScrollViewer Grid.Row="1" ZoomMode="Disabled" Width="1366" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
-            <Grid Grid.Row="1">
+        <ScrollViewer x:Name="goodsSV" Grid.Row="1" ZoomMode="Disabled" Width="1366" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
@@ -77,14 +77,43 @@
                         <TextBlock Text="零件名称: " FontSize="30" Margin="8, 0" />
                         <TextBox Width="200" Margin="8, 0" FontSize="22" />
                     </StackPanel>
-                    <StackPanel Margin="8" Grid.Row="1" Background="White">
-                        <ListView ItemsSource="{Binding Goodses}" Height="500">
+                    <StackPanel Margin="8" Grid.Row="1" Background="White" SizeChanged="StackPanel_SizeChanged">
+                        <ListView x:Name="goodsLV" ItemsSource="{Binding Goodses}" Height="522" SelectionMode="None">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding id}" Foreground="Black" />
-                                        <TextBlock Text="{Binding name}" Foreground="Red" />
-                                    </StackPanel>
+                                    <Grid Margin="0, 0, 0, -40" Background="LightGray">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50*" />
+                                            <ColumnDefinition Width="50*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel>
+                                            <TextBlock Margin="15, 0" Text="{Binding name}" FontSize="22" VerticalAlignment="Center" Foreground="Black" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="品牌:" />
+                                                <TextBlock Margin="5, 0" Text="{Binding brand}" />
+                                                <TextBlock Margin="20, 0, 0, 0" Text="产地:" />
+                                                <TextBlock Margin="5, 0" Text="{Binding origin}" />
+                                                <TextBlock Margin="20, 0, 0, 0" Text="适用车型:" />
+                                                <TextBlock Margin="5, 0" Text="{Binding model}" />
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="别名:" />
+                                                <TextBlock Margin="5, 0" Text="无" />
+                                                <TextBlock Margin="20, 0, 0, 0" Text="库存:" />
+                                                <TextBlock Margin="5, 0" Text="{Binding shelf, Converter={StaticResource InvertoryConverter}}" />
+                                                <TextBlock Text="{Binding unit}" />
+                                                <TextBlock Margin="20, 0, 0, 0" Text="价格:" />
+                                                <TextBlock Margin="5, 0" Text="{Binding price}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
