@@ -129,6 +129,9 @@
     <Compile Include="Helpers\NavigationService.cs" />
     <Compile Include="Helpers\ODataAsync.cs" />
     <Compile Include="Helpers\RFCardReader.cs" />
+    <Compile Include="Pages\GoodsSelectionPage.xaml.cs">
+      <DependentUpon>GoodsSelectionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -161,6 +164,7 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\UIData.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="ViewModel\VMGoodsSelection.cs" />
     <Compile Include="ViewModel\VMReposityOutput.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +221,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\UIContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\GoodsSelectionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

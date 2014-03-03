@@ -46,6 +46,15 @@ namespace AutoMgrW8.ViewModel
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<VMReposityOutput>();
+            SimpleIoc.Default.Register<VMGoodsSelection>();
+        }
+
+        public VMGoodsSelection VMGoodsSelection
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<VMGoodsSelection>();
+            }
         }
 
         public VMReposityOutput VMReposityOutput
