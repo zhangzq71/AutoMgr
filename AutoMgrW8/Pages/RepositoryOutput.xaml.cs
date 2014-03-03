@@ -103,16 +103,9 @@ namespace AutoMgrW8.Pages
 
         #endregion
 
-        private void StackPanel_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void pageTitle_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            goodsLV.Height = e.NewSize.Height;
-            System.Diagnostics.Debug.WriteLine("StackPanel_SizeChanged {0}:{1}", e.NewSize.Width, e.NewSize.Height);
-        }
-
-        private void pageRoot_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            goodsSV.Width = e.NewSize.Width;
-            System.Diagnostics.Debug.WriteLine("pageRoot_SizeChanged {0}:{1}", e.NewSize.Width, e.NewSize.Height);
+            int i = 0;
         }
     }
 }

@@ -8,11 +8,11 @@
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     x:Name="pageRoot"
     x:Class="AutoMgrW8.Pages.RepositoryOutput"
-    mc:Ignorable="d" SizeChanged="pageRoot_SizeChanged">
+    mc:Ignorable="d">
 
     <Page.Resources>
         <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
-        <x:String x:Key="AppName">出仓</x:String>
+        <x:String x:Key="AppName">出仓到修车厂</x:String>
     </Page.Resources>
 
 	<Page.DataContext>
@@ -24,7 +24,7 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
-	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" Width="2000">
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch">
 		<Grid.ChildrenTransitions>
 			<TransitionCollection>
 				<EntranceThemeTransition/>
@@ -48,129 +48,48 @@
 				AutomationProperties.AutomationId="BackButton"
 				AutomationProperties.ItemType="Navigation Button"/>
 			<TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
-				IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
+				TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40" Tapped="pageTitle_Tapped"/>
 		</Grid>
 
-		<ScrollViewer x:Name="goodsSV" Grid.Row="1" ZoomMode="Disabled" Width="1366" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-				</Grid.ColumnDefinitions>
-
-				<Grid Grid.Column="0" Background="#186776" Margin="120, 0, 40, 30" Width="500">
-					<Grid.RowDefinitions>
-						<RowDefinition Height="60" />
-						<RowDefinition Height="*" />
-					</Grid.RowDefinitions>
-					<TextBlock Text="请选择出仓类型" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" />
-                    <StackPanel Margin="8" Grid.Row="1" Background="White">
-                        <ListView x:Name="goodsOut" ItemsSource="{Binding GoodsOutput}" Height="522" SelectionMode="None">
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Margin="0, 0, 0, -40" Background="LightGray">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50*" />
-                                            <ColumnDefinition Width="50*" />
-                                        </Grid.ColumnDefinitions>
-                                        <StackPanel>
-                                            <TextBlock Margin="15, 0" Text="{Binding name}" FontSize="22" VerticalAlignment="Center" Foreground="Black" />
-                                        </StackPanel>
-                                        <StackPanel Grid.Column="1">
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="品牌:" />
-                                                <TextBlock Margin="5, 0" Text="{Binding brand}" />
-                                                <TextBlock Margin="20, 0, 0, 0" Text="产地:" />
-                                                <TextBlock Margin="5, 0" Text="{Binding origin}" />
-                                                <TextBlock Margin="20, 0, 0, 0" Text="适用车型:" />
-                                                <TextBlock Margin="5, 0" Text="{Binding model}" />
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="别名:" />
-                                                <TextBlock Margin="5, 0" Text="{Binding alias}" />
-                                                <TextBlock Margin="20, 0, 0, 0" Text="库存:" />
-                                                <TextBlock Margin="5, 0" Text="{Binding shelf, Converter={StaticResource InvertoryConverter}}" />
-                                                <TextBlock Text="{Binding unit}" />
-                                                <TextBlock Margin="20, 0, 0, 0" Text="价格:" />
-                                                <TextBlock Margin="5, 0" Text="{Binding price}" />
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
-				</Grid>
-
-				<Grid Grid.Column="1" Background="#3e5218" Margin="80, 0, 40, 30">
-					<Grid.RowDefinitions>
-						<RowDefinition Height="60" />
-						<RowDefinition Height="*" />
-					</Grid.RowDefinitions>
-					<StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Margin="8">
-						<TextBlock Text="零件编码: " FontSize="30" />
-						<TextBox Width="200" Margin="8, 0" FontSize="22" />
-						<TextBlock Text="零件名称: " FontSize="30" Margin="8, 0" />
-						<TextBox Text="{Binding GoodsName, Mode=TwoWay}" Width="200" Margin="8, 0" FontSize="22" />
-					</StackPanel>
-					<StackPanel Margin="8" Grid.Row="1" Background="White" SizeChanged="StackPanel_SizeChanged">
-						<ListView x:Name="goodsLV" ItemsSource="{Binding Goodses}" Height="522" SelectionMode="Single">
-							<ListView.ItemContainerStyle>
-								<Style TargetType="ListViewItem">
-									<Setter Property="HorizontalContentAlignment" Value="Stretch" />
-								</Style>
-							</ListView.ItemContainerStyle>
-							<ListView.ItemTemplate>
-								<DataTemplate>
-									<Grid Margin="0, 0, 0, -40" Background="LightGray">
-										<Grid.ColumnDefinitions>
-											<ColumnDefinition Width="50*" />
-											<ColumnDefinition Width="50*" />
-										</Grid.ColumnDefinitions>
-										<StackPanel>
-											<TextBlock Margin="15, 0" Text="{Binding name}" FontSize="22" VerticalAlignment="Center" Foreground="Black" />
-										</StackPanel>
-										<StackPanel Grid.Column="1">
-											<StackPanel Orientation="Horizontal">
-												<TextBlock Text="品牌:" />
-												<TextBlock Margin="5, 0" Text="{Binding brand}" />
-												<TextBlock Margin="20, 0, 0, 0" Text="产地:" />
-												<TextBlock Margin="5, 0" Text="{Binding origin}" />
-												<TextBlock Margin="20, 0, 0, 0" Text="适用车型:" />
-												<TextBlock Margin="5, 0" Text="{Binding model}" />
-											</StackPanel>
-											<StackPanel Orientation="Horizontal">
-												<TextBlock Text="别名:" />
-												<TextBlock Margin="5, 0" Text="{Binding alias}" />
-												<TextBlock Margin="20, 0, 0, 0" Text="库存:" />
-												<TextBlock Margin="5, 0" Text="{Binding shelf, Converter={StaticResource InvertoryConverter}}" />
-												<TextBlock Text="{Binding unit}" />
-												<TextBlock Margin="20, 0, 0, 0" Text="价格:" />
-												<TextBlock Margin="5, 0" Text="{Binding price}" />
-											</StackPanel>
-										</StackPanel>
-									</Grid>
-								</DataTemplate>
-							</ListView.ItemTemplate>
-							<Interactivity:Interaction.Behaviors>
-								<Core:EventTriggerBehavior EventName="SelectionChanged" >
-									<Core:InvokeCommandAction Command="{Binding GoodsSelectionChanged}" CommandParameter="{Binding SelectedItem, ElementName=goodsLV}"/>
-								</Core:EventTriggerBehavior>
-							</Interactivity:Interaction.Behaviors>
-						</ListView>
-					</StackPanel>
-
-				</Grid>
-
-				<Grid Grid.Column="2" Background="#76bc3f" Margin="80, 0, 40, 30" Width="500"/>
-
-			</Grid>
-		</ScrollViewer>
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="45*" />
+                <ColumnDefinition Width="55*" />
+            </Grid.ColumnDefinitions>
+            
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <StackPanel>
+                    <TextBlock Text="请选择在修车辆" FontSize="28" />
+                    <ComboBox FontSize="28" Margin="0, 8, 20, 30">
+                        <ComboBox.Items>
+                            <x:String>东风日产</x:String>
+                            <x:String>东风日野</x:String>
+                        </ComboBox.Items>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Grid.Row="1">
+                    <TextBlock Text="领料班组" FontSize="28" />
+                    <TextBlock Text="" FontSize="28" Margin="0, 0, 20, 30" />
+                </StackPanel>
+                <StackPanel Grid.Row="2" Background="Red">
+                    
+                </StackPanel>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="50*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="确定" FontSize="28" Width="150" Height="100" HorizontalAlignment="Center" />
+                    <Button Grid.Column="1" Content="取消" FontSize="28" Width="150" Height="100" HorizontalAlignment="Center" />
+                </Grid>
+            </Grid>
+        </Grid>
+        
 	</Grid>
 </Page>
