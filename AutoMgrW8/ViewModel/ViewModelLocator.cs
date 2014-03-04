@@ -12,6 +12,7 @@
   See http://www.galasoft.ch/mvvm
 */
 
+using System;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
@@ -47,6 +48,10 @@ namespace AutoMgrW8.ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<VMReposityOutput>();
             SimpleIoc.Default.Register<VMGoodsSelection>();
+            SimpleIoc.Default.Register<AutoMgrSvc.AutoMgrDbEntities>(() =>
+            {
+                return new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
+            });
         }
 
         public VMGoodsSelection VMGoodsSelection

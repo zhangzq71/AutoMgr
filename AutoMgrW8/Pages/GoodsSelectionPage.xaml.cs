@@ -102,5 +102,13 @@ namespace AutoMgrW8.Pages
         }
 
         #endregion
+
+        private void Button_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            object o = btn.Tag;
+            int i = 0;
+        }
     }
 }

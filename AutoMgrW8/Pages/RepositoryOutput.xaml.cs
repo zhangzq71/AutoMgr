@@ -107,5 +107,10 @@ namespace AutoMgrW8.Pages
         {
             int i = 0;
         }
+
+        private void ListView_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            int i = 0;
+        }
     }
 }

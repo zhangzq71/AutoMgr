@@ -8,15 +8,16 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using AutoMgrW8.Helpers;
 using System.Data.Services.Client;
+using Microsoft.Practices.ServiceLocation;
 
 namespace AutoMgrW8.ViewModel
 {
     public class VMGoodsSelection : ViewModelBase
     {
         private readonly INavigationService _navigationService;
-        private readonly AutoMgrSvc.AutoMgrDbEntities _context = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
+        private readonly AutoMgrSvc.AutoMgrDbEntities _context;// = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
 
-        public VMGoodsSelection(INavigationService navigationService)
+        public VMGoodsSelection(INavigationService navigationService, AutoMgrSvc.AutoMgrDbEntities context)
         {
             ////if (IsInDesignMode)
             ////{
@@ -27,6 +28,9 @@ namespace AutoMgrW8.ViewModel
             ////    // Code runs "for real"
             ////}
             _navigationService = navigationService;
+            _context = context;
+
+            GoodsOutput = new ObservableCollection<AutoMgrSvc.goods>();
         }
 
         public string GoodsName
@@ -38,13 +42,24 @@ namespace AutoMgrW8.ViewModel
                 {
                     _goodsName = value;
                     RaisePropertyChanged();
-
-                    var query = from goods in _context.goods.Expand("shelf") where (goods.name.Contains(_goodsName) || goods.alias.Contains(_goodsName)) select goods;
-                    Goodses = new IncrementalDbLoading<AutoMgrSvc.goods>(query);
                 }
             }
         }
         private string _goodsName;
+
+        public string Barcode
+        {
+            get { return _barcode; }
+            set
+            {
+                if (_barcode != value)
+                {
+                    _barcode = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+        private string _barcode;
 
         public ObservableCollection<AutoMgrSvc.goods> GoodsOutput
         {
@@ -102,6 +117,10 @@ namespace AutoMgrW8.ViewModel
                         if (param.GetType() == typeof(AutoMgrSvc.goods))
                         {
                             AutoMgrSvc.goods goods = param as AutoMgrSvc.goods;
+                            goods.shelf[0].shelf_io.Add(new AutoMgrSvc.shelf_io() { quantity = 10, datetime = System.DateTime.Now, });
+                            //_context.BeginSaveChanges(result => {
+                            //    _context.EndSaveChanges(result);
+                            //}, null);
                             GoodsOutput.Add(goods);
                         }
                     });
@@ -112,5 +131,82 @@ namespace AutoMgrW8.ViewModel
         }
         private RelayCommand<object> _goodsSelectionChanged;
 
+        public RelayCommand CommandGoodsFilter
+        {
+            get
+            {
+                if (_commandGoodsFilter == null)
+                {
+                    _commandGoodsFilter = new RelayCommand(() =>
+                    {
+                        if (!string.IsNullOrEmpty(GoodsName))
+                        {
+                            var query = from goods in _context.goods.Expand("shelf") where (goods.name.Contains(_goodsName) || goods.alias.Contains(_goodsName)) select goods;
+                            Goodses = new IncrementalDbLoading<AutoMgrSvc.goods>(query);
+                        }
+                        else
+                        {
+                            var query = from goods in _context.goods.Expand("shelf") select goods;
+                            Goodses = new IncrementalDbLoading<AutoMgrSvc.goods>(query);
+                        }
+                    });
+                }
+
+                return _commandGoodsFilter;
+            }
+        }
+        private RelayCommand _commandGoodsFilter;
+
+        public RelayCommand CommandOk
+        {
+            get
+            {
+                if (_commandOk == null)
+                    _commandOk = new RelayCommand(() =>
+                    {
+                        foreach (var goods in GoodsOutput)
+                        {
+                            ServiceLocator.Current.GetInstance<VMReposityOutput>().GoodsOutput.Add(goods);
+                        }
+
+                        GoodsOutput = new ObservableCollection<AutoMgrSvc.goods>();
+                        _navigationService.GoBack();
+                    });
+
+                return _commandOk;
+            }
+        }
+        private RelayCommand _commandOk;
+
+        public RelayCommand CommandCancel
+        {
+            get
+            {
+                if (_commandCancel == null)
+                    _commandCancel = new RelayCommand(() =>
+                    {
+                        GoodsOutput = new ObservableCollection<AutoMgrSvc.goods>();
+                        _navigationService.GoBack();
+                    });
+
+                return _commandCancel;
+            }
+        }
+        private RelayCommand _commandCancel;
+
+        public RelayCommand<AutoMgrSvc.goods> CommandRemove
+        {
+            get
+            {
+                if (_commandRemove == null)
+                    _commandRemove = new RelayCommand<AutoMgrSvc.goods>((goods) =>
+                    {
+                        GoodsOutput.Remove(goods);
+                    });
+
+                return _commandRemove;
+            }
+        }
+        private RelayCommand<AutoMgrSvc.goods> _commandRemove;
     }
 }

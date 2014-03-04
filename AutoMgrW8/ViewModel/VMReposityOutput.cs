@@ -11,18 +11,13 @@ using System.Data.Services.Client;
 
 namespace AutoMgrW8.ViewModel
 {
-    public class MyData
-    {
-        public string name { get; set; }
-    }
-
     public class VMReposityOutput : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         //private readonly AutoMgrSvc.AutoMgrDbEntities _context = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.1.200/Service/AutoMgrDbSvc.svc/"));
-        private readonly AutoMgrSvc.AutoMgrDbEntities _context = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
+        private readonly AutoMgrSvc.AutoMgrDbEntities _context;// = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
 
-        public VMReposityOutput(INavigationService navigationService)
+        public VMReposityOutput(INavigationService navigationService, AutoMgrSvc.AutoMgrDbEntities context)
         {
             ////if (IsInDesignMode)
             ////{
@@ -33,57 +28,10 @@ namespace AutoMgrW8.ViewModel
             ////    // Code runs "for real"
             ////}
             _navigationService = navigationService;
+            _context = context;
 
             GoodsOutput = new ObservableCollection<AutoMgrSvc.goods>();
         }
-
-        public ObservableCollection<MyData> MyData
-        {
-            get
-            {
-                if (_mydata == null)
-                {
-                    _mydata = new ObservableCollection<MyData>();
-                    _mydata.Add(new MyData() { name = "name1" });
-                    _mydata.Add(new MyData() { name = "name2" });
-                    _mydata.Add(new MyData() { name = "name3" });
-                }
-
-                return _mydata;
-            }
-        }
-        private ObservableCollection<MyData> _mydata;
-
-        public string Barcode
-        {
-            get { return _barcode; }
-            set
-            {
-                if (_barcode != value)
-                {
-                    _barcode = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-        private string _barcode;
-
-        public string GoodsName
-        {
-            get { return _goodsName; }
-            set
-            {
-                if (_goodsName != value)
-                {
-                    _goodsName = value;
-                    RaisePropertyChanged();
-
-                    var query = from goods in _context.goods.Expand("shelf") where (goods.name.Contains(_goodsName) || goods.alias.Contains(_goodsName)) select goods;
-                    Goodses = new IncrementalDbLoading<AutoMgrSvc.goods>(query);
-                }
-            }
-        }
-        private string _goodsName;
 
         public ObservableCollection<AutoMgrSvc.goods> GoodsOutput
         {
@@ -96,59 +44,65 @@ namespace AutoMgrW8.ViewModel
         }
         private ObservableCollection<AutoMgrSvc.goods> _goodsOutput;
 
-        public IncrementalDbLoading<AutoMgrSvc.goods> Goodses
+        public AutoMgrSvc.staff ApplyStaff
         {
-            get
-            {
-                //if (_goodses == null)
-                //{
-                //    _goodses = new DataServiceCollection<AutoMgrSvc.goods>();
-
-                //    var query = (from goods in _context.goods select goods).Skip(1000).Take(50);
-                //    _goodses.LoadCompleted += new EventHandler<LoadCompletedEventArgs>((sender, e) =>
-                //    {
-                //        if (e.Error == null)
-                //            RaisePropertyChanged("Goodses");
-                //    });
-                //    _goodses.LoadAsync(query);
-
-                if (_goodses == null)
-                {
-                    var query = from goods in _context.goods.Expand("shelf") select goods;
-                    //await _goodses.AsyncQuery(query);
-                    _goodses = new IncrementalDbLoading<AutoMgrSvc.goods>(query);
-                }
-
-                return _goodses;
-            }
-
+            get { return _applyStaff; }
             set
             {
-                _goodses = value;
+                _applyStaff = value;
                 RaisePropertyChanged();
             }
         }
-        private IncrementalDbLoading<AutoMgrSvc.goods> _goodses;
+        private AutoMgrSvc.staff _applyStaff;
 
-        public RelayCommand<object> GoodsSelectionChanged
+        /// <summary>
+        /// 确定命令
+        /// </summary>
+        public RelayCommand CommandOk
         {
             get
             {
-                if (_goodsSelectionChanged == null)
-                {
-                    _goodsSelectionChanged = new RelayCommand<object>(param =>
+                if (_commandOk == null)
+                    _commandOk = new RelayCommand(() =>
                     {
-                        if (param.GetType() == typeof(AutoMgrSvc.goods))
-                        {
-                            AutoMgrSvc.goods goods = param as AutoMgrSvc.goods;
-                            GoodsOutput.Add(goods);
-                        }
+                        _context.BeginSaveChanges(result => {
+                            _context.EndSaveChanges(result);
+                        }, null);
                     });
-                }
 
-                return _goodsSelectionChanged;
+                return _commandOk;
             }
         }
-        private RelayCommand<object> _goodsSelectionChanged;
+        private RelayCommand _commandOk;
+
+        public RelayCommand CommandCancel
+        {
+            get
+            {
+                if (_commandCancel == null)
+                    _commandCancel = new RelayCommand(() =>
+                    {
+
+                    });
+
+                return _commandCancel;
+            }
+        }
+        private RelayCommand _commandCancel;
+
+        public RelayCommand CommandSelectGoods
+        {
+            get
+            {
+                if (_commandSelectGoods == null)
+                    _commandSelectGoods = new RelayCommand(() =>
+                        {
+                            _navigationService.Navigate(typeof(Pages.GoodsSelectionPage), GoodsOutput);
+                        });
+
+                return _commandSelectGoods;
+            }
+        }
+        private RelayCommand _commandSelectGoods;
     }
 }
