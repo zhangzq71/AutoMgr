@@ -15,9 +15,9 @@ namespace AutoMgrW8.ViewModel
     {
         private readonly INavigationService _navigationService;
         //private readonly AutoMgrSvc.AutoMgrDbEntities _context = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.1.200/Service/AutoMgrDbSvc.svc/"));
-        private readonly AutoMgrSvc.AutoMgrDbEntities _context;// = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
+        private readonly AutoMgrSvc.AutoMgrDbEntities _context = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
 
-        public VMReposityOutput(INavigationService navigationService, AutoMgrSvc.AutoMgrDbEntities context)
+        public VMReposityOutput(INavigationService navigationService)
         {
             ////if (IsInDesignMode)
             ////{
@@ -28,7 +28,7 @@ namespace AutoMgrW8.ViewModel
             ////    // Code runs "for real"
             ////}
             _navigationService = navigationService;
-            _context = context;
+            //_context = context;
 
             GoodsOutput = new ObservableCollection<AutoMgrSvc.goods>();
         }
@@ -65,9 +65,21 @@ namespace AutoMgrW8.ViewModel
                 if (_commandOk == null)
                     _commandOk = new RelayCommand(() =>
                     {
+                        foreach (var goods in GoodsOutput)
+                        {
+                            AutoMgrSvc.shelf_io sio = goods.shelf[0].shelf_io[0];
+                            sio.shelf = goods.shelf[0];
+                            sio.shelf_id = sio.shelf.id;
+
+                            _context.AddObject("shelf_io", sio);
+                        }
+
                         _context.BeginSaveChanges(result => {
                             _context.EndSaveChanges(result);
                         }, null);
+
+                        GoodsOutput = new ObservableCollection<AutoMgrSvc.goods>();
+                        _navigationService.GoBack();
                     });
 
                 return _commandOk;
@@ -82,7 +94,8 @@ namespace AutoMgrW8.ViewModel
                 if (_commandCancel == null)
                     _commandCancel = new RelayCommand(() =>
                     {
-
+                        GoodsOutput = new ObservableCollection<AutoMgrSvc.goods>();
+                        _navigationService.GoBack();
                     });
 
                 return _commandCancel;

@@ -42,16 +42,17 @@ namespace AutoMgrW8.ViewModel
             {
                 // Create run time view services and models
                 SimpleIoc.Default.Register<INavigationService>(() => new NavigationService());
+                SimpleIoc.Default.Register<AutoMgrSvc.AutoMgrDbEntities>(() =>
+                {
+                    return new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://localhost:23796/Service/AutoMgrDbSvc.svc/"));
+                });
+
                 //SimpleIoc.Default.Register<AutoMgrSvc.AutoMgrDbEntities>(() => new AutoMgrSvc.AutoMgrDbEntities(new System.Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/")));
             }
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<VMReposityOutput>();
             SimpleIoc.Default.Register<VMGoodsSelection>();
-            SimpleIoc.Default.Register<AutoMgrSvc.AutoMgrDbEntities>(() =>
-            {
-                return new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
-            });
         }
 
         public VMGoodsSelection VMGoodsSelection

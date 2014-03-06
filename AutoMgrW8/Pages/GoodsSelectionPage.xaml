@@ -42,7 +42,7 @@
 				<RowDefinition Height="Auto" />
 			</Grid.RowDefinitions>
 			<TextBlock Text="已选择的零件" FontSize="28" HorizontalAlignment="Center" />
-            <ListView Grid.Row="1" ItemsSource="{Binding GoodsOutput}">
+            <ListView Grid.Row="1" ItemsSource="{Binding GoodsOutput}" SelectionMode="None">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -62,10 +62,22 @@
                             </StackPanel>
                             <StackPanel Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal">
                                 <TextBlock Text="出仓数量" FontSize="18" />
-                                <TextBlock Margin="10, 0, 0, 0" Text="19.25" FontSize="18" />
+                                <TextBlock Margin="10, 0, 0, 0" Text="{Binding shelf[0].shelf_io[0].quantity}" FontSize="18" />
                                 <TextBlock Margin="10, 0" Text="升" FontSize="18" />
-                                <Button Margin="10, 0, 0, 0" Content="+" FontSize="18" />
-                                <Button Margin="10, 0, 0, 0" Content="-" FontSize="18" />
+                                <Button Margin="10, 0, 0, 0" Content="+" FontSize="18">
+                                    <Interactivity:Interaction.Behaviors>
+                                        <Core:EventTriggerBehavior EventName="Tapped">
+                                            <Core:InvokeCommandAction Command="{Binding VMGoodsSelection.CommandPlus, Mode=OneWay, Source={StaticResource Locator}}" CommandParameter="{Binding}"/>
+                                        </Core:EventTriggerBehavior>
+                                    </Interactivity:Interaction.Behaviors>
+                                </Button>
+                                <Button Margin="10, 0, 0, 0" Content="-" FontSize="18">
+                                    <Interactivity:Interaction.Behaviors>
+                                        <Core:EventTriggerBehavior EventName="Tapped">
+                                            <Core:InvokeCommandAction Command="{Binding VMGoodsSelection.CommandMinute, Mode=OneWay, Source={StaticResource Locator}}" CommandParameter="{Binding}"/>
+                                        </Core:EventTriggerBehavior>
+                                    </Interactivity:Interaction.Behaviors>
+                                </Button>
                             </StackPanel>
                             <StackPanel Grid.Column="2">
                                 <Button FontFamily="Segoe UI Symbol" Content="&#xE0A4;" FontSize="22" Tag="{Binding}" >

@@ -19,16 +19,16 @@ namespace AutoMgrW8.ViewModel
 
         public VMGoodsSelection(INavigationService navigationService, AutoMgrSvc.AutoMgrDbEntities context)
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
-            _navigationService = navigationService;
-            _context = context;
+            if (IsInDesignMode)
+            {
+                // Code runs in Blend --> create design time data.
+            }
+            else
+            {
+                // Code runs "for real"
+                _navigationService = navigationService;
+                _context = context;
+            }
 
             GoodsOutput = new ObservableCollection<AutoMgrSvc.goods>();
         }
@@ -117,7 +117,7 @@ namespace AutoMgrW8.ViewModel
                         if (param.GetType() == typeof(AutoMgrSvc.goods))
                         {
                             AutoMgrSvc.goods goods = param as AutoMgrSvc.goods;
-                            goods.shelf[0].shelf_io.Add(new AutoMgrSvc.shelf_io() { quantity = 10, datetime = System.DateTime.Now, });
+                            goods.shelf[0].shelf_io.Add(new AutoMgrSvc.shelf_io() { quantity = 1234, datetime = System.DateTime.Now, });
                             //_context.BeginSaveChanges(result => {
                             //    _context.EndSaveChanges(result);
                             //}, null);
@@ -208,5 +208,34 @@ namespace AutoMgrW8.ViewModel
             }
         }
         private RelayCommand<AutoMgrSvc.goods> _commandRemove;
+
+        public RelayCommand<AutoMgrSvc.goods> CommandPlus
+        {
+            get
+            {
+                if (_commandPlus == null)
+                    _commandPlus = new RelayCommand<AutoMgrSvc.goods>((goods) =>
+                    {
+                        goods.shelf[0].shelf_io[0].quantity += 1;
+                    });
+
+                return _commandPlus;
+            }
+        }
+        private RelayCommand<AutoMgrSvc.goods> _commandPlus;
+
+        public RelayCommand<AutoMgrSvc.goods> CommandMinute
+        {
+            get
+            {
+                if (_commandMinute == null)
+                    _commandMinute = new RelayCommand<AutoMgrSvc.goods>((goods) =>
+                    {
+                        goods.shelf[0].shelf_io[0].quantity -= 1;
+                    });
+                return _commandMinute;
+            }
+        }
+        private RelayCommand<AutoMgrSvc.goods> _commandMinute;
     }
 }
