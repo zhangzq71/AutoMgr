@@ -116,12 +116,29 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="人工费用" FontSize="22" />
+                                <TextBlock Margin="10, 0" Text="199.00 元" FontSize="22" />
+                            </StackPanel>
+                            <StackPanel Margin="50, 0" Orientation="Horizontal">
+                                <TextBlock Text="零件费用" FontSize="22" />
+                                <TextBlock Margin="10, 0" Text="1000.00 元" FontSize="22" />
+                            </StackPanel>
+                            <StackPanel Margin="50, 0" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock Text="总价" FontSize="22" />
+                                <TextBlock Margin="10, 0" Text="1199.00 元" FontSize="22" />
+                            </StackPanel>
+                        </StackPanel>
                         <Grid Grid.Column="0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="*" />
-                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <StackPanel Grid.Row="0" Orientation="Horizontal">
                                 <TextBlock Text="维修类型" FontSize="22" VerticalAlignment="Center" />
@@ -136,11 +153,43 @@
                             <ListView Grid.Row="2">
                                 
                             </ListView>
-                            <StackPanel Grid.Row="3" Orientation="Horizontal">
-                                <TextBlock Text="人工费用" FontSize="22" VerticalAlignment="Center" />
-                                <TextBlock Margin="10, 0" Text="199.00 元" FontSize="22" />
-                            </StackPanel>
 
+                        </Grid>
+                        <Grid Grid.Column="1" MinWidth="400">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="零件使用情况" FontSize="22" HorizontalAlignment="Center" />
+                            <Button Grid.Row="1" Content="估计使用的零件" FontSize="22" HorizontalAlignment="Center" />
+                            <ListView Grid.Row="2">
+                                
+                            </ListView>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                <TextBlock Text="客户单位名称" FontSize="22" VerticalAlignment="Center" />
+                                <TextBox Margin="10, 0" Width="200" />
+                            </StackPanel>
+                            <StackPanel Margin="0, 15, 0, 0" Grid.Row="1" Orientation="Horizontal">
+                                <TextBlock Text="单位地址" FontSize="22" />
+                                <TextBox Margin="10, 0" Width="200" Height="80" />
+                            </StackPanel>
+                            <StackPanel Margin="0, 15, 0, 0" Grid.Row="2" Orientation="Horizontal">
+                                <TextBlock Text="负责人姓名" FontSize="22" VerticalAlignment="Center" />
+                                <TextBox Margin="10, 0" Width="150" />
+                            </StackPanel>
+                            <StackPanel Margin="0, 15, 0, 0" Grid.Row="3" Orientation="Horizontal">
+                                <TextBlock Text="负责人电话" FontSize="22" VerticalAlignment="Center" />
+                                <TextBox Margin="10, 0" Width="120" />
+                            </StackPanel>
                         </Grid>
                     </Grid>
 
