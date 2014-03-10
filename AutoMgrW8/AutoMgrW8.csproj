@@ -165,6 +165,7 @@
     <Compile Include="ViewModel\UIData.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\VMGoodsSelection.cs" />
+    <Compile Include="ViewModel\VMRepairFty.cs" />
     <Compile Include="ViewModel\VMReposityOutput.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -88,5 +88,10 @@ namespace AutoMgrW8.Pages
         }
 
         #endregion
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ((Frame)Window.Current.Content).GoBack();
+        }
     }
 }
