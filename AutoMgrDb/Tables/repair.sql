@@ -10,14 +10,10 @@
     [discount] DECIMAL(4, 2) NOT NULL DEFAULT 0, 
     [real_price] DECIMAL(10, 2) NOT NULL DEFAULT 0, 
     [out_date] DATETIME NULL, 
-    [customer_id] INT NOT NULL, 
-	[contact_id] INT NOT NULL, 
     [vehicle_id] INT NOT NULL,
     CONSTRAINT [FK_repair_stuff] FOREIGN KEY ([recv_stuff_id]) REFERENCES [staff]([id]), 
-    CONSTRAINT [FK_repair_customer] FOREIGN KEY ([customer_id]) REFERENCES [customer]([id]), 
     CONSTRAINT [FK_repair_vehicle] FOREIGN KEY ([vehicle_id]) REFERENCES [vehicle]([id]), 
     CONSTRAINT [FK_repair_branch] FOREIGN KEY ([branch_id]) REFERENCES [branch]([id]), 
-    CONSTRAINT [FK_repair_contact] FOREIGN KEY ([contact_id]) REFERENCES [contact]([id])
 )
 
 GO
@@ -93,11 +89,3 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level2type = N'COLUMN',
     @level2name = N'out_date'
 GO
-EXEC sp_addextendedproperty @name = N'MS_Description',
-    @value = N'此次修车的联系人',
-    @level0type = N'SCHEMA',
-    @level0name = N'dbo',
-    @level1type = N'TABLE',
-    @level1name = N'repair',
-    @level2type = N'COLUMN',
-    @level2name = N'contact_id'

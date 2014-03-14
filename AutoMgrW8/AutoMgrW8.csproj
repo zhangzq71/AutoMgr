@@ -124,6 +124,7 @@
       <DependentUpon>UIContainer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converter\InvertoryConverter.cs" />
+    <Compile Include="Converter\RepairFtyIsenableConverter.cs" />
     <Compile Include="Design\DesignNavigationService.cs" />
     <Compile Include="Helpers\INavigationService.cs" />
     <Compile Include="Helpers\NavigationService.cs" />
@@ -286,7 +287,14 @@
       <Name>Behaviors SDK %28XAML%29</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ServiceReferenceMetadataStorage Include="Service References\AutoMgrSvc\">
+      <Type>datasvcmap</Type>
+    </ServiceReferenceMetadataStorage>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

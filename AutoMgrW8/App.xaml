@@ -16,6 +16,7 @@
       <vm:ViewModelLocator x:Key="Locator" xmlns:vm="using:AutoMgrW8.ViewModel" />
 
             <converter:InvertoryConverter x:Key="InvertoryConverter" />
-    </ResourceDictionary>
+            <converter:RepairFtyIsenableConverter x:Key="RepairFtyIsenableConverter" />
+        </ResourceDictionary>
   </Application.Resources>
 </Application>

@@ -85,17 +85,17 @@
 					<StackPanel Grid.Row="0" Orientation="Horizontal">
 						<StackPanel Orientation="Horizontal">
 							<TextBlock Text="车牌号码" FontSize="22" VerticalAlignment="Center" />
-							<TextBox Margin="10, 0" Width="150" />
+                            <TextBox Margin="10, 0" Width="150" Text="{Binding RepairDetail.vehicle.car_num, Mode=TwoWay}" IsEnabled="{Binding Isediting, Converter={StaticResource RepairFtyIsenableConverter}}" />
 						</StackPanel>
                         
 						<StackPanel Margin="20, 0" Orientation="Horizontal">
 							<TextBlock Text="发动机号码" FontSize="22" VerticalAlignment="Center" />
-							<TextBox Margin="10, 0" Width="200" />
+                            <TextBox Margin="10, 0" Width="200" IsEnabled="{Binding Isediting, Converter={StaticResource RepairFtyIsenableConverter}}" />
 						</StackPanel>
 
 						<StackPanel Margin="20, 0" Orientation="Horizontal">
 							<TextBlock Text="车架号码" FontSize="22" VerticalAlignment="Center" />
-							<TextBox Margin="10, 0" Width="200" />
+                            <TextBox Margin="10, 0" Width="200" IsEnabled="{Binding Isediting, Converter={StaticResource RepairFtyIsenableConverter}}" />
 						</StackPanel>
 
 						<StackPanel Margin="20, 0" Orientation="Horizontal">
@@ -107,11 +107,11 @@
 					<StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0, 20">
 						<StackPanel Orientation="Horizontal">
 							<TextBlock Text="品牌" FontSize="22"  VerticalAlignment="Center"/>
-							<TextBox Margin="10, 0" Width="120" />
+                            <TextBox Margin="10, 0" Width="120" IsEnabled="{Binding Isediting, Converter={StaticResource RepairFtyIsenableConverter}}" />
 						</StackPanel>
 						<StackPanel Orientation="Horizontal">
 							<TextBlock Text="型号" FontSize="22"  VerticalAlignment="Center"/>
-							<TextBox Margin="10, 0" Width="120" />
+                            <TextBox Margin="10, 0" Width="120" IsEnabled="{Binding Isediting, Converter={StaticResource RepairFtyIsenableConverter}}" />
 						</StackPanel>
 					</StackPanel>
 
@@ -147,7 +147,7 @@
 							</Grid.RowDefinitions>
 							<StackPanel Grid.Row="0" Orientation="Horizontal">
 								<TextBlock Text="维修类型" FontSize="22" VerticalAlignment="Center" />
-                                <ComboBox Margin="10, 0" Width="200" ItemsSource="{Binding RepairCatalog.View}">
+                                <ComboBox Margin="10, 0" Width="200" ItemsSource="{Binding RepairCatalog.View}" IsEnabled="{Binding Isediting, Converter={StaticResource RepairFtyIsenableConverter}}" >
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding name}" FontSize="20" />
@@ -158,7 +158,13 @@
 							</StackPanel>
 							<StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0, 15">
 								<TextBlock Text="维修项目" FontSize="22" VerticalAlignment="Center" />
-								<ComboBox Margin="10, 0" Width="200" />
+                                <ComboBox Margin="10, 0" Width="200" ItemsSource="{Binding RepairItems.View}" IsEnabled="{Binding Isediting, Converter={StaticResource RepairFtyIsenableConverter}}" >
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding name}" FontSize="20" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
 								<Button Margin="10, 0" Content="添加" FontSize="18" />
 							</StackPanel>
 							<ListView Grid.Row="2"/>
@@ -183,19 +189,19 @@
 							</Grid.RowDefinitions>
 							<StackPanel Grid.Row="0" Orientation="Horizontal">
 								<TextBlock Text="客户单位名称" FontSize="22" VerticalAlignment="Center" />
-								<TextBox Margin="10, 0" Width="200" />
+                                <TextBox Margin="10, 0" Width="200" IsEnabled="{Binding Isediting, Converter={StaticResource RepairFtyIsenableConverter}}" />
 							</StackPanel>
 							<StackPanel Margin="0, 15, 0, 0" Grid.Row="1" Orientation="Horizontal">
 								<TextBlock Text="单位地址" FontSize="22" />
-								<TextBox Margin="10, 0" Width="200" Height="80" />
+                                <TextBox Margin="10, 0" Width="200" Height="80" IsEnabled="{Binding Isediting, Converter={StaticResource RepairFtyIsenableConverter}}" />
 							</StackPanel>
 							<StackPanel Margin="0, 15, 0, 0" Grid.Row="2" Orientation="Horizontal">
 								<TextBlock Text="负责人姓名" FontSize="22" VerticalAlignment="Center" />
-								<TextBox Margin="10, 0" Width="150" />
+                                <TextBox Margin="10, 0" Width="150" IsEnabled="{Binding Isediting, Converter={StaticResource RepairFtyIsenableConverter}}" />
 							</StackPanel>
 							<StackPanel Margin="0, 15, 0, 0" Grid.Row="3" Orientation="Horizontal">
 								<TextBlock Text="负责人电话" FontSize="22" VerticalAlignment="Center" />
-								<TextBox Margin="10, 0" Width="120" />
+                                <TextBox Margin="10, 0" Width="120" IsEnabled="{Binding Isediting, Converter={StaticResource RepairFtyIsenableConverter}}" />
 							</StackPanel>
 						</Grid>
 					</Grid>
@@ -203,9 +209,9 @@
 				</Grid>
 			</ScrollViewer>
 			<StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 20, 0, 0">
-				<Button Content="修车接车" FontSize="22" />
-				<Button Content="确定接车" FontSize="22" />
-				<Button Content="取消接车" FontSize="22" />
+                <Button Content="修车接车" FontSize="22" Command="{Binding CommandButton}" CommandParameter="修车接车" IsEnabled="{Binding Isediting, Converter={StaticResource RepairFtyIsenableConverter}, ConverterParameter='修车接车'}" />
+                <Button Content="确定接车" FontSize="22" Command="{Binding CommandButton}" CommandParameter="确定接车" IsEnabled="{Binding Isediting, Converter={StaticResource RepairFtyIsenableConverter}}" />
+                <Button Content="取消接车" FontSize="22" Command="{Binding CommandButton}" CommandParameter="取消接车" IsEnabled="{Binding Isediting, Converter={StaticResource RepairFtyIsenableConverter}}" />
                 
 				<Button Margin="80, 0" Content="结算" FontSize="22" Click="Button_Click" />
 			</StackPanel>

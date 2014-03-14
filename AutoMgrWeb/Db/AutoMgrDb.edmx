@@ -40,7 +40,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="company" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="address" Type="nvarchar" MaxLength="50" />
           <Property Name="phone" Type="nvarchar" MaxLength="20" />
@@ -146,8 +146,6 @@
           <Property Name="discount" Type="decimal" Precision="4" Scale="2" Nullable="false" />
           <Property Name="real_price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="out_date" Type="datetime" />
-          <Property Name="customer_id" Type="int" Nullable="false" />
-          <Property Name="contact_id" Type="int" Nullable="false" />
           <Property Name="vehicle_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="repair_cate">
@@ -493,30 +491,6 @@
             </Principal>
             <Dependent Role="repair_cate_item">
               <PropertyRef Name="item_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_repair_contact">
-          <End Role="contact" Type="Self.contact" Multiplicity="1" />
-          <End Role="repair" Type="Self.repair" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="contact">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="repair">
-              <PropertyRef Name="contact_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_repair_customer">
-          <End Role="customer" Type="Self.customer" Multiplicity="1" />
-          <End Role="repair" Type="Self.repair" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="repair">
-              <PropertyRef Name="customer_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -963,14 +937,6 @@
             <End Role="repair_item" EntitySet="repair_item" />
             <End Role="repair_cate_item" EntitySet="repair_cate_item" />
           </AssociationSet>
-          <AssociationSet Name="FK_repair_contact" Association="Self.FK_repair_contact">
-            <End Role="contact" EntitySet="contact" />
-            <End Role="repair" EntitySet="repair" />
-          </AssociationSet>
-          <AssociationSet Name="FK_repair_customer" Association="Self.FK_repair_customer">
-            <End Role="customer" EntitySet="customer" />
-            <End Role="repair" EntitySet="repair" />
-          </AssociationSet>
           <AssociationSet Name="FK_repair_item_detail_department" Association="Self.FK_repair_item_detail_department">
             <End Role="department" EntitySet="department" />
             <End Role="repair_item_detail" EntitySet="repair_item_detail" />
@@ -1131,19 +1097,17 @@
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="customer_contact" Relationship="Self.FK_customer_contact_contact" FromRole="contact" ToRole="customer_contact" />
           <NavigationProperty Name="procure" Relationship="Self.FK_procure_contact" FromRole="contact" ToRole="procure" />
-          <NavigationProperty Name="repair" Relationship="Self.FK_repair_contact" FromRole="contact" ToRole="repair" />
           <NavigationProperty Name="supplyer_contact" Relationship="Self.FK_supplyer_contact_contact" FromRole="contact" ToRole="supplyer_contact" />
         </EntityType>
         <EntityType Name="customer">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="customer_contact" Relationship="Self.FK_customer_contact_customer" FromRole="customer" ToRole="customer_contact" />
-          <NavigationProperty Name="repair" Relationship="Self.FK_repair_customer" FromRole="customer" ToRole="repair" />
           <NavigationProperty Name="sale" Relationship="Self.FK_sale_customer" FromRole="customer" ToRole="sale" />
           <NavigationProperty Name="vehicle" Relationship="Self.FK_vehicle_customer" FromRole="customer" ToRole="vehicle" />
         </EntityType>
@@ -1273,12 +1237,8 @@
           <Property Name="discount" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
           <Property Name="real_price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="out_date" Type="DateTime" Precision="3" />
-          <Property Name="customer_id" Type="Int32" Nullable="false" />
-          <Property Name="contact_id" Type="Int32" Nullable="false" />
           <Property Name="vehicle_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="branch" Relationship="Self.FK_repair_branch" FromRole="repair" ToRole="branch" />
-          <NavigationProperty Name="contact" Relationship="Self.FK_repair_contact" FromRole="repair" ToRole="contact" />
-          <NavigationProperty Name="customer" Relationship="Self.FK_repair_customer" FromRole="repair" ToRole="customer" />
           <NavigationProperty Name="repair_item_detail" Relationship="Self.FK_repair_item_detail_repair" FromRole="repair" ToRole="repair_item_detail" />
           <NavigationProperty Name="repair_parts" Relationship="Self.FK_repair_parts_repair" FromRole="repair" ToRole="repair_parts" />
           <NavigationProperty Name="repair_photo" Relationship="Self.FK_repair_photo_repair" FromRole="repair" ToRole="repair_photo" />
@@ -1582,18 +1542,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_repair_contact">
-          <End Role="contact" Type="Self.contact" Multiplicity="1" />
-          <End Role="repair" Type="Self.repair" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="contact">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="repair">
-              <PropertyRef Name="contact_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_supplyer_contact_contact">
           <End Role="contact" Type="Self.contact" Multiplicity="1" />
           <End Role="supplyer_contact" Type="Self.supplyer_contact" Multiplicity="*" />
@@ -1614,18 +1562,6 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="customer_contact">
-              <PropertyRef Name="customer_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_repair_customer">
-          <End Role="customer" Type="Self.customer" Multiplicity="1" />
-          <End Role="repair" Type="Self.repair" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="repair">
               <PropertyRef Name="customer_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -2113,10 +2049,6 @@
             <End Role="contact" EntitySet="contact" />
             <End Role="procure" EntitySet="procure" />
           </AssociationSet>
-          <AssociationSet Name="FK_repair_contact" Association="Self.FK_repair_contact">
-            <End Role="contact" EntitySet="contact" />
-            <End Role="repair" EntitySet="repair" />
-          </AssociationSet>
           <AssociationSet Name="FK_supplyer_contact_contact" Association="Self.FK_supplyer_contact_contact">
             <End Role="contact" EntitySet="contact" />
             <End Role="supplyer_contact" EntitySet="supplyer_contact" />
@@ -2124,10 +2056,6 @@
           <AssociationSet Name="FK_customer_contact_customer" Association="Self.FK_customer_contact_customer">
             <End Role="customer" EntitySet="customer" />
             <End Role="customer_contact" EntitySet="customer_contact" />
-          </AssociationSet>
-          <AssociationSet Name="FK_repair_customer" Association="Self.FK_repair_customer">
-            <End Role="customer" EntitySet="customer" />
-            <End Role="repair" EntitySet="repair" />
           </AssociationSet>
           <AssociationSet Name="FK_sale_customer" Association="Self.FK_sale_customer">
             <End Role="customer" EntitySet="customer" />
@@ -2430,8 +2358,6 @@
                 <ScalarProperty Name="discount" ColumnName="discount" />
                 <ScalarProperty Name="real_price" ColumnName="real_price" />
                 <ScalarProperty Name="out_date" ColumnName="out_date" />
-                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
-                <ScalarProperty Name="contact_id" ColumnName="contact_id" />
                 <ScalarProperty Name="vehicle_id" ColumnName="vehicle_id" />
               </MappingFragment>
             </EntityTypeMapping>

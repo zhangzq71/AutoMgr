@@ -17,7 +17,6 @@ namespace AutoMgrWeb.Db
         public customer()
         {
             this.customer_contact = new HashSet<customer_contact>();
-            this.repair = new HashSet<repair>();
             this.sale = new HashSet<sale>();
             this.vehicle = new HashSet<vehicle>();
         }
@@ -28,7 +27,6 @@ namespace AutoMgrWeb.Db
         public string phone { get; set; }
     
         public virtual ICollection<customer_contact> customer_contact { get; set; }
-        public virtual ICollection<repair> repair { get; set; }
         public virtual ICollection<sale> sale { get; set; }
         public virtual ICollection<vehicle> vehicle { get; set; }
     }

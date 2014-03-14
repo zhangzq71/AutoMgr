@@ -32,13 +32,9 @@ namespace AutoMgrWeb.Db
         public decimal discount { get; set; }
         public decimal real_price { get; set; }
         public Nullable<System.DateTime> out_date { get; set; }
-        public int customer_id { get; set; }
-        public int contact_id { get; set; }
         public int vehicle_id { get; set; }
     
         public virtual branch branch { get; set; }
-        public virtual contact contact { get; set; }
-        public virtual customer customer { get; set; }
         public virtual ICollection<repair_item_detail> repair_item_detail { get; set; }
         public virtual ICollection<repair_parts> repair_parts { get; set; }
         public virtual ICollection<repair_photo> repair_photo { get; set; }

@@ -34,6 +34,17 @@ namespace AutoMgrW8.ViewModel
             }
         }
 
+        public bool Isediting
+        {
+            get { return _isEditing; }
+            private set
+            {
+                _isEditing = value;
+                RaisePropertyChanged();
+            }
+        }
+        private bool _isEditing;
+
         public CollectionViewSource RepairItems
         {
             get { return _repairItems; }
@@ -159,8 +170,19 @@ namespace AutoMgrW8.ViewModel
                                 RepairCatalog = new CollectionViewSource() { Source = catas };
                             }
                         });
-                        var qry = from cata in _context.repair_cate select cata;
+                        var qry = from cata in _context.repair_cate.Expand("repair_cate_item/repair_item") select cata;
                         catas.LoadAsync(qry);
+
+                        var repairItems = new DataServiceCollection<AutoMgrSvc.repair_item>();
+                        repairItems.LoadCompleted += new EventHandler<LoadCompletedEventArgs>((sender, e) =>
+                        {
+                            if (e != null)
+                            {
+                                RepairItems = new CollectionViewSource() { Source = repairItems };
+                            }
+                        });
+                        var qry1 = from item in _context.repair_item select item;
+                        repairItems.LoadAsync(qry1);
                     });
                 }
 
@@ -168,5 +190,56 @@ namespace AutoMgrW8.ViewModel
             }
         }
         private RelayCommand _commandRefresh;
+
+        public RelayCommand<string> CommandButton
+        {
+            get
+            {
+                if (_commandButton == null)
+                {
+                    _commandButton = new RelayCommand<string>((btnTitle) =>
+                    {
+                        switch (btnTitle)
+                        {
+                            case "修车接车":
+                                RepairDetail = new AutoMgrSvc.repair()
+                                {
+                                    branch_id = 1,
+                                    recv_stuff_id = 1,
+                                    recv_date = DateTime.Now,
+                                    quote_only = false,
+                                    repair_price = 0,
+                                    parts_price = 0,
+                                    discount = 0,
+                                    real_price = 0,
+                                    vehicle = new AutoMgrSvc.vehicle() 
+                                    { 
+                                        car_num = "12345",
+                                        engine_num = "54321",
+                                        frame_num = "9876543",
+                                        brand = "东风日产",
+                                        model = "A100",
+                                        customer = new AutoMgrSvc.customer() 
+                                        {
+                                            company = "第一运输公司",
+                                            address = "广州市",
+                                            phone = "13316161002",
+                                        }, 
+                                    },
+                                };
+                                Isediting = true;
+                                break;
+
+                            case "取消接车":
+                                Isediting = false;
+                                break;
+                        }
+                    });
+                }
+
+                return _commandButton;
+            }
+        }
+        private RelayCommand<string> _commandButton;
     }
 }

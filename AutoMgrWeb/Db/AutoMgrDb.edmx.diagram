@@ -4,37 +4,37 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="192e8867c99241c49c38129c4019f533" Name="Diagram1">
-        <EntityTypeShape EntityType="AutoMgrDbModel.C__RefactorLog" Width="1.5" PointX="10.75" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.barcode_goods" Width="1.5" PointX="3" PointY="27.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.branch" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.contact" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.customer" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.customer_contact" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.department" Width="1.5" PointX="3.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.express" Width="1.5" PointX="9" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.goods" Width="1.5" PointX="0.75" PointY="19.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.goods_alias" Width="1.5" PointX="3" PointY="30" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.goods_photo" Width="1.5" PointX="3" PointY="32.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.inventory" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.procure" Width="1.5" PointX="6" PointY="15.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.procure_detail" Width="1.5" PointX="8.25" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.repair" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.repair_cate" Width="1.5" PointX="6" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.repair_cate_item" Width="1.5" PointX="8.25" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.repair_item" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.repair_item_detail" Width="1.5" PointX="8.25" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.repair_parts" Width="1.5" PointX="15.75" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.repair_photo" Width="1.5" PointX="5.25" PointY="19.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.role" Width="1.5" PointX="3.75" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.sale" Width="1.5" PointX="11.25" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.sale_detail" Width="1.5" PointX="18.75" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.shelf" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.shelf_io" Width="1.5" PointX="13.5" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.staff" Width="1.5" PointX="6" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.supplyer" Width="1.5" PointX="3.75" PointY="23.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.supplyer_contact" Width="1.5" PointX="8" PointY="19.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AutoMgrDbModel.vehicle" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+      <Diagram DiagramId="02f394dac8c349af8e829119e2e353af" Name="Diagram1">
+        <EntityTypeShape EntityType="AutoMgrDbModel.C__RefactorLog" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.barcode_goods" Width="1.5" PointX="3" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.branch" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.contact" Width="1.5" PointX="3.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.customer" Width="1.5" PointX="1.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.customer_contact" Width="1.5" PointX="9" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.department" Width="1.5" PointX="3.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.express" Width="1.5" PointX="9" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.goods" Width="1.5" PointX="0.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.goods_alias" Width="1.5" PointX="3" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.goods_photo" Width="1.5" PointX="3" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.inventory" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.procure" Width="1.5" PointX="6" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.procure_detail" Width="1.5" PointX="8.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.repair" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.repair_cate" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.repair_cate_item" Width="1.5" PointX="8.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.repair_item" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.repair_item_detail" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.repair_parts" Width="1.5" PointX="15.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.repair_photo" Width="1.5" PointX="5.25" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.role" Width="1.5" PointX="3.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.sale" Width="1.5" PointX="11.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.sale_detail" Width="1.5" PointX="18.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.shelf" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.shelf_io" Width="1.5" PointX="13.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.staff" Width="1.5" PointX="6" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.supplyer" Width="1.5" PointX="3.75" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.supplyer_contact" Width="1.5" PointX="6" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoMgrDbModel.vehicle" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
         <AssociationConnector Association="AutoMgrDbModel.FK_barcode_goods_goods" ManuallyRouted="false" />
         <AssociationConnector Association="AutoMgrDbModel.FK_inventory_branch" ManuallyRouted="false" />
         <AssociationConnector Association="AutoMgrDbModel.FK_procure_branch" ManuallyRouted="false" />
@@ -43,10 +43,8 @@
         <AssociationConnector Association="AutoMgrDbModel.FK_staff_branch" ManuallyRouted="false" />
         <AssociationConnector Association="AutoMgrDbModel.FK_customer_contact_contact" ManuallyRouted="false" />
         <AssociationConnector Association="AutoMgrDbModel.FK_procure_contact" ManuallyRouted="false" />
-        <AssociationConnector Association="AutoMgrDbModel.FK_repair_contact" ManuallyRouted="false" />
         <AssociationConnector Association="AutoMgrDbModel.FK_supplyer_contact_contact" ManuallyRouted="false" />
         <AssociationConnector Association="AutoMgrDbModel.FK_customer_contact_customer" ManuallyRouted="false" />
-        <AssociationConnector Association="AutoMgrDbModel.FK_repair_customer" ManuallyRouted="false" />
         <AssociationConnector Association="AutoMgrDbModel.FK_sale_customer" ManuallyRouted="false" />
         <AssociationConnector Association="AutoMgrDbModel.FK_vehicle_customer" ManuallyRouted="false" />
         <AssociationConnector Association="AutoMgrDbModel.FK_repair_item_detail_department" ManuallyRouted="false" />

@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 2014/2/27 17:18:58
+// Generation date: 2014/3/14 15:18:04
 namespace AutoMgrW8.AutoMgrSvc
 {
     
@@ -851,713 +851,692 @@ namespace AutoMgrW8.AutoMgrSvc
                 "\"false\" /><NavigationProperty Name=\"customer_contact\" Relationship=\"AutoMgrDbMod" +
                 "el.FK_customer_contact_contact\" ToRole=\"customer_contact\" FromRole=\"contact\" /><" +
                 "NavigationProperty Name=\"procure\" Relationship=\"AutoMgrDbModel.FK_procure_contac" +
-                "t\" ToRole=\"procure\" FromRole=\"contact\" /><NavigationProperty Name=\"repair\" Relat" +
-                "ionship=\"AutoMgrDbModel.FK_repair_contact\" ToRole=\"repair\" FromRole=\"contact\" />" +
-                "<NavigationProperty Name=\"supplyer_contact\" Relationship=\"AutoMgrDbModel.FK_supp" +
-                "lyer_contact_contact\" ToRole=\"supplyer_contact\" FromRole=\"contact\" /></EntityTyp" +
-                "e><EntityType Name=\"customer\"><Key><PropertyRef Name=\"id\" /></Key><Property Name" +
-                "=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"company\" Type=\"Edm.Str" +
-                "ing\" Nullable=\"false\" MaxLength=\"50\" FixedLength=\"false\" Unicode=\"true\" /><Prope" +
-                "rty Name=\"address\" Type=\"Edm.String\" MaxLength=\"50\" FixedLength=\"false\" Unicode=" +
-                "\"true\" /><Property Name=\"phone\" Type=\"Edm.String\" MaxLength=\"20\" FixedLength=\"fa" +
-                "lse\" Unicode=\"true\" /><NavigationProperty Name=\"customer_contact\" Relationship=\"" +
-                "AutoMgrDbModel.FK_customer_contact_customer\" ToRole=\"customer_contact\" FromRole=" +
-                "\"customer\" /><NavigationProperty Name=\"repair\" Relationship=\"AutoMgrDbModel.FK_r" +
-                "epair_customer\" ToRole=\"repair\" FromRole=\"customer\" /><NavigationProperty Name=\"" +
-                "sale\" Relationship=\"AutoMgrDbModel.FK_sale_customer\" ToRole=\"sale\" FromRole=\"cus" +
-                "tomer\" /><NavigationProperty Name=\"vehicle\" Relationship=\"AutoMgrDbModel.FK_vehi" +
-                "cle_customer\" ToRole=\"vehicle\" FromRole=\"customer\" /></EntityType><EntityType Na" +
-                "me=\"customer_contact\"><Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Ty" +
-                "pe=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"ht" +
-                "tp://schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"custome" +
-                "r_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"contact_id\" Type=\"Edm." +
-                "Int32\" Nullable=\"false\" /><NavigationProperty Name=\"contact\" Relationship=\"AutoM" +
-                "grDbModel.FK_customer_contact_contact\" ToRole=\"contact\" FromRole=\"customer_conta" +
-                "ct\" /><NavigationProperty Name=\"customer\" Relationship=\"AutoMgrDbModel.FK_custom" +
-                "er_contact_customer\" ToRole=\"customer\" FromRole=\"customer_contact\" /></EntityTyp" +
-                "e><EntityType Name=\"department\"><Key><PropertyRef Name=\"id\" /></Key><Property Na" +
-                "me=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xm" +
-                "lns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Nam" +
-                "e=\"name\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"20\" FixedLength=\"false\" U" +
-                "nicode=\"true\" /><NavigationProperty Name=\"repair_item_detail\" Relationship=\"Auto" +
-                "MgrDbModel.FK_repair_item_detail_department\" ToRole=\"repair_item_detail\" FromRol" +
-                "e=\"department\" /><NavigationProperty Name=\"staff\" Relationship=\"AutoMgrDbModel.F" +
-                "K_staff_department\" ToRole=\"staff\" FromRole=\"department\" /></EntityType><EntityT" +
-                "ype Name=\"express\"><Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=" +
-                "\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http:" +
-                "//schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"name\" Type" +
-                "=\"Edm.String\" Nullable=\"false\" MaxLength=\"10\" FixedLength=\"false\" Unicode=\"true\"" +
-                " /><NavigationProperty Name=\"sale\" Relationship=\"AutoMgrDbModel.FK_sale_express\"" +
-                " ToRole=\"sale\" FromRole=\"express\" /></EntityType><EntityType Name=\"goods\"><Key><" +
-                "PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"fal" +
-                "se\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/a" +
-                "do/2009/02/edm/annotation\" /><Property Name=\"name\" Type=\"Edm.String\" Nullable=\"f" +
-                "alse\" MaxLength=\"50\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"unit\" " +
-                "Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"6\" FixedLength=\"false\" Unicode=\"tr" +
-                "ue\" /><Property Name=\"price\" Type=\"Edm.Decimal\" Nullable=\"false\" Precision=\"8\" S" +
-                "cale=\"2\" /><Property Name=\"brand\" Type=\"Edm.String\" MaxLength=\"20\" FixedLength=\"" +
-                "false\" Unicode=\"true\" /><Property Name=\"origin\" Type=\"Edm.String\" MaxLength=\"50\"" +
-                " FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"model\" Type=\"Edm.String\" M" +
-                "axLength=\"50\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"limit\" Type=\"" +
-                "Edm.Decimal\" Precision=\"12\" Scale=\"2\" /><Property Name=\"length\" Type=\"Edm.Single" +
-                "\" /><Property Name=\"width\" Type=\"Edm.Single\" /><Property Name=\"height\" Type=\"Edm" +
-                ".Single\" /><Property Name=\"weight\" Type=\"Edm.Single\" /><Property Name=\"alias\" Ty" +
-                "pe=\"Edm.String\" MaxLength=\"50\" FixedLength=\"false\" Unicode=\"true\" /><NavigationP" +
-                "roperty Name=\"barcode_goods\" Relationship=\"AutoMgrDbModel.FK_barcode_goods_goods" +
-                "\" ToRole=\"barcode_goods\" FromRole=\"goods\" /><NavigationProperty Name=\"goods_alia" +
-                "s\" Relationship=\"AutoMgrDbModel.FK_goods_alias_goods\" ToRole=\"goods_alias\" FromR" +
-                "ole=\"goods\" /><NavigationProperty Name=\"goods_photo\" Relationship=\"AutoMgrDbMode" +
-                "l.FK_goods_photo_goods\" ToRole=\"goods_photo\" FromRole=\"goods\" /><NavigationPrope" +
-                "rty Name=\"procure_detail\" Relationship=\"AutoMgrDbModel.FK_procure_detail_goods\" " +
-                "ToRole=\"procure_detail\" FromRole=\"goods\" /><NavigationPrope";
+                "t\" ToRole=\"procure\" FromRole=\"contact\" /><NavigationProperty Name=\"supplyer_cont" +
+                "act\" Relationship=\"AutoMgrDbModel.FK_supplyer_contact_contact\" ToRole=\"supplyer_" +
+                "contact\" FromRole=\"contact\" /></EntityType><EntityType Name=\"customer\"><Key><Pro" +
+                "pertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\"" +
+                " p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/" +
+                "2009/02/edm/annotation\" /><Property Name=\"company\" Type=\"Edm.String\" Nullable=\"f" +
+                "alse\" MaxLength=\"50\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"addres" +
+                "s\" Type=\"Edm.String\" MaxLength=\"50\" FixedLength=\"false\" Unicode=\"true\" /><Proper" +
+                "ty Name=\"phone\" Type=\"Edm.String\" MaxLength=\"20\" FixedLength=\"false\" Unicode=\"tr" +
+                "ue\" /><NavigationProperty Name=\"customer_contact\" Relationship=\"AutoMgrDbModel.F" +
+                "K_customer_contact_customer\" ToRole=\"customer_contact\" FromRole=\"customer\" /><Na" +
+                "vigationProperty Name=\"sale\" Relationship=\"AutoMgrDbModel.FK_sale_customer\" ToRo" +
+                "le=\"sale\" FromRole=\"customer\" /><NavigationProperty Name=\"vehicle\" Relationship=" +
+                "\"AutoMgrDbModel.FK_vehicle_customer\" ToRole=\"vehicle\" FromRole=\"customer\" /></En" +
+                "tityType><EntityType Name=\"customer_contact\"><Key><PropertyRef Name=\"id\" /></Key" +
+                "><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=" +
+                "\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\" />" +
+                "<Property Name=\"customer_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=" +
+                "\"contact_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><NavigationProperty Name=\"conta" +
+                "ct\" Relationship=\"AutoMgrDbModel.FK_customer_contact_contact\" ToRole=\"contact\" F" +
+                "romRole=\"customer_contact\" /><NavigationProperty Name=\"customer\" Relationship=\"A" +
+                "utoMgrDbModel.FK_customer_contact_customer\" ToRole=\"customer\" FromRole=\"customer" +
+                "_contact\" /></EntityType><EntityType Name=\"department\"><Key><PropertyRef Name=\"i" +
+                "d\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGenerat" +
+                "edPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/anno" +
+                "tation\" /><Property Name=\"name\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"20" +
+                "\" FixedLength=\"false\" Unicode=\"true\" /><NavigationProperty Name=\"repair_item_det" +
+                "ail\" Relationship=\"AutoMgrDbModel.FK_repair_item_detail_department\" ToRole=\"repa" +
+                "ir_item_detail\" FromRole=\"department\" /><NavigationProperty Name=\"staff\" Relatio" +
+                "nship=\"AutoMgrDbModel.FK_staff_department\" ToRole=\"staff\" FromRole=\"department\" " +
+                "/></EntityType><EntityType Name=\"express\"><Key><PropertyRef Name=\"id\" /></Key><P" +
+                "roperty Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Id" +
+                "entity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Pr" +
+                "operty Name=\"name\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"10\" FixedLength" +
+                "=\"false\" Unicode=\"true\" /><NavigationProperty Name=\"sale\" Relationship=\"AutoMgrD" +
+                "bModel.FK_sale_express\" ToRole=\"sale\" FromRole=\"express\" /></EntityType><EntityT" +
+                "ype Name=\"goods\"><Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"E" +
+                "dm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://" +
+                "schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"name\" Type=\"" +
+                "Edm.String\" Nullable=\"false\" MaxLength=\"50\" FixedLength=\"false\" Unicode=\"true\" /" +
+                "><Property Name=\"unit\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"6\" FixedLen" +
+                "gth=\"false\" Unicode=\"true\" /><Property Name=\"price\" Type=\"Edm.Decimal\" Nullable=" +
+                "\"false\" Precision=\"8\" Scale=\"2\" /><Property Name=\"brand\" Type=\"Edm.String\" MaxLe" +
+                "ngth=\"20\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"origin\" Type=\"Edm" +
+                ".String\" MaxLength=\"50\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"mod" +
+                "el\" Type=\"Edm.String\" MaxLength=\"50\" FixedLength=\"false\" Unicode=\"true\" /><Prope" +
+                "rty Name=\"limit\" Type=\"Edm.Decimal\" Precision=\"12\" Scale=\"2\" /><Property Name=\"l" +
+                "ength\" Type=\"Edm.Single\" /><Property Name=\"width\" Type=\"Edm.Single\" /><Property " +
+                "Name=\"height\" Type=\"Edm.Single\" /><Property Name=\"weight\" Type=\"Edm.Single\" /><P" +
+                "roperty Name=\"alias\" Type=\"Edm.String\" MaxLength=\"50\" FixedLength=\"false\" Unicod" +
+                "e=\"true\" /><NavigationProperty Name=\"barcode_goods\" Relationship=\"AutoMgrDbModel" +
+                ".FK_barcode_goods_goods\" ToRole=\"barcode_goods\" FromRole=\"goods\" /><NavigationPr" +
+                "operty Name=\"goods_alias\" Relationship=\"AutoMgrDbModel.FK_goods_alias_goods\" ToR" +
+                "ole=\"goods_alias\" FromRole=\"goods\" /><NavigationProperty Name=\"goods_photo\" Rela" +
+                "tionship=\"AutoMgrDbModel.FK_goods_photo_goods\" ToRole=\"goods_photo\" FromRole=\"go" +
+                "ods\" /><NavigationProperty Name=\"procure_detail\" Relationship=\"AutoMgrDbModel.FK" +
+                "_procure_detail_goods\" ToRole=\"procure_detail\" FromRole=\"goods\" /><NavigationPro" +
+                "perty Name=\"repair_parts\" Relationship=\"AutoMgrDbModel.FK_repair_parts_goods\" To" +
+                "Role=\"repair_parts\" FromRole=\"goods\" /><NavigationProperty ";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-            private const string ModelPart1 = "rty Name=\"repair_parts\" Relationship=\"AutoMgrDbModel.FK_repair_parts_goods\" ToRol" +
-                "e=\"repair_parts\" FromRole=\"goods\" /><NavigationProperty Name=\"sale_detail\" Relat" +
-                "ionship=\"AutoMgrDbModel.FK_sale_detail_goods\" ToRole=\"sale_detail\" FromRole=\"goo" +
-                "ds\" /><NavigationProperty Name=\"shelf\" Relationship=\"AutoMgrDbModel.FK_shelf_goo" +
-                "ds\" ToRole=\"shelf\" FromRole=\"goods\" /></EntityType><EntityType Name=\"goods_alias" +
-                "\"><Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nulla" +
-                "ble=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microso" +
-                "ft.com/ado/2009/02/edm/annotation\" /><Property Name=\"goods_id\" Type=\"Edm.Int32\" " +
-                "Nullable=\"false\" /><Property Name=\"alias\" Type=\"Edm.String\" Nullable=\"false\" Max" +
-                "Length=\"50\" FixedLength=\"false\" Unicode=\"true\" /><NavigationProperty Name=\"goods" +
-                "\" Relationship=\"AutoMgrDbModel.FK_goods_alias_goods\" ToRole=\"goods\" FromRole=\"go" +
-                "ods_alias\" /></EntityType><EntityType Name=\"goods_photo\"><Key><PropertyRef Name=" +
-                "\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGener" +
-                "atedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/an" +
-                "notation\" /><Property Name=\"goods_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Prope" +
-                "rty Name=\"photo\" Type=\"Edm.Binary\" Nullable=\"false\" MaxLength=\"Max\" FixedLength=" +
-                "\"false\" /><NavigationProperty Name=\"goods\" Relationship=\"AutoMgrDbModel.FK_goods" +
-                "_photo_goods\" ToRole=\"goods\" FromRole=\"goods_photo\" /></EntityType><EntityType N" +
-                "ame=\"inventory\"><Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"Ed" +
-                "m.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://s" +
-                "chemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"branch_id\" Ty" +
-                "pe=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"date\" Type=\"Edm.DateTime\" Null" +
-                "able=\"false\" Precision=\"3\" /><Property Name=\"staff_id\" Type=\"Edm.Int32\" Nullable" +
-                "=\"false\" /><NavigationProperty Name=\"branch\" Relationship=\"AutoMgrDbModel.FK_inv" +
-                "entory_branch\" ToRole=\"branch\" FromRole=\"inventory\" /><NavigationProperty Name=\"" +
-                "staff\" Relationship=\"AutoMgrDbModel.FK_inventory_staff\" ToRole=\"staff\" FromRole=" +
-                "\"inventory\" /><NavigationProperty Name=\"shelf_io\" Relationship=\"AutoMgrDbModel.F" +
-                "K_shelf_io_inventory\" ToRole=\"shelf_io\" FromRole=\"inventory\" /></EntityType><Ent" +
-                "ityType Name=\"procure\"><Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" T" +
-                "ype=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"h" +
-                "ttp://schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"branch" +
-                "_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"stuff_id\" Type=\"Edm.Int" +
-                "32\" Nullable=\"false\" /><Property Name=\"supplyer_id\" Type=\"Edm.Int32\" Nullable=\"f" +
-                "alse\" /><Property Name=\"contact_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Propert" +
-                "y Name=\"date\" Type=\"Edm.DateTime\" Nullable=\"false\" Precision=\"3\" /><Property Nam" +
-                "e=\"closed\" Type=\"Edm.Boolean\" Nullable=\"false\" /><NavigationProperty Name=\"branc" +
-                "h\" Relationship=\"AutoMgrDbModel.FK_procure_branch\" ToRole=\"branch\" FromRole=\"pro" +
-                "cure\" /><NavigationProperty Name=\"contact\" Relationship=\"AutoMgrDbModel.FK_procu" +
-                "re_contact\" ToRole=\"contact\" FromRole=\"procure\" /><NavigationProperty Name=\"proc" +
-                "ure_detail\" Relationship=\"AutoMgrDbModel.FK_procure_detail_procure\" ToRole=\"proc" +
-                "ure_detail\" FromRole=\"procure\" /><NavigationProperty Name=\"staff\" Relationship=\"" +
-                "AutoMgrDbModel.FK_procure_stuff\" ToRole=\"staff\" FromRole=\"procure\" /><Navigation" +
-                "Property Name=\"supplyer\" Relationship=\"AutoMgrDbModel.FK_procure_supplyer\" ToRol" +
-                "e=\"supplyer\" FromRole=\"procure\" /><NavigationProperty Name=\"shelf_io\" Relationsh" +
-                "ip=\"AutoMgrDbModel.FK_shelf_io_procure\" ToRole=\"shelf_io\" FromRole=\"procure\" /><" +
-                "/EntityType><EntityType Name=\"procure_detail\"><Key><PropertyRef Name=\"id\" /></Ke" +
+            private const string ModelPart1 = "Name=\"sale_detail\" Relationship=\"AutoMgrDbModel.FK_sale_detail_goods\" ToRole=\"sal" +
+                "e_detail\" FromRole=\"goods\" /><NavigationProperty Name=\"shelf\" Relationship=\"Auto" +
+                "MgrDbModel.FK_shelf_goods\" ToRole=\"shelf\" FromRole=\"goods\" /></EntityType><Entit" +
+                "yType Name=\"goods_alias\"><Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\"" +
+                " Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=" +
+                "\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"good" +
+                "s_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"alias\" Type=\"Edm.Strin" +
+                "g\" Nullable=\"false\" MaxLength=\"50\" FixedLength=\"false\" Unicode=\"true\" /><Navigat" +
+                "ionProperty Name=\"goods\" Relationship=\"AutoMgrDbModel.FK_goods_alias_goods\" ToRo" +
+                "le=\"goods\" FromRole=\"goods_alias\" /></EntityType><EntityType Name=\"goods_photo\">" +
+                "<Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullabl" +
+                "e=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft" +
+                ".com/ado/2009/02/edm/annotation\" /><Property Name=\"goods_id\" Type=\"Edm.Int32\" Nu" +
+                "llable=\"false\" /><Property Name=\"photo\" Type=\"Edm.Binary\" Nullable=\"false\" MaxLe" +
+                "ngth=\"Max\" FixedLength=\"false\" /><NavigationProperty Name=\"goods\" Relationship=\"" +
+                "AutoMgrDbModel.FK_goods_photo_goods\" ToRole=\"goods\" FromRole=\"goods_photo\" /></E" +
+                "ntityType><EntityType Name=\"inventory\"><Key><PropertyRef Name=\"id\" /></Key><Prop" +
+                "erty Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Ident" +
+                "ity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Prope" +
+                "rty Name=\"branch_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"date\" T" +
+                "ype=\"Edm.DateTime\" Nullable=\"false\" Precision=\"3\" /><Property Name=\"staff_id\" Ty" +
+                "pe=\"Edm.Int32\" Nullable=\"false\" /><NavigationProperty Name=\"branch\" Relationship" +
+                "=\"AutoMgrDbModel.FK_inventory_branch\" ToRole=\"branch\" FromRole=\"inventory\" /><Na" +
+                "vigationProperty Name=\"staff\" Relationship=\"AutoMgrDbModel.FK_inventory_staff\" T" +
+                "oRole=\"staff\" FromRole=\"inventory\" /><NavigationProperty Name=\"shelf_io\" Relatio" +
+                "nship=\"AutoMgrDbModel.FK_shelf_io_inventory\" ToRole=\"shelf_io\" FromRole=\"invento" +
+                "ry\" /></EntityType><EntityType Name=\"procure\"><Key><PropertyRef Name=\"id\" /></Ke" +
                 "y><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern" +
                 "=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\" /" +
-                "><Property Name=\"procure_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=" +
-                "\"goods_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"quantity\" Type=\"E" +
-                "dm.Decimal\" Nullable=\"false\" Precision=\"10\" Scale=\"2\" /><Property Name=\"price\" T" +
-                "ype=\"Edm.Decimal\" Nullable=\"false\" Precision=\"10\" Scale=\"2\" /><NavigationPropert" +
-                "y Name=\"goods\" Relationship=\"AutoMgrDbModel.FK_procure_detail_goods\" ToRole=\"goo" +
-                "ds\" FromRole=\"procure_detail\" /><NavigationProperty Name=\"procure\" Relationship=" +
-                "\"AutoMgrDbModel.FK_procure_detail_procure\" ToRole=\"procure\" FromRole=\"procure_de" +
-                "tail\" /></EntityType><EntityType Name=\"repair\"><Key><PropertyRef Name=\"id\" /></K" +
-                "ey><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPatter" +
-                "n=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\" " +
-                "/><Property Name=\"branch_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=" +
-                "\"recv_stuff_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"recv_date\" T" +
-                "ype=\"Edm.DateTime\" Nullable=\"false\" Precision=\"3\" /><Property Name=\"quote_only\" " +
-                "Type=\"Edm.Boolean\" Nullable=\"false\" /><Property Name=\"parts_price\" Type=\"Edm.Dec" +
-                "imal\" Nullable=\"false\" Precision=\"10\" Scale=\"2\" /><Property Name=\"repair_price\" " +
-                "Type=\"Edm.Decimal\" Nullable=\"false\" Precision=\"10\" Scale=\"2\" /><Property Name=\"d" +
-                "iscount\" Type=\"Edm.Decimal\" Nullable=\"false\" Precision=\"4\" Scale=\"2\" /><Property" +
-                " Name=\"real_price\" Type=\"Edm.Decimal\" Nullable=\"false\" Precision=\"10\" Scale=\"2\" " +
-                "/><Property Name=\"out_date\" Type=\"Edm.DateTime\" Precision=\"3\" /><Property Name=\"" +
-                "customer_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"contact_id\" Typ" +
-                "e=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"vehicle_id\" Type=\"Edm.Int32\" Nu" +
-                "llable=\"false\" /><NavigationProperty Name=\"branch\" Relationship=\"AutoMgrDbModel." +
-                "FK_repair_branch\" ToRole=\"branch\" FromRole=\"repair\" /><NavigationProperty Name=\"" +
-                "contact\" Relationship=\"AutoMgrDbModel.FK_repair_contact\" ToRole=\"contact\" FromRo" +
-                "le=\"repair\" /><NavigationProperty Name=\"customer\" Relationship=\"AutoMgrDbModel.F" +
-                "K_repair_customer\" ToRole=\"customer\" FromRole=\"repair\" /><NavigationProperty Nam" +
-                "e=\"repair_item_detail\" Relationship=\"AutoMgrDbModel.FK_repair_item_detail_repair" +
-                "\" ToRole=\"repair_item_detail\" FromRole=\"repair\" /><NavigationProperty Name=\"repa" +
-                "ir_parts\" Relationship=\"AutoMgrDbModel.FK_repair_parts_repair\" ToRole=\"repair_pa" +
-                "rts\" FromRole=\"repair\" /><NavigationProperty Name=\"repair_photo\" Relationship=\"A" +
-                "utoMgrDbModel.FK_repair_photo_repair\" ToRole=\"repair_photo\" FromRole=\"repair\" />" +
-                "<NavigationProperty Name=\"staff\" Relationship=\"AutoMgrDbModel.FK_repair_stuff\" T" +
-                "oRole=\"staff\" FromRole=\"repair\" /><NavigationProperty Name=\"vehicle\" Relationshi" +
-                "p=\"AutoMgrDbModel.FK_repair_vehicle\" ToRole=\"vehicle\" FromRole=\"repair\" /><Navig" +
-                "ationProperty Name=\"shelf_io\" Relationship=\"AutoMgrDbModel.FK_shelf_io_repair\" T" +
-                "oRole=\"shelf_io\" FromRole=\"repair\" /></EntityType><EntityType Name=\"repair_cate\"" +
+                "><Property Name=\"branch_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"" +
+                "stuff_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"supplyer_id\" Type=" +
+                "\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"contact_id\" Type=\"Edm.Int32\" Null" +
+                "able=\"false\" /><Property Name=\"date\" Type=\"Edm.DateTime\" Nullable=\"false\" Precis" +
+                "ion=\"3\" /><Property Name=\"closed\" Type=\"Edm.Boolean\" Nullable=\"false\" /><Navigat" +
+                "ionProperty Name=\"branch\" Relationship=\"AutoMgrDbModel.FK_procure_branch\" ToRole" +
+                "=\"branch\" FromRole=\"procure\" /><NavigationProperty Name=\"contact\" Relationship=\"" +
+                "AutoMgrDbModel.FK_procure_contact\" ToRole=\"contact\" FromRole=\"procure\" /><Naviga" +
+                "tionProperty Name=\"procure_detail\" Relationship=\"AutoMgrDbModel.FK_procure_detai" +
+                "l_procure\" ToRole=\"procure_detail\" FromRole=\"procure\" /><NavigationProperty Name" +
+                "=\"staff\" Relationship=\"AutoMgrDbModel.FK_procure_stuff\" ToRole=\"staff\" FromRole=" +
+                "\"procure\" /><NavigationProperty Name=\"supplyer\" Relationship=\"AutoMgrDbModel.FK_" +
+                "procure_supplyer\" ToRole=\"supplyer\" FromRole=\"procure\" /><NavigationProperty Nam" +
+                "e=\"shelf_io\" Relationship=\"AutoMgrDbModel.FK_shelf_io_procure\" ToRole=\"shelf_io\"" +
+                " FromRole=\"procure\" /></EntityType><EntityType Name=\"procure_detail\"><Key><Prope" +
+                "rtyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p" +
+                "6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/20" +
+                "09/02/edm/annotation\" /><Property Name=\"procure_id\" Type=\"Edm.Int32\" Nullable=\"f" +
+                "alse\" /><Property Name=\"goods_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property " +
+                "Name=\"quantity\" Type=\"Edm.Decimal\" Nullable=\"false\" Precision=\"10\" Scale=\"2\" /><" +
+                "Property Name=\"price\" Type=\"Edm.Decimal\" Nullable=\"false\" Precision=\"10\" Scale=\"" +
+                "2\" /><NavigationProperty Name=\"goods\" Relationship=\"AutoMgrDbModel.FK_procure_de" +
+                "tail_goods\" ToRole=\"goods\" FromRole=\"procure_detail\" /><NavigationProperty Name=" +
+                "\"procure\" Relationship=\"AutoMgrDbModel.FK_procure_detail_procure\" ToRole=\"procur" +
+                "e\" FromRole=\"procure_detail\" /></EntityType><EntityType Name=\"repair\"><Key><Prop" +
+                "ertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" " +
+                "p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2" +
+                "009/02/edm/annotation\" /><Property Name=\"branch_id\" Type=\"Edm.Int32\" Nullable=\"f" +
+                "alse\" /><Property Name=\"recv_stuff_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Prop" +
+                "erty Name=\"recv_date\" Type=\"Edm.DateTime\" Nullable=\"false\" Precision=\"3\" /><Prop" +
+                "erty Name=\"quote_only\" Type=\"Edm.Boolean\" Nullable=\"false\" /><Property Name=\"par" +
+                "ts_price\" Type=\"Edm.Decimal\" Nullable=\"false\" Precision=\"10\" Scale=\"2\" /><Proper" +
+                "ty Name=\"repair_price\" Type=\"Edm.Decimal\" Nullable=\"false\" Precision=\"10\" Scale=" +
+                "\"2\" /><Property Name=\"discount\" Type=\"Edm.Decimal\" Nullable=\"false\" Precision=\"4" +
+                "\" Scale=\"2\" /><Property Name=\"real_price\" Type=\"Edm.Decimal\" Nullable=\"false\" Pr" +
+                "ecision=\"10\" Scale=\"2\" /><Property Name=\"out_date\" Type=\"Edm.DateTime\" Precision" +
+                "=\"3\" /><Property Name=\"vehicle_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Navigati" +
+                "onProperty Name=\"branch\" Relationship=\"AutoMgrDbModel.FK_repair_branch\" ToRole=\"" +
+                "branch\" FromRole=\"repair\" /><NavigationProperty Name=\"repair_item_detail\" Relati" +
+                "onship=\"AutoMgrDbModel.FK_repair_item_detail_repair\" ToRole=\"repair_item_detail\"" +
+                " FromRole=\"repair\" /><NavigationProperty Name=\"repair_parts\" Relationship=\"AutoM" +
+                "grDbModel.FK_repair_parts_repair\" ToRole=\"repair_parts\" FromRole=\"repair\" /><Nav" +
+                "igationProperty Name=\"repair_photo\" Relationship=\"AutoMgrDbModel.FK_repair_photo" +
+                "_repair\" ToRole=\"repair_photo\" FromRole=\"repair\" /><NavigationProperty Name=\"sta" +
+                "ff\" Relationship=\"AutoMgrDbModel.FK_repair_stuff\" ToRole=\"staff\" FromRole=\"repai" +
+                "r\" /><NavigationProperty Name=\"vehicle\" Relationship=\"AutoMgrDbModel.FK_repair_v" +
+                "ehicle\" ToRole=\"vehicle\" FromRole=\"repair\" /><NavigationProperty Name=\"shelf_io\"" +
+                " Relationship=\"AutoMgrDbModel.FK_shelf_io_repair\" ToRole=\"shelf_io\" FromRole=\"re" +
+                "pair\" /></EntityType><EntityType Name=\"repair_cate\"><Key><PropertyRef Name=\"id\" " +
+                "/></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedP" +
+                "attern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotat" +
+                "ion\" /><Property Name=\"name\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"20\" F" +
+                "ixedLength=\"false\" Unicode=\"true\" /><NavigationProperty Name=\"repair_cate_item\" " +
+                "Relationship=\"AutoMgrDbModel.FK_repair_cate_item_repair_cate\" ToRole=\"repair_cat" +
+                "e_item\" FromRole=\"repair_cate\" /><NavigationProperty Name=\"repair_item_detail\" R" +
+                "elationship=\"AutoMgrDbModel.FK_repair_item_detail_repair_cate\" ToRole=\"repair_it" +
+                "em_detail\" FromRole=\"repair_cate\" /></EntityType><EntityType Name=\"repair_cate_i" +
+                "tem\"><Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nu" +
+                "llable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.micr" +
+                "osoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"cate_id\" Type=\"Edm.Int32" +
+                "\" Nullable=\"false\" /><Property Name=\"item_id\" Type=\"Edm.Int32\" Nullable=\"false\" " +
+                "/><NavigationProperty Name=\"repair_cate\" Relationship=\"AutoMgrDbModel.FK_repair_" +
+                "cate_item_repair_cate\" ToRole=\"repair_cate\" FromRole=\"repair_cate_item\" /><Navig" +
+                "ationProperty Name=\"repair_item\" Relationship=\"AutoMgrDbModel.FK_repair_cate_ite" +
+                "m_repair_item\" ToRole=\"repair_item\" FromRole=\"repair_cate_i";
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+            private const string ModelPart2 = "tem\" /></EntityType><EntityType Name=\"repair_item\"><Key><PropertyRef Name=\"id\" />" +
+                "</Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPat" +
+                "tern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotatio" +
+                "n\" /><Property Name=\"name\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"20\" Fix" +
+                "edLength=\"false\" Unicode=\"true\" /><Property Name=\"warking_hour\" Type=\"Edm.Decima" +
+                "l\" Precision=\"6\" Scale=\"2\" /><Property Name=\"price\" Type=\"Edm.Decimal\" Precision" +
+                "=\"8\" Scale=\"2\" /><NavigationProperty Name=\"repair_cate_item\" Relationship=\"AutoM" +
+                "grDbModel.FK_repair_cate_item_repair_item\" ToRole=\"repair_cate_item\" FromRole=\"r" +
+                "epair_item\" /><NavigationProperty Name=\"repair_item_detail\" Relationship=\"AutoMg" +
+                "rDbModel.FK_repair_item_detail_repair_item\" ToRole=\"repair_item_detail\" FromRole" +
+                "=\"repair_item\" /></EntityType><EntityType Name=\"repair_item_detail\"><Key><Proper" +
+                "tyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6" +
+                ":StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/200" +
+                "9/02/edm/annotation\" /><Property Name=\"repair_id\" Type=\"Edm.Int32\" Nullable=\"fal" +
+                "se\" /><Property Name=\"cate_id\" Type=\"Edm.Int32\" /><Property Name=\"item_id\" Type=" +
+                "\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"department_id\" Type=\"Edm.Int32\" N" +
+                "ullable=\"false\" /><Property Name=\"start_time\" Type=\"Edm.DateTime\" Precision=\"3\" " +
+                "/><Property Name=\"end_time\" Type=\"Edm.DateTime\" Precision=\"3\" /><NavigationPrope" +
+                "rty Name=\"department\" Relationship=\"AutoMgrDbModel.FK_repair_item_detail_departm" +
+                "ent\" ToRole=\"department\" FromRole=\"repair_item_detail\" /><NavigationProperty Nam" +
+                "e=\"repair\" Relationship=\"AutoMgrDbModel.FK_repair_item_detail_repair\" ToRole=\"re" +
+                "pair\" FromRole=\"repair_item_detail\" /><NavigationProperty Name=\"repair_cate\" Rel" +
+                "ationship=\"AutoMgrDbModel.FK_repair_item_detail_repair_cate\" ToRole=\"repair_cate" +
+                "\" FromRole=\"repair_item_detail\" /><NavigationProperty Name=\"repair_item\" Relatio" +
+                "nship=\"AutoMgrDbModel.FK_repair_item_detail_repair_item\" ToRole=\"repair_item\" Fr" +
+                "omRole=\"repair_item_detail\" /></EntityType><EntityType Name=\"repair_parts\"><Key>" +
+                "<PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"fa" +
+                "lse\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/" +
+                "ado/2009/02/edm/annotation\" /><Property Name=\"repair_id\" Type=\"Edm.Int32\" Nullab" +
+                "le=\"false\" /><Property Name=\"goods_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Prop" +
+                "erty Name=\"price\" Type=\"Edm.Decimal\" Nullable=\"false\" Precision=\"10\" Scale=\"2\" /" +
+                "><Property Name=\"quote_only\" Type=\"Edm.Boolean\" Nullable=\"false\" /><Property Nam" +
+                "e=\"shelf_io_id\" Type=\"Edm.Int32\" /><NavigationProperty Name=\"goods\" Relationship" +
+                "=\"AutoMgrDbModel.FK_repair_parts_goods\" ToRole=\"goods\" FromRole=\"repair_parts\" /" +
+                "><NavigationProperty Name=\"repair\" Relationship=\"AutoMgrDbModel.FK_repair_parts_" +
+                "repair\" ToRole=\"repair\" FromRole=\"repair_parts\" /><NavigationProperty Name=\"shel" +
+                "f_io\" Relationship=\"AutoMgrDbModel.FK_repair_parts_shelf_io\" ToRole=\"shelf_io\" F" +
+                "romRole=\"repair_parts\" /></EntityType><EntityType Name=\"repair_photo\"><Key><Prop" +
+                "ertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" " +
+                "p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2" +
+                "009/02/edm/annotation\" /><Property Name=\"repair_id\" Type=\"Edm.Int32\" Nullable=\"f" +
+                "alse\" /><Property Name=\"photo\" Type=\"Edm.Binary\" Nullable=\"false\" MaxLength=\"Max" +
+                "\" FixedLength=\"false\" /><NavigationProperty Name=\"repair\" Relationship=\"AutoMgrD" +
+                "bModel.FK_repair_photo_repair\" ToRole=\"repair\" FromRole=\"repair_photo\" /></Entit" +
+                "yType><EntityType Name=\"role\"><Key><PropertyRef Name=\"id\" /></Key><Property Name" +
+                "=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmln" +
+                "s:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=" +
+                "\"name\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"10\" FixedLength=\"false\" Uni" +
+                "code=\"true\" /><NavigationProperty Name=\"staff\" Relationship=\"AutoMgrDbModel.FK_s" +
+                "taff_role\" ToRole=\"staff\" FromRole=\"role\" /></EntityType><EntityType Name=\"sale\"" +
                 "><Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullab" +
                 "le=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsof" +
-                "t.com/ado/2009/02/edm/annotation\" /><Property Name=\"name\" Type=\"Edm.String\" Null" +
-                "able=\"false\" MaxLength=\"20\" FixedLength=\"false\" Unicode=\"true\" /><NavigationProp" +
-                "erty Name=\"repair_cate_item\" Relationship=\"AutoMgrDbModel.FK_repair_cate_item_re" +
-                "pair_cate\" ToRole=\"repair_cate_item\" FromRole=\"repair_cate\" /><NavigationPropert" +
-                "y Name=\"repair_item_detail\" Relationship=\"AutoMgrDbModel.FK_repair_item_detail_r" +
-                "epair_cate\" ToRole=\"repair_item_detail\" FromRole=\"repair_cate\" /></EntityType><E" +
-                "ntityType Name=\"repair_cate_item\"><Key><PropertyRef Name=\"id\" /></Key><Property " +
-                "Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGenerat";
+                "t.com/ado/2009/02/edm/annotation\" /><Property Name=\"branch_id\" Type=\"Edm.Int32\" " +
+                "Nullable=\"false\" /><Property Name=\"stuff_id\" Type=\"Edm.Int32\" Nullable=\"false\" /" +
+                "><Property Name=\"customer_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name" +
+                "=\"parts_price\" Type=\"Edm.Decimal\" Nullable=\"false\" Precision=\"10\" Scale=\"2\" /><P" +
+                "roperty Name=\"express_fee\" Type=\"Edm.Decimal\" Precision=\"6\" Scale=\"2\" /><Propert" +
+                "y Name=\"express_id\" Type=\"Edm.Int32\" /><NavigationProperty Name=\"customer\" Relat" +
+                "ionship=\"AutoMgrDbModel.FK_sale_customer\" ToRole=\"customer\" FromRole=\"sale\" /><N" +
+                "avigationProperty Name=\"express\" Relationship=\"AutoMgrDbModel.FK_sale_express\" T" +
+                "oRole=\"express\" FromRole=\"sale\" /><NavigationProperty Name=\"sale_detail\" Relatio" +
+                "nship=\"AutoMgrDbModel.FK_sale_detail_sale\" ToRole=\"sale_detail\" FromRole=\"sale\" " +
+                "/><NavigationProperty Name=\"staff\" Relationship=\"AutoMgrDbModel.FK_sale_stuff\" T" +
+                "oRole=\"staff\" FromRole=\"sale\" /><NavigationProperty Name=\"shelf_io\" Relationship" +
+                "=\"AutoMgrDbModel.FK_shelf_io_sale\" ToRole=\"shelf_io\" FromRole=\"sale\" /></EntityT" +
+                "ype><EntityType Name=\"sale_detail\"><Key><PropertyRef Name=\"id\" /></Key><Property" +
+                " Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\"" +
+                " xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property " +
+                "Name=\"sale_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"goods_id\" Typ" +
+                "e=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"price\" Type=\"Edm.Decimal\" Nulla" +
+                "ble=\"false\" Precision=\"10\" Scale=\"2\" /><Property Name=\"order_quantity\" Type=\"Edm" +
+                ".Decimal\" Nullable=\"false\" Precision=\"10\" Scale=\"2\" /><Property Name=\"stock_quan" +
+                "tity\" Type=\"Edm.Decimal\" Precision=\"10\" Scale=\"2\" /><Property Name=\"packet\" Type" +
+                "=\"Edm.Boolean\" Nullable=\"false\" /><Property Name=\"shelf_io_id\" Type=\"Edm.Int32\" " +
+                "/><NavigationProperty Name=\"goods\" Relationship=\"AutoMgrDbModel.FK_sale_detail_g" +
+                "oods\" ToRole=\"goods\" FromRole=\"sale_detail\" /><NavigationProperty Name=\"sale\" Re" +
+                "lationship=\"AutoMgrDbModel.FK_sale_detail_sale\" ToRole=\"sale\" FromRole=\"sale_det" +
+                "ail\" /><NavigationProperty Name=\"shelf_io\" Relationship=\"AutoMgrDbModel.FK_sale_" +
+                "detail_shelf_io\" ToRole=\"shelf_io\" FromRole=\"sale_detail\" /></EntityType><Entity" +
+                "Type Name=\"shelf\"><Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"" +
+                "Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http:/" +
+                "/schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"branch_id\" " +
+                "Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"barcode\" Type=\"Edm.String\" N" +
+                "ullable=\"false\" MaxLength=\"50\" FixedLength=\"false\" Unicode=\"false\" /><Property N" +
+                "ame=\"name\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"20\" FixedLength=\"false\"" +
+                " Unicode=\"true\" /><Property Name=\"goods_id\" Type=\"Edm.Int32\" Nullable=\"false\" />" +
+                "<Property Name=\"quantity\" Type=\"Edm.Decimal\" Nullable=\"false\" Precision=\"10\" Sca" +
+                "le=\"2\" /><NavigationProperty Name=\"branch\" Relationship=\"AutoMgrDbModel.FK_shelf" +
+                "_branch\" ToRole=\"branch\" FromRole=\"shelf\" /><NavigationProperty Name=\"goods\" Rel" +
+                "ationship=\"AutoMgrDbModel.FK_shelf_goods\" ToRole=\"goods\" FromRole=\"shelf\" /><Nav" +
+                "igationProperty Name=\"shelf_io\" Relationship=\"AutoMgrDbModel.FK_shelf_io_shelf\" " +
+                "ToRole=\"shelf_io\" FromRole=\"shelf\" /></EntityType><EntityType Name=\"shelf_io\"><K" +
+                "ey><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=" +
+                "\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http:";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-            private const string ModelPart2 = "edPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annot" +
-                "ation\" /><Property Name=\"cate_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property " +
-                "Name=\"item_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><NavigationProperty Name=\"rep" +
-                "air_cate\" Relationship=\"AutoMgrDbModel.FK_repair_cate_item_repair_cate\" ToRole=\"" +
-                "repair_cate\" FromRole=\"repair_cate_item\" /><NavigationProperty Name=\"repair_item" +
-                "\" Relationship=\"AutoMgrDbModel.FK_repair_cate_item_repair_item\" ToRole=\"repair_i" +
-                "tem\" FromRole=\"repair_cate_item\" /></EntityType><EntityType Name=\"repair_item\"><" +
-                "Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable" +
-                "=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft." +
-                "com/ado/2009/02/edm/annotation\" /><Property Name=\"name\" Type=\"Edm.String\" Nullab" +
-                "le=\"false\" MaxLength=\"20\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"w" +
-                "arking_hour\" Type=\"Edm.Decimal\" Precision=\"6\" Scale=\"2\" /><Property Name=\"price\"" +
-                " Type=\"Edm.Decimal\" Precision=\"8\" Scale=\"2\" /><NavigationProperty Name=\"repair_c" +
-                "ate_item\" Relationship=\"AutoMgrDbModel.FK_repair_cate_item_repair_item\" ToRole=\"" +
-                "repair_cate_item\" FromRole=\"repair_item\" /><NavigationProperty Name=\"repair_item" +
-                "_detail\" Relationship=\"AutoMgrDbModel.FK_repair_item_detail_repair_item\" ToRole=" +
-                "\"repair_item_detail\" FromRole=\"repair_item\" /></EntityType><EntityType Name=\"rep" +
-                "air_item_detail\"><Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"E" +
-                "dm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://" +
-                "schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"repair_id\" T" +
-                "ype=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"cate_id\" Type=\"Edm.Int32\" /><" +
-                "Property Name=\"item_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"depa" +
-                "rtment_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"start_time\" Type=" +
-                "\"Edm.DateTime\" Precision=\"3\" /><Property Name=\"end_time\" Type=\"Edm.DateTime\" Pre" +
-                "cision=\"3\" /><NavigationProperty Name=\"department\" Relationship=\"AutoMgrDbModel." +
-                "FK_repair_item_detail_department\" ToRole=\"department\" FromRole=\"repair_item_deta" +
-                "il\" /><NavigationProperty Name=\"repair\" Relationship=\"AutoMgrDbModel.FK_repair_i" +
-                "tem_detail_repair\" ToRole=\"repair\" FromRole=\"repair_item_detail\" /><NavigationPr" +
-                "operty Name=\"repair_cate\" Relationship=\"AutoMgrDbModel.FK_repair_item_detail_rep" +
-                "air_cate\" ToRole=\"repair_cate\" FromRole=\"repair_item_detail\" /><NavigationProper" +
-                "ty Name=\"repair_item\" Relationship=\"AutoMgrDbModel.FK_repair_item_detail_repair_" +
-                "item\" ToRole=\"repair_item\" FromRole=\"repair_item_detail\" /></EntityType><EntityT" +
-                "ype Name=\"repair_parts\"><Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" " +
-                "Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"" +
-                "http://schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"repai" +
-                "r_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"goods_id\" Type=\"Edm.In" +
-                "t32\" Nullable=\"false\" /><Property Name=\"price\" Type=\"Edm.Decimal\" Nullable=\"fals" +
-                "e\" Precision=\"10\" Scale=\"2\" /><Property Name=\"quote_only\" Type=\"Edm.Boolean\" Nul" +
-                "lable=\"false\" /><Property Name=\"shelf_io_id\" Type=\"Edm.Int32\" /><NavigationPrope" +
-                "rty Name=\"goods\" Relationship=\"AutoMgrDbModel.FK_repair_parts_goods\" ToRole=\"goo" +
-                "ds\" FromRole=\"repair_parts\" /><NavigationProperty Name=\"repair\" Relationship=\"Au" +
-                "toMgrDbModel.FK_repair_parts_repair\" ToRole=\"repair\" FromRole=\"repair_parts\" /><" +
-                "NavigationProperty Name=\"shelf_io\" Relationship=\"AutoMgrDbModel.FK_repair_parts_" +
-                "shelf_io\" ToRole=\"shelf_io\" FromRole=\"repair_parts\" /></EntityType><EntityType N" +
-                "ame=\"repair_photo\"><Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=" +
-                "\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http:" +
-                "//schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"repair_id\"" +
-                " Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"photo\" Type=\"Edm.Binary\" Nu" +
-                "llable=\"false\" MaxLength=\"Max\" FixedLength=\"false\" /><NavigationProperty Name=\"r" +
-                "epair\" Relationship=\"AutoMgrDbModel.FK_repair_photo_repair\" ToRole=\"repair\" From" +
-                "Role=\"repair_photo\" /></EntityType><EntityType Name=\"role\"><Key><PropertyRef Nam" +
-                "e=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGen" +
-                "eratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/" +
-                "annotation\" /><Property Name=\"name\" Type=\"Edm.String\" Nullable=\"false\" MaxLength" +
-                "=\"10\" FixedLength=\"false\" Unicode=\"true\" /><NavigationProperty Name=\"staff\" Rela" +
-                "tionship=\"AutoMgrDbModel.FK_staff_role\" ToRole=\"staff\" FromRole=\"role\" /></Entit" +
-                "yType><EntityType Name=\"sale\"><Key><PropertyRef Name=\"id\" /></Key><Property Name" +
-                "=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmln" +
-                "s:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=" +
-                "\"branch_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"stuff_id\" Type=\"" +
-                "Edm.Int32\" Nullable=\"false\" /><Property Name=\"customer_id\" Type=\"Edm.Int32\" Null" +
-                "able=\"false\" /><Property Name=\"parts_price\" Type=\"Edm.Decimal\" Nullable=\"false\" " +
-                "Precision=\"10\" Scale=\"2\" /><Property Name=\"express_fee\" Type=\"Edm.Decimal\" Preci" +
-                "sion=\"6\" Scale=\"2\" /><Property Name=\"express_id\" Type=\"Edm.Int32\" /><NavigationP" +
-                "roperty Name=\"customer\" Relationship=\"AutoMgrDbModel.FK_sale_customer\" ToRole=\"c" +
-                "ustomer\" FromRole=\"sale\" /><NavigationProperty Name=\"express\" Relationship=\"Auto" +
-                "MgrDbModel.FK_sale_express\" ToRole=\"express\" FromRole=\"sale\" /><NavigationProper" +
-                "ty Name=\"sale_detail\" Relationship=\"AutoMgrDbModel.FK_sale_detail_sale\" ToRole=\"" +
-                "sale_detail\" FromRole=\"sale\" /><NavigationProperty Name=\"staff\" Relationship=\"Au" +
-                "toMgrDbModel.FK_sale_stuff\" ToRole=\"staff\" FromRole=\"sale\" /><NavigationProperty" +
-                " Name=\"shelf_io\" Relationship=\"AutoMgrDbModel.FK_shelf_io_sale\" ToRole=\"shelf_io" +
-                "\" FromRole=\"sale\" /></EntityType><EntityType Name=\"sale_detail\"><Key><PropertyRe" +
-                "f Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:Sto" +
-                "reGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02" +
-                "/edm/annotation\" /><Property Name=\"sale_id\" Type=\"Edm.Int32\" Nullable=\"false\" />" +
-                "<Property Name=\"goods_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"pr" +
-                "ice\" Type=\"Edm.Decimal\" Nullable=\"false\" Precision=\"10\" Scale=\"2\" /><Property Na" +
-                "me=\"order_quantity\" Type=\"Edm.Decimal\" Nullable=\"false\" Precision=\"10\" Scale=\"2\"" +
-                " /><Property Name=\"stock_quantity\" Type=\"Edm.Decimal\" Precision=\"10\" Scale=\"2\" /" +
-                "><Property Name=\"packet\" Type=\"Edm.Boolean\" Nullable=\"false\" /><Property Name=\"s" +
-                "helf_io_id\" Type=\"Edm.Int32\" /><NavigationProperty Name=\"goods\" Relationship=\"Au" +
-                "toMgrDbModel.FK_sale_detail_goods\" ToRole=\"goods\" FromRole=\"sale_detail\" /><Navi" +
-                "gationProperty Name=\"sale\" Relationship=\"AutoMgrDbModel.FK_sale_detail_sale\" ToR" +
-                "ole=\"sale\" FromRole=\"sale_detail\" /><NavigationProperty Name=\"shelf_io\" Relation" +
-                "ship=\"AutoMgrDbModel.FK_sale_detail_shelf_io\" ToRole=\"shelf_io\" FromRole=\"sale_d" +
-                "etail\" /></EntityType><EntityType Name=\"shelf\"><Key><PropertyRef Name=\"id\" /></K" +
-                "ey><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPatter" +
-                "n=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\" " +
-                "/><Property Name=\"branch_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=" +
-                "\"barcode\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"50\" FixedLength=\"false\" " +
-                "Unicode=\"false\" /><Property Name=\"name\" Type=\"Edm.String\" Nullable=\"false\" MaxLe" +
-                "ngth=\"20\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"goods_id\" Type=\"E" +
-                "dm.Int32\" Nullable=\"false\" /><Property Name=\"quantity\" Type=\"Edm.Decimal\" Nullab" +
-                "le=\"false\" Precision=\"10\" Scale=\"2\" /><NavigationProperty N";
+            private const string ModelPart3 = "//schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"repair_id\" " +
+                "Type=\"Edm.Int32\" /><Property Name=\"sale_id\" Type=\"Edm.Int32\" /><Property Name=\"p" +
+                "rocure_id\" Type=\"Edm.Int32\" /><Property Name=\"inventory_id\" Type=\"Edm.Int32\" /><" +
+                "Property Name=\"shelf_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"qua" +
+                "ntity\" Type=\"Edm.Decimal\" Nullable=\"false\" Precision=\"8\" Scale=\"2\" /><Property N" +
+                "ame=\"datetime\" Type=\"Edm.DateTime\" Nullable=\"false\" Precision=\"3\" /><NavigationP" +
+                "roperty Name=\"inventory\" Relationship=\"AutoMgrDbModel.FK_shelf_io_inventory\" ToR" +
+                "ole=\"inventory\" FromRole=\"shelf_io\" /><NavigationProperty Name=\"procure\" Relatio" +
+                "nship=\"AutoMgrDbModel.FK_shelf_io_procure\" ToRole=\"procure\" FromRole=\"shelf_io\" " +
+                "/><NavigationProperty Name=\"repair\" Relationship=\"AutoMgrDbModel.FK_shelf_io_rep" +
+                "air\" ToRole=\"repair\" FromRole=\"shelf_io\" /><NavigationProperty Name=\"repair_part" +
+                "s\" Relationship=\"AutoMgrDbModel.FK_repair_parts_shelf_io\" ToRole=\"repair_parts\" " +
+                "FromRole=\"shelf_io\" /><NavigationProperty Name=\"sale\" Relationship=\"AutoMgrDbMod" +
+                "el.FK_shelf_io_sale\" ToRole=\"sale\" FromRole=\"shelf_io\" /><NavigationProperty Nam" +
+                "e=\"sale_detail\" Relationship=\"AutoMgrDbModel.FK_sale_detail_shelf_io\" ToRole=\"sa" +
+                "le_detail\" FromRole=\"shelf_io\" /><NavigationProperty Name=\"shelf\" Relationship=\"" +
+                "AutoMgrDbModel.FK_shelf_io_shelf\" ToRole=\"shelf\" FromRole=\"shelf_io\" /></EntityT" +
+                "ype><EntityType Name=\"staff\"><Key><PropertyRef Name=\"id\" /></Key><Property Name=" +
+                "\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns" +
+                ":p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"" +
+                "branch_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"name\" Type=\"Edm.S" +
+                "tring\" Nullable=\"false\" MaxLength=\"10\" FixedLength=\"false\" Unicode=\"true\" /><Pro" +
+                "perty Name=\"idcard_num\" Type=\"Edm.String\" MaxLength=\"25\" FixedLength=\"false\" Uni" +
+                "code=\"true\" /><Property Name=\"department_id\" Type=\"Edm.Int32\" Nullable=\"false\" /" +
+                "><Property Name=\"role_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"ic" +
+                "card_num\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"20\" FixedLength=\"false\" " +
+                "Unicode=\"true\" /><Property Name=\"deleted\" Type=\"Edm.Boolean\" Nullable=\"false\" />" +
+                "<Property Name=\"inserted_time\" Type=\"Edm.DateTime\" Nullable=\"false\" Precision=\"3" +
+                "\" /><NavigationProperty Name=\"branch\" Relationship=\"AutoMgrDbModel.FK_staff_bran" +
+                "ch\" ToRole=\"branch\" FromRole=\"staff\" /><NavigationProperty Name=\"department\" Rel" +
+                "ationship=\"AutoMgrDbModel.FK_staff_department\" ToRole=\"department\" FromRole=\"sta" +
+                "ff\" /><NavigationProperty Name=\"inventory\" Relationship=\"AutoMgrDbModel.FK_inven" +
+                "tory_staff\" ToRole=\"inventory\" FromRole=\"staff\" /><NavigationProperty Name=\"proc" +
+                "ure\" Relationship=\"AutoMgrDbModel.FK_procure_stuff\" ToRole=\"procure\" FromRole=\"s" +
+                "taff\" /><NavigationProperty Name=\"repair\" Relationship=\"AutoMgrDbModel.FK_repair" +
+                "_stuff\" ToRole=\"repair\" FromRole=\"staff\" /><NavigationProperty Name=\"role\" Relat" +
+                "ionship=\"AutoMgrDbModel.FK_staff_role\" ToRole=\"role\" FromRole=\"staff\" /><Navigat" +
+                "ionProperty Name=\"sale\" Relationship=\"AutoMgrDbModel.FK_sale_stuff\" ToRole=\"sale" +
+                "\" FromRole=\"staff\" /></EntityType><EntityType Name=\"supplyer\"><Key><PropertyRef " +
+                "Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:Store" +
+                "GeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/e" +
+                "dm/annotation\" /><Property Name=\"company\" Type=\"Edm.String\" Nullable=\"false\" Max" +
+                "Length=\"20\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"address\" Type=\"" +
+                "Edm.String\" MaxLength=\"50\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"" +
+                "phone\" Type=\"Edm.String\" MaxLength=\"20\" FixedLength=\"false\" Unicode=\"true\" /><Na" +
+                "vigationProperty Name=\"procure\" Relationship=\"AutoMgrDbModel.FK_procure_supplyer" +
+                "\" ToRole=\"procure\" FromRole=\"supplyer\" /><NavigationProperty Name=\"supplyer_cont" +
+                "act\" Relationship=\"AutoMgrDbModel.FK_supplyer_contact_supplyer\" ToRole=\"supplyer" +
+                "_contact\" FromRole=\"supplyer\" /></EntityType><EntityType Name=\"supplyer_contact\"" +
+                "><Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullab" +
+                "le=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsof" +
+                "t.com/ado/2009/02/edm/annotation\" /><Property Name=\"supplyer_id\" Type=\"Edm.Int32" +
+                "\" Nullable=\"false\" /><Property Name=\"contact_id\" Type=\"Edm.Int32\" Nullable=\"fals" +
+                "e\" /><NavigationProperty Name=\"contact\" Relationship=\"AutoMgrDbModel.FK_supplyer" +
+                "_contact_contact\" ToRole=\"contact\" FromRole=\"supplyer_contact\" /><NavigationProp" +
+                "erty Name=\"supplyer\" Relationship=\"AutoMgrDbModel.FK_supplyer_contact_supplyer\" " +
+                "ToRole=\"supplyer\" FromRole=\"supplyer_contact\" /></EntityType><EntityType Name=\"v" +
+                "ehicle\"><Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\"" +
+                " Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.m" +
+                "icrosoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"car_num\" Type=\"Edm.St" +
+                "ring\" Nullable=\"false\" MaxLength=\"15\" FixedLength=\"false\" Unicode=\"true\" /><Prop" +
+                "erty Name=\"engine_num\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"20\" FixedLe" +
+                "ngth=\"false\" Unicode=\"true\" /><Property Name=\"frame_num\" Type=\"Edm.String\" Nulla" +
+                "ble=\"false\" MaxLength=\"20\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"" +
+                "brand\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"10\" FixedLength=\"false\" Uni" +
+                "code=\"true\" /><Property Name=\"model\" Type=\"Edm.String\" Nullable=\"false\" MaxLengt" +
+                "h=\"10\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"customer_id\" Type=\"E" +
+                "dm.Int32\" Nullable=\"false\" /><NavigationProperty Name=\"customer\" Relationship=\"A" +
+                "utoMgrDbModel.FK_vehicle_customer\" ToRole=\"customer\" FromRole=\"vehicle\" /><Navig" +
+                "ationProperty Name=\"repair\" Relationship=\"AutoMgrDbModel.FK_repair_vehicle\" ToRo" +
+                "le=\"repair\" FromRole=\"vehicle\" /></EntityType><Association Name=\"FK_barcode_good" +
+                "s_goods\"><End Type=\"AutoMgrDbModel.goods\" Role=\"goods\" Multiplicity=\"1\" /><End T" +
+                "ype=\"AutoMgrDbModel.barcode_goods\" Role=\"barcode_goods\" Multiplicity=\"*\" /><Refe" +
+                "rentialConstraint><Principal Role=\"goods\"><PropertyRef Name=\"id\" /></Principal><" +
+                "Dependent Role=\"barcode_goods\"><PropertyRef Name=\"goods_id\" /></Dependent></Refe" +
+                "rentialConstraint></Association><Association Name=\"FK_inventory_branch\"><End Typ" +
+                "e=\"AutoMgrDbModel.branch\" Role=\"branch\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbM" +
+                "odel.inventory\" Role=\"inventory\" Multiplicity=\"*\" /><ReferentialConstraint><Prin" +
+                "cipal Role=\"branch\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"invent" +
+                "ory\"><PropertyRef Name=\"branch_id\" /></Dependent></ReferentialConstraint></Assoc" +
+                "iation><Association Name=\"FK_procure_branch\"><End Type=\"AutoMgrDbModel.branch\" R" +
+                "ole=\"branch\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.procure\" Role=\"procure" +
+                "\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"branch\"><PropertyRe" +
+                "f Name=\"id\" /></Principal><Dependent Role=\"procure\"><PropertyRef Name=\"branch_id" +
+                "\" /></Dependent></ReferentialConstraint></Association><Association Name=\"FK_repa" +
+                "ir_branch\"><End Type=\"AutoMgrDbModel.branch\" Role=\"branch\" Multiplicity=\"1\" /><E" +
+                "nd Type=\"AutoMgrDbModel.repair\" Role=\"repair\" Multiplicity=\"*\" /><ReferentialCon" +
+                "straint><Principal Role=\"branch\"><PropertyRef Name=\"id\" /></Principal><Dependent" +
+                " Role=\"repair\"><PropertyRef Name=\"branch_id\" /></Dependent></ReferentialConstrai" +
+                "nt></Association><Association Name=\"FK_shelf_branch\"><End Type=\"AutoMgrDbModel.b" +
+                "ranch\" Role=\"branch\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.shelf\" Role=\"s" +
+                "helf\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"branch\"><Proper" +
+                "tyRef Name=\"id\" /></Principal><Dependent Role=\"shelf\"><PropertyRef Name=\"branch_" +
+                "id\" /></Dependent></ReferentialConstraint></Association><As";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-            private const string ModelPart3 = "ame=\"branch\" Relationship=\"AutoMgrDbModel.FK_shelf_branch\" ToRole=\"branch\" FromRo" +
-                "le=\"shelf\" /><NavigationProperty Name=\"goods\" Relationship=\"AutoMgrDbModel.FK_sh" +
-                "elf_goods\" ToRole=\"goods\" FromRole=\"shelf\" /><NavigationProperty Name=\"shelf_io\"" +
-                " Relationship=\"AutoMgrDbModel.FK_shelf_io_shelf\" ToRole=\"shelf_io\" FromRole=\"she" +
-                "lf\" /></EntityType><EntityType Name=\"shelf_io\"><Key><PropertyRef Name=\"id\" /></K" +
-                "ey><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPatter" +
-                "n=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\" " +
-                "/><Property Name=\"repair_id\" Type=\"Edm.Int32\" /><Property Name=\"sale_id\" Type=\"E" +
-                "dm.Int32\" /><Property Name=\"procure_id\" Type=\"Edm.Int32\" /><Property Name=\"inven" +
-                "tory_id\" Type=\"Edm.Int32\" /><Property Name=\"shelf_id\" Type=\"Edm.Int32\" Nullable=" +
-                "\"false\" /><Property Name=\"quantity\" Type=\"Edm.Decimal\" Nullable=\"false\" Precisio" +
-                "n=\"8\" Scale=\"2\" /><Property Name=\"datetime\" Type=\"Edm.DateTime\" Nullable=\"false\"" +
-                " Precision=\"3\" /><NavigationProperty Name=\"inventory\" Relationship=\"AutoMgrDbMod" +
-                "el.FK_shelf_io_inventory\" ToRole=\"inventory\" FromRole=\"shelf_io\" /><NavigationPr" +
-                "operty Name=\"procure\" Relationship=\"AutoMgrDbModel.FK_shelf_io_procure\" ToRole=\"" +
-                "procure\" FromRole=\"shelf_io\" /><NavigationProperty Name=\"repair\" Relationship=\"A" +
-                "utoMgrDbModel.FK_shelf_io_repair\" ToRole=\"repair\" FromRole=\"shelf_io\" /><Navigat" +
-                "ionProperty Name=\"repair_parts\" Relationship=\"AutoMgrDbModel.FK_repair_parts_she" +
-                "lf_io\" ToRole=\"repair_parts\" FromRole=\"shelf_io\" /><NavigationProperty Name=\"sal" +
-                "e\" Relationship=\"AutoMgrDbModel.FK_shelf_io_sale\" ToRole=\"sale\" FromRole=\"shelf_" +
-                "io\" /><NavigationProperty Name=\"sale_detail\" Relationship=\"AutoMgrDbModel.FK_sal" +
-                "e_detail_shelf_io\" ToRole=\"sale_detail\" FromRole=\"shelf_io\" /><NavigationPropert" +
-                "y Name=\"shelf\" Relationship=\"AutoMgrDbModel.FK_shelf_io_shelf\" ToRole=\"shelf\" Fr" +
-                "omRole=\"shelf_io\" /></EntityType><EntityType Name=\"staff\"><Key><PropertyRef Name" +
-                "=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGene" +
-                "ratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/a" +
-                "nnotation\" /><Property Name=\"branch_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Pro" +
-                "perty Name=\"name\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"10\" FixedLength=" +
-                "\"false\" Unicode=\"true\" /><Property Name=\"idcard_num\" Type=\"Edm.String\" MaxLength" +
-                "=\"25\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"department_id\" Type=\"" +
-                "Edm.Int32\" Nullable=\"false\" /><Property Name=\"role_id\" Type=\"Edm.Int32\" Nullable" +
-                "=\"false\" /><Property Name=\"iccard_num\" Type=\"Edm.String\" Nullable=\"false\" MaxLen" +
-                "gth=\"20\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"deleted\" Type=\"Edm" +
-                ".Boolean\" Nullable=\"false\" /><Property Name=\"inserted_time\" Type=\"Edm.DateTime\" " +
-                "Nullable=\"false\" Precision=\"3\" /><NavigationProperty Name=\"branch\" Relationship=" +
-                "\"AutoMgrDbModel.FK_staff_branch\" ToRole=\"branch\" FromRole=\"staff\" /><NavigationP" +
-                "roperty Name=\"department\" Relationship=\"AutoMgrDbModel.FK_staff_department\" ToRo" +
-                "le=\"department\" FromRole=\"staff\" /><NavigationProperty Name=\"inventory\" Relation" +
-                "ship=\"AutoMgrDbModel.FK_inventory_staff\" ToRole=\"inventory\" FromRole=\"staff\" /><" +
-                "NavigationProperty Name=\"procure\" Relationship=\"AutoMgrDbModel.FK_procure_stuff\"" +
-                " ToRole=\"procure\" FromRole=\"staff\" /><NavigationProperty Name=\"repair\" Relations" +
-                "hip=\"AutoMgrDbModel.FK_repair_stuff\" ToRole=\"repair\" FromRole=\"staff\" /><Navigat" +
-                "ionProperty Name=\"role\" Relationship=\"AutoMgrDbModel.FK_staff_role\" ToRole=\"role" +
-                "\" FromRole=\"staff\" /><NavigationProperty Name=\"sale\" Relationship=\"AutoMgrDbMode" +
-                "l.FK_sale_stuff\" ToRole=\"sale\" FromRole=\"staff\" /></EntityType><EntityType Name=" +
-                "\"supplyer\"><Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int" +
-                "32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schema" +
-                "s.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"company\" Type=\"Edm" +
-                ".String\" Nullable=\"false\" MaxLength=\"20\" FixedLength=\"false\" Unicode=\"true\" /><P" +
-                "roperty Name=\"address\" Type=\"Edm.String\" MaxLength=\"50\" FixedLength=\"false\" Unic" +
-                "ode=\"true\" /><Property Name=\"phone\" Type=\"Edm.String\" MaxLength=\"20\" FixedLength" +
-                "=\"false\" Unicode=\"true\" /><NavigationProperty Name=\"procure\" Relationship=\"AutoM" +
-                "grDbModel.FK_procure_supplyer\" ToRole=\"procure\" FromRole=\"supplyer\" /><Navigatio" +
-                "nProperty Name=\"supplyer_contact\" Relationship=\"AutoMgrDbModel.FK_supplyer_conta" +
-                "ct_supplyer\" ToRole=\"supplyer_contact\" FromRole=\"supplyer\" /></EntityType><Entit" +
-                "yType Name=\"supplyer_contact\"><Key><PropertyRef Name=\"id\" /></Key><Property Name" +
-                "=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmln" +
-                "s:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=" +
-                "\"supplyer_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"contact_id\" Ty" +
-                "pe=\"Edm.Int32\" Nullable=\"false\" /><NavigationProperty Name=\"contact\" Relationshi" +
-                "p=\"AutoMgrDbModel.FK_supplyer_contact_contact\" ToRole=\"contact\" FromRole=\"supply" +
-                "er_contact\" /><NavigationProperty Name=\"supplyer\" Relationship=\"AutoMgrDbModel.F" +
-                "K_supplyer_contact_supplyer\" ToRole=\"supplyer\" FromRole=\"supplyer_contact\" /></E" +
-                "ntityType><EntityType Name=\"vehicle\"><Key><PropertyRef Name=\"id\" /></Key><Proper" +
-                "ty Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identit" +
-                "y\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Propert" +
-                "y Name=\"car_num\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"15\" FixedLength=\"" +
-                "false\" Unicode=\"true\" /><Property Name=\"engine_num\" Type=\"Edm.String\" Nullable=\"" +
-                "false\" MaxLength=\"20\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"frame" +
-                "_num\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"20\" FixedLength=\"false\" Unic" +
-                "ode=\"true\" /><Property Name=\"brand\" Type=\"Edm.String\" Nullable=\"false\" MaxLength" +
-                "=\"10\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"model\" Type=\"Edm.Stri" +
-                "ng\" Nullable=\"false\" MaxLength=\"10\" FixedLength=\"false\" Unicode=\"true\" /><Proper" +
-                "ty Name=\"customer_id\" Type=\"Edm.Int32\" Nullable=\"false\" /><NavigationProperty Na" +
-                "me=\"customer\" Relationship=\"AutoMgrDbModel.FK_vehicle_customer\" ToRole=\"customer" +
-                "\" FromRole=\"vehicle\" /><NavigationProperty Name=\"repair\" Relationship=\"AutoMgrDb" +
-                "Model.FK_repair_vehicle\" ToRole=\"repair\" FromRole=\"vehicle\" /></EntityType><Asso" +
-                "ciation Name=\"FK_barcode_goods_goods\"><End Type=\"AutoMgrDbModel.goods\" Role=\"goo" +
-                "ds\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.barcode_goods\" Role=\"barcode_go" +
-                "ods\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"goods\"><Property" +
-                "Ref Name=\"id\" /></Principal><Dependent Role=\"barcode_goods\"><PropertyRef Name=\"g" +
-                "oods_id\" /></Dependent></ReferentialConstraint></Association><Association Name=\"" +
-                "FK_inventory_branch\"><End Type=\"AutoMgrDbModel.branch\" Role=\"branch\" Multiplicit" +
-                "y=\"1\" /><End Type=\"AutoMgrDbModel.inventory\" Role=\"inventory\" Multiplicity=\"*\" /" +
-                "><ReferentialConstraint><Principal Role=\"branch\"><PropertyRef Name=\"id\" /></Prin" +
-                "cipal><Dependent Role=\"inventory\"><PropertyRef Name=\"branch_id\" /></Dependent></" +
-                "ReferentialConstraint></Association><Association Name=\"FK_procure_branch\"><End T" +
-                "ype=\"AutoMgrDbModel.branch\" Role=\"branch\" Multiplicity=\"1\" /><End Type=\"AutoMgrD" +
-                "bModel.procure\" Role=\"procure\" Multiplicity=\"*\" /><ReferentialConstraint><Princi" +
-                "pal Role=\"branch\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"procure\"" +
-                "><PropertyRef Name=\"branch_id\" /></Dependent></ReferentialConstraint></Associati" +
-                "on><Association Name=\"FK_repair_branch\"><End Type=\"AutoMgrDbModel.branch\" Role=\"" +
-                "branch\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.repair\" Role=\"repair\" Multi" +
-                "plicity=\"*\" /><ReferentialConstraint><Principal Role=\"branc";
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-            private const string ModelPart4 = "h\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"repair\"><PropertyRef Nam" +
-                "e=\"branch_id\" /></Dependent></ReferentialConstraint></Association><Association N" +
-                "ame=\"FK_shelf_branch\"><End Type=\"AutoMgrDbModel.branch\" Role=\"branch\" Multiplici" +
-                "ty=\"1\" /><End Type=\"AutoMgrDbModel.shelf\" Role=\"shelf\" Multiplicity=\"*\" /><Refer" +
-                "entialConstraint><Principal Role=\"branch\"><PropertyRef Name=\"id\" /></Principal><" +
-                "Dependent Role=\"shelf\"><PropertyRef Name=\"branch_id\" /></Dependent></Referential" +
-                "Constraint></Association><Association Name=\"FK_staff_branch\"><End Type=\"AutoMgrD" +
-                "bModel.branch\" Role=\"branch\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.staff\"" +
-                " Role=\"staff\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"branch\"" +
-                "><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"staff\"><PropertyRef Name=" +
-                "\"branch_id\" /></Dependent></ReferentialConstraint></Association><Association Nam" +
-                "e=\"FK_customer_contact_contact\"><End Type=\"AutoMgrDbModel.contact\" Role=\"contact" +
-                "\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.customer_contact\" Role=\"customer_" +
-                "contact\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"contact\"><Pr" +
-                "opertyRef Name=\"id\" /></Principal><Dependent Role=\"customer_contact\"><PropertyRe" +
-                "f Name=\"contact_id\" /></Dependent></ReferentialConstraint></Association><Associa" +
-                "tion Name=\"FK_procure_contact\"><End Type=\"AutoMgrDbModel.contact\" Role=\"contact\"" +
-                " Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.procure\" Role=\"procure\" Multiplici" +
-                "ty=\"*\" /><ReferentialConstraint><Principal Role=\"contact\"><PropertyRef Name=\"id\"" +
-                " /></Principal><Dependent Role=\"procure\"><PropertyRef Name=\"contact_id\" /></Depe" +
-                "ndent></ReferentialConstraint></Association><Association Name=\"FK_repair_contact" +
+            private const string ModelPart4 = "sociation Name=\"FK_staff_branch\"><End Type=\"AutoMgrDbModel.branch\" Role=\"branch\" " +
+                "Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.staff\" Role=\"staff\" Multiplicity=\"*" +
+                "\" /><ReferentialConstraint><Principal Role=\"branch\"><PropertyRef Name=\"id\" /></P" +
+                "rincipal><Dependent Role=\"staff\"><PropertyRef Name=\"branch_id\" /></Dependent></R" +
+                "eferentialConstraint></Association><Association Name=\"FK_customer_contact_contac" +
+                "t\"><End Type=\"AutoMgrDbModel.contact\" Role=\"contact\" Multiplicity=\"1\" /><End Typ" +
+                "e=\"AutoMgrDbModel.customer_contact\" Role=\"customer_contact\" Multiplicity=\"*\" /><" +
+                "ReferentialConstraint><Principal Role=\"contact\"><PropertyRef Name=\"id\" /></Princ" +
+                "ipal><Dependent Role=\"customer_contact\"><PropertyRef Name=\"contact_id\" /></Depen" +
+                "dent></ReferentialConstraint></Association><Association Name=\"FK_procure_contact" +
                 "\"><End Type=\"AutoMgrDbModel.contact\" Role=\"contact\" Multiplicity=\"1\" /><End Type" +
-                "=\"AutoMgrDbModel.repair\" Role=\"repair\" Multiplicity=\"*\" /><ReferentialConstraint" +
-                "><Principal Role=\"contact\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=" +
-                "\"repair\"><PropertyRef Name=\"contact_id\" /></Dependent></ReferentialConstraint></" +
-                "Association><Association Name=\"FK_supplyer_contact_contact\"><End Type=\"AutoMgrDb" +
-                "Model.contact\" Role=\"contact\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.suppl" +
-                "yer_contact\" Role=\"supplyer_contact\" Multiplicity=\"*\" /><ReferentialConstraint><" +
-                "Principal Role=\"contact\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"s" +
-                "upplyer_contact\"><PropertyRef Name=\"contact_id\" /></Dependent></ReferentialConst" +
-                "raint></Association><Association Name=\"FK_customer_contact_customer\"><End Type=\"" +
-                "AutoMgrDbModel.customer\" Role=\"customer\" Multiplicity=\"1\" /><End Type=\"AutoMgrDb" +
-                "Model.customer_contact\" Role=\"customer_contact\" Multiplicity=\"*\" /><ReferentialC" +
-                "onstraint><Principal Role=\"customer\"><PropertyRef Name=\"id\" /></Principal><Depen" +
-                "dent Role=\"customer_contact\"><PropertyRef Name=\"customer_id\" /></Dependent></Ref" +
-                "erentialConstraint></Association><Association Name=\"FK_repair_customer\"><End Typ" +
+                "=\"AutoMgrDbModel.procure\" Role=\"procure\" Multiplicity=\"*\" /><ReferentialConstrai" +
+                "nt><Principal Role=\"contact\"><PropertyRef Name=\"id\" /></Principal><Dependent Rol" +
+                "e=\"procure\"><PropertyRef Name=\"contact_id\" /></Dependent></ReferentialConstraint" +
+                "></Association><Association Name=\"FK_supplyer_contact_contact\"><End Type=\"AutoMg" +
+                "rDbModel.contact\" Role=\"contact\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.su" +
+                "pplyer_contact\" Role=\"supplyer_contact\" Multiplicity=\"*\" /><ReferentialConstrain" +
+                "t><Principal Role=\"contact\"><PropertyRef Name=\"id\" /></Principal><Dependent Role" +
+                "=\"supplyer_contact\"><PropertyRef Name=\"contact_id\" /></Dependent></ReferentialCo" +
+                "nstraint></Association><Association Name=\"FK_customer_contact_customer\"><End Typ" +
                 "e=\"AutoMgrDbModel.customer\" Role=\"customer\" Multiplicity=\"1\" /><End Type=\"AutoMg" +
-                "rDbModel.repair\" Role=\"repair\" Multiplicity=\"*\" /><ReferentialConstraint><Princi" +
-                "pal Role=\"customer\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"repair" +
-                "\"><PropertyRef Name=\"customer_id\" /></Dependent></ReferentialConstraint></Associ" +
-                "ation><Association Name=\"FK_sale_customer\"><End Type=\"AutoMgrDbModel.customer\" R" +
-                "ole=\"customer\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.sale\" Role=\"sale\" Mu" +
-                "ltiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"customer\"><PropertyRef " +
-                "Name=\"id\" /></Principal><Dependent Role=\"sale\"><PropertyRef Name=\"customer_id\" /" +
-                "></Dependent></ReferentialConstraint></Association><Association Name=\"FK_vehicle" +
-                "_customer\"><End Type=\"AutoMgrDbModel.customer\" Role=\"customer\" Multiplicity=\"1\" " +
-                "/><End Type=\"AutoMgrDbModel.vehicle\" Role=\"vehicle\" Multiplicity=\"*\" /><Referent" +
-                "ialConstraint><Principal Role=\"customer\"><PropertyRef Name=\"id\" /></Principal><D" +
-                "ependent Role=\"vehicle\"><PropertyRef Name=\"customer_id\" /></Dependent></Referent" +
-                "ialConstraint></Association><Association Name=\"FK_repair_item_detail_department\"" +
-                "><End Type=\"AutoMgrDbModel.department\" Role=\"department\" Multiplicity=\"1\" /><End" +
-                " Type=\"AutoMgrDbModel.repair_item_detail\" Role=\"repair_item_detail\" Multiplicity" +
-                "=\"*\" /><ReferentialConstraint><Principal Role=\"department\"><PropertyRef Name=\"id" +
-                "\" /></Principal><Dependent Role=\"repair_item_detail\"><PropertyRef Name=\"departme" +
-                "nt_id\" /></Dependent></ReferentialConstraint></Association><Association Name=\"FK" +
-                "_staff_department\"><End Type=\"AutoMgrDbModel.department\" Role=\"department\" Multi" +
-                "plicity=\"1\" /><End Type=\"AutoMgrDbModel.staff\" Role=\"staff\" Multiplicity=\"*\" /><" +
-                "ReferentialConstraint><Principal Role=\"department\"><PropertyRef Name=\"id\" /></Pr" +
-                "incipal><Dependent Role=\"staff\"><PropertyRef Name=\"department_id\" /></Dependent>" +
-                "</ReferentialConstraint></Association><Association Name=\"FK_sale_express\"><End T" +
-                "ype=\"AutoMgrDbModel.express\" Role=\"express\" Multiplicity=\"0..1\" /><End Type=\"Aut" +
-                "oMgrDbModel.sale\" Role=\"sale\" Multiplicity=\"*\" /><ReferentialConstraint><Princip" +
-                "al Role=\"express\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"sale\"><P" +
-                "ropertyRef Name=\"express_id\" /></Dependent></ReferentialConstraint></Association" +
-                "><Association Name=\"FK_goods_alias_goods\"><End Type=\"AutoMgrDbModel.goods\" Role=" +
-                "\"goods\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.goods_alias\" Role=\"goods_al" +
-                "ias\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"goods\"><Property" +
-                "Ref Name=\"id\" /></Principal><Dependent Role=\"goods_alias\"><PropertyRef Name=\"goo" +
-                "ds_id\" /></Dependent></ReferentialConstraint></Association><Association Name=\"FK" +
-                "_goods_photo_goods\"><End Type=\"AutoMgrDbModel.goods\" Role=\"goods\" Multiplicity=\"" +
-                "1\" /><End Type=\"AutoMgrDbModel.goods_photo\" Role=\"goods_photo\" Multiplicity=\"*\" " +
-                "/><ReferentialConstraint><Principal Role=\"goods\"><PropertyRef Name=\"id\" /></Prin" +
-                "cipal><Dependent Role=\"goods_photo\"><PropertyRef Name=\"goods_id\" /></Dependent><" +
-                "/ReferentialConstraint></Association><Association Name=\"FK_procure_detail_goods\"" +
-                "><End Type=\"AutoMgrDbModel.goods\" Role=\"goods\" Multiplicity=\"1\" /><End Type=\"Aut" +
-                "oMgrDbModel.procure_detail\" Role=\"procure_detail\" Multiplicity=\"*\" /><Referentia" +
-                "lConstraint><Principal Role=\"goods\"><PropertyRef Name=\"id\" /></Principal><Depend" +
-                "ent Role=\"procure_detail\"><PropertyRef Name=\"goods_id\" /></Dependent></Referenti" +
-                "alConstraint></Association><Association Name=\"FK_repair_parts_goods\"><End Type=\"" +
-                "AutoMgrDbModel.goods\" Role=\"goods\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel." +
-                "repair_parts\" Role=\"repair_parts\" Multiplicity=\"*\" /><ReferentialConstraint><Pri" +
-                "ncipal Role=\"goods\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"repair" +
-                "_parts\"><PropertyRef Name=\"goods_id\" /></Dependent></ReferentialConstraint></Ass" +
-                "ociation><Association Name=\"FK_sale_detail_goods\"><End Type=\"AutoMgrDbModel.good" +
-                "s\" Role=\"goods\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.sale_detail\" Role=\"" +
-                "sale_detail\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"goods\"><" +
-                "PropertyRef Name=\"id\" /></Principal><Dependent Role=\"sale_detail\"><PropertyRef N" +
+                "rDbModel.customer_contact\" Role=\"customer_contact\" Multiplicity=\"*\" /><Referenti" +
+                "alConstraint><Principal Role=\"customer\"><PropertyRef Name=\"id\" /></Principal><De" +
+                "pendent Role=\"customer_contact\"><PropertyRef Name=\"customer_id\" /></Dependent></" +
+                "ReferentialConstraint></Association><Association Name=\"FK_sale_customer\"><End Ty" +
+                "pe=\"AutoMgrDbModel.customer\" Role=\"customer\" Multiplicity=\"1\" /><End Type=\"AutoM" +
+                "grDbModel.sale\" Role=\"sale\" Multiplicity=\"*\" /><ReferentialConstraint><Principal" +
+                " Role=\"customer\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"sale\"><Pr" +
+                "opertyRef Name=\"customer_id\" /></Dependent></ReferentialConstraint></Association" +
+                "><Association Name=\"FK_vehicle_customer\"><End Type=\"AutoMgrDbModel.customer\" Rol" +
+                "e=\"customer\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.vehicle\" Role=\"vehicle" +
+                "\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"customer\"><Property" +
+                "Ref Name=\"id\" /></Principal><Dependent Role=\"vehicle\"><PropertyRef Name=\"custome" +
+                "r_id\" /></Dependent></ReferentialConstraint></Association><Association Name=\"FK_" +
+                "repair_item_detail_department\"><End Type=\"AutoMgrDbModel.department\" Role=\"depar" +
+                "tment\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.repair_item_detail\" Role=\"re" +
+                "pair_item_detail\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"dep" +
+                "artment\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"repair_item_detai" +
+                "l\"><PropertyRef Name=\"department_id\" /></Dependent></ReferentialConstraint></Ass" +
+                "ociation><Association Name=\"FK_staff_department\"><End Type=\"AutoMgrDbModel.depar" +
+                "tment\" Role=\"department\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.staff\" Rol" +
+                "e=\"staff\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"department\"" +
+                "><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"staff\"><PropertyRef Name=" +
+                "\"department_id\" /></Dependent></ReferentialConstraint></Association><Association" +
+                " Name=\"FK_sale_express\"><End Type=\"AutoMgrDbModel.express\" Role=\"express\" Multip" +
+                "licity=\"0..1\" /><End Type=\"AutoMgrDbModel.sale\" Role=\"sale\" Multiplicity=\"*\" /><" +
+                "ReferentialConstraint><Principal Role=\"express\"><PropertyRef Name=\"id\" /></Princ" +
+                "ipal><Dependent Role=\"sale\"><PropertyRef Name=\"express_id\" /></Dependent></Refer" +
+                "entialConstraint></Association><Association Name=\"FK_goods_alias_goods\"><End Typ" +
+                "e=\"AutoMgrDbModel.goods\" Role=\"goods\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbMod" +
+                "el.goods_alias\" Role=\"goods_alias\" Multiplicity=\"*\" /><ReferentialConstraint><Pr" +
+                "incipal Role=\"goods\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"goods" +
+                "_alias\"><PropertyRef Name=\"goods_id\" /></Dependent></ReferentialConstraint></Ass" +
+                "ociation><Association Name=\"FK_goods_photo_goods\"><End Type=\"AutoMgrDbModel.good" +
+                "s\" Role=\"goods\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.goods_photo\" Role=\"" +
+                "goods_photo\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"goods\"><" +
+                "PropertyRef Name=\"id\" /></Principal><Dependent Role=\"goods_photo\"><PropertyRef N" +
                 "ame=\"goods_id\" /></Dependent></ReferentialConstraint></Association><Association " +
-                "Name=\"FK_shelf_goods\"><End Type=\"AutoMgrDbModel.goods\" Role=\"goods\" Multiplicity" +
-                "=\"1\" /><End Type=\"AutoMgrDbModel.shelf\" Role=\"shelf\" Multiplicity=\"*\" /><Referen" +
-                "tialConstraint><Principal Role=\"goods\"><PropertyRef Name=\"id\" /></Principal><Dep" +
-                "endent Role=\"shelf\"><PropertyRef Name=\"goods_id\" /></Dependent></ReferentialCons" +
-                "traint></Association><Association Name=\"FK_inventory_staff\"><End Type=\"AutoMgrDb" +
-                "Model.staff\" Role=\"staff\" Multiplicity=\"1\" /><End Type=\"Aut";
+                "Name=\"FK_procure_detail_goods\"><End Type=\"AutoMgrDbModel.goods\" Role=\"goods\" Mul" +
+                "tiplicity=\"1\" /><End Type=\"AutoMgrDbModel.procure_detail\" Role=\"procure_detail\" " +
+                "Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"goods\"><PropertyRef N" +
+                "ame=\"id\" /></Principal><Dependent Role=\"procure_detail\"><PropertyRef Name=\"goods" +
+                "_id\" /></Dependent></ReferentialConstraint></Association><Association Name=\"FK_r" +
+                "epair_parts_goods\"><End Type=\"AutoMgrDbModel.goods\" Role=\"goods\" Multiplicity=\"1" +
+                "\" /><End Type=\"AutoMgrDbModel.repair_parts\" Role=\"repair_parts\" Multiplicity=\"*\"" +
+                " /><ReferentialConstraint><Principal Role=\"goods\"><PropertyRef Name=\"id\" /></Pri" +
+                "ncipal><Dependent Role=\"repair_parts\"><PropertyRef Name=\"goods_id\" /></Dependent" +
+                "></ReferentialConstraint></Association><Association Name=\"FK_sale_detail_goods\">" +
+                "<End Type=\"AutoMgrDbModel.goods\" Role=\"goods\" Multiplicity=\"1\" /><End Type=\"Auto" +
+                "MgrDbModel.sale_detail\" Role=\"sale_detail\" Multiplicity=\"*\" /><ReferentialConstr" +
+                "aint><Principal Role=\"goods\"><PropertyRef Name=\"id\" /></Principal><Dependent Rol" +
+                "e=\"sale_detail\"><PropertyRef Name=\"goods_id\" /></Dependent></ReferentialConstrai" +
+                "nt></Association><Association Name=\"FK_shelf_goods\"><End Type=\"AutoMgrDbModel.go" +
+                "ods\" Role=\"goods\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.shelf\" Role=\"shel" +
+                "f\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"goods\"><PropertyRe" +
+                "f Name=\"id\" /></Principal><Dependent Role=\"shelf\"><PropertyRef Name=\"goods_id\" /" +
+                "></Dependent></ReferentialConstraint></Association><Association Name=\"FK_invento" +
+                "ry_staff\"><End Type=\"AutoMgrDbModel.staff\" Role=\"staff\" Multiplicity=\"1\" /><End " +
+                "Type=\"AutoMgrDbModel.inventory\" Role=\"inventory\" Multiplicity=\"*\" /><Referential" +
+                "Constraint><Principal Role=\"staff\"><PropertyRef Name=\"id\" /></Principal><Depende" +
+                "nt Role=\"inventory\"><PropertyRef Name=\"staff_id\" /></Dependent></ReferentialCons" +
+                "traint></Association><Association Name=\"FK_shelf_io_inventory\"><End Type=\"AutoMg" +
+                "rDbModel.inventory\" Role=\"inventory\" Multiplicity=\"0..1\" /><End Type=\"AutoMgrDbM" +
+                "odel.shelf_io\" Role=\"shelf_io\" Multiplicity=\"*\" /><ReferentialConstraint><Princi" +
+                "pal Role=\"inventory\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"shelf" +
+                "_io\"><PropertyRef Name=\"inventory_id\" /></Dependent></ReferentialConstraint></As" +
+                "sociation><Association Name=\"FK_procure_detail_procure\"><End Type=\"AutoMgrDbMode" +
+                "l.procure\" Role=\"procure\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.procure_d" +
+                "etail\" Role=\"procure_detail\" Multiplicity=\"*\" /><ReferentialConstraint><Principa" +
+                "l Role=\"procure\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"procure_d" +
+                "etail\"><PropertyRef Name=\"procure_id\" /></Dependent></ReferentialConstraint></As" +
+                "sociation><Association Name=\"FK_procure_stuff\"><End Type=\"AutoMgrDbModel.staff\" " +
+                "Role=\"staff\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.procure\" Role=\"procure" +
+                "\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-            private const string ModelPart5 = "oMgrDbModel.inventory\" Role=\"inventory\" Multiplicity=\"*\" /><ReferentialConstraint" +
-                "><Principal Role=\"staff\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"i" +
-                "nventory\"><PropertyRef Name=\"staff_id\" /></Dependent></ReferentialConstraint></A" +
-                "ssociation><Association Name=\"FK_shelf_io_inventory\"><End Type=\"AutoMgrDbModel.i" +
-                "nventory\" Role=\"inventory\" Multiplicity=\"0..1\" /><End Type=\"AutoMgrDbModel.shelf" +
-                "_io\" Role=\"shelf_io\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"" +
-                "inventory\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"shelf_io\"><Prop" +
-                "ertyRef Name=\"inventory_id\" /></Dependent></ReferentialConstraint></Association>" +
-                "<Association Name=\"FK_procure_detail_procure\"><End Type=\"AutoMgrDbModel.procure\"" +
-                " Role=\"procure\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.procure_detail\" Rol" +
-                "e=\"procure_detail\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"pr" +
-                "ocure\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"procure_detail\"><Pr" +
-                "opertyRef Name=\"procure_id\" /></Dependent></ReferentialConstraint></Association>" +
-                "<Association Name=\"FK_procure_stuff\"><End Type=\"AutoMgrDbModel.staff\" Role=\"staf" +
-                "f\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.procure\" Role=\"procure\" Multipli" +
-                "city=\"*\" /><ReferentialConstraint><Principal Role=\"staff\"><PropertyRef Name=\"id\"" +
-                " /></Principal><Dependent Role=\"procure\"><PropertyRef Name=\"stuff_id\" /></Depend" +
-                "ent></ReferentialConstraint></Association><Association Name=\"FK_procure_supplyer" +
-                "\"><End Type=\"AutoMgrDbModel.supplyer\" Role=\"supplyer\" Multiplicity=\"1\" /><End Ty" +
-                "pe=\"AutoMgrDbModel.procure\" Role=\"procure\" Multiplicity=\"*\" /><ReferentialConstr" +
-                "aint><Principal Role=\"supplyer\"><PropertyRef Name=\"id\" /></Principal><Dependent " +
-                "Role=\"procure\"><PropertyRef Name=\"supplyer_id\" /></Dependent></ReferentialConstr" +
-                "aint></Association><Association Name=\"FK_shelf_io_procure\"><End Type=\"AutoMgrDbM" +
-                "odel.procure\" Role=\"procure\" Multiplicity=\"0..1\" /><End Type=\"AutoMgrDbModel.she" +
-                "lf_io\" Role=\"shelf_io\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role" +
-                "=\"procure\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"shelf_io\"><Prop" +
-                "ertyRef Name=\"procure_id\" /></Dependent></ReferentialConstraint></Association><A" +
-                "ssociation Name=\"FK_repair_item_detail_repair\"><End Type=\"AutoMgrDbModel.repair\"" +
-                " Role=\"repair\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.repair_item_detail\" " +
-                "Role=\"repair_item_detail\" Multiplicity=\"*\" /><ReferentialConstraint><Principal R" +
-                "ole=\"repair\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"repair_item_d" +
-                "etail\"><PropertyRef Name=\"repair_id\" /></Dependent></ReferentialConstraint></Ass" +
-                "ociation><Association Name=\"FK_repair_parts_repair\"><End Type=\"AutoMgrDbModel.re" +
-                "pair\" Role=\"repair\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.repair_parts\" R" +
-                "ole=\"repair_parts\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"re" +
-                "pair\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"repair_parts\"><Prope" +
-                "rtyRef Name=\"repair_id\" /></Dependent></ReferentialConstraint></Association><Ass" +
-                "ociation Name=\"FK_repair_photo_repair\"><End Type=\"AutoMgrDbModel.repair\" Role=\"r" +
-                "epair\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.repair_photo\" Role=\"repair_p" +
-                "hoto\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"repair\"><Proper" +
-                "tyRef Name=\"id\" /></Principal><Dependent Role=\"repair_photo\"><PropertyRef Name=\"" +
-                "repair_id\" /></Dependent></ReferentialConstraint></Association><Association Name" +
-                "=\"FK_repair_stuff\"><End Type=\"AutoMgrDbModel.staff\" Role=\"staff\" Multiplicity=\"1" +
-                "\" /><End Type=\"AutoMgrDbModel.repair\" Role=\"repair\" Multiplicity=\"*\" /><Referent" +
-                "ialConstraint><Principal Role=\"staff\"><PropertyRef Name=\"id\" /></Principal><Depe" +
-                "ndent Role=\"repair\"><PropertyRef Name=\"recv_stuff_id\" /></Dependent></Referentia" +
-                "lConstraint></Association><Association Name=\"FK_repair_vehicle\"><End Type=\"AutoM" +
-                "grDbModel.vehicle\" Role=\"vehicle\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.r" +
-                "epair\" Role=\"repair\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"" +
-                "vehicle\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"repair\"><Property" +
-                "Ref Name=\"vehicle_id\" /></Dependent></ReferentialConstraint></Association><Assoc" +
-                "iation Name=\"FK_shelf_io_repair\"><End Type=\"AutoMgrDbModel.repair\" Role=\"repair\"" +
-                " Multiplicity=\"0..1\" /><End Type=\"AutoMgrDbModel.shelf_io\" Role=\"shelf_io\" Multi" +
-                "plicity=\"*\" /><ReferentialConstraint><Principal Role=\"repair\"><PropertyRef Name=" +
-                "\"id\" /></Principal><Dependent Role=\"shelf_io\"><PropertyRef Name=\"repair_id\" /></" +
-                "Dependent></ReferentialConstraint></Association><Association Name=\"FK_repair_cat" +
-                "e_item_repair_cate\"><End Type=\"AutoMgrDbModel.repair_cate\" Role=\"repair_cate\" Mu" +
-                "ltiplicity=\"1\" /><End Type=\"AutoMgrDbModel.repair_cate_item\" Role=\"repair_cate_i" +
-                "tem\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"repair_cate\"><Pr" +
-                "opertyRef Name=\"id\" /></Principal><Dependent Role=\"repair_cate_item\"><PropertyRe" +
-                "f Name=\"cate_id\" /></Dependent></ReferentialConstraint></Association><Associatio" +
-                "n Name=\"FK_repair_item_detail_repair_cate\"><End Type=\"AutoMgrDbModel.repair_cate" +
-                "\" Role=\"repair_cate\" Multiplicity=\"0..1\" /><End Type=\"AutoMgrDbModel.repair_item" +
-                "_detail\" Role=\"repair_item_detail\" Multiplicity=\"*\" /><ReferentialConstraint><Pr" +
+            private const string ModelPart5 = "=\"staff\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"procure\"><Property" +
+                "Ref Name=\"stuff_id\" /></Dependent></ReferentialConstraint></Association><Associa" +
+                "tion Name=\"FK_procure_supplyer\"><End Type=\"AutoMgrDbModel.supplyer\" Role=\"supply" +
+                "er\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.procure\" Role=\"procure\" Multipl" +
+                "icity=\"*\" /><ReferentialConstraint><Principal Role=\"supplyer\"><PropertyRef Name=" +
+                "\"id\" /></Principal><Dependent Role=\"procure\"><PropertyRef Name=\"supplyer_id\" /><" +
+                "/Dependent></ReferentialConstraint></Association><Association Name=\"FK_shelf_io_" +
+                "procure\"><End Type=\"AutoMgrDbModel.procure\" Role=\"procure\" Multiplicity=\"0..1\" /" +
+                "><End Type=\"AutoMgrDbModel.shelf_io\" Role=\"shelf_io\" Multiplicity=\"*\" /><Referen" +
+                "tialConstraint><Principal Role=\"procure\"><PropertyRef Name=\"id\" /></Principal><D" +
+                "ependent Role=\"shelf_io\"><PropertyRef Name=\"procure_id\" /></Dependent></Referent" +
+                "ialConstraint></Association><Association Name=\"FK_repair_item_detail_repair\"><En" +
+                "d Type=\"AutoMgrDbModel.repair\" Role=\"repair\" Multiplicity=\"1\" /><End Type=\"AutoM" +
+                "grDbModel.repair_item_detail\" Role=\"repair_item_detail\" Multiplicity=\"*\" /><Refe" +
+                "rentialConstraint><Principal Role=\"repair\"><PropertyRef Name=\"id\" /></Principal>" +
+                "<Dependent Role=\"repair_item_detail\"><PropertyRef Name=\"repair_id\" /></Dependent" +
+                "></ReferentialConstraint></Association><Association Name=\"FK_repair_parts_repair" +
+                "\"><End Type=\"AutoMgrDbModel.repair\" Role=\"repair\" Multiplicity=\"1\" /><End Type=\"" +
+                "AutoMgrDbModel.repair_parts\" Role=\"repair_parts\" Multiplicity=\"*\" /><Referential" +
+                "Constraint><Principal Role=\"repair\"><PropertyRef Name=\"id\" /></Principal><Depend" +
+                "ent Role=\"repair_parts\"><PropertyRef Name=\"repair_id\" /></Dependent></Referentia" +
+                "lConstraint></Association><Association Name=\"FK_repair_photo_repair\"><End Type=\"" +
+                "AutoMgrDbModel.repair\" Role=\"repair\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbMode" +
+                "l.repair_photo\" Role=\"repair_photo\" Multiplicity=\"*\" /><ReferentialConstraint><P" +
+                "rincipal Role=\"repair\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"rep" +
+                "air_photo\"><PropertyRef Name=\"repair_id\" /></Dependent></ReferentialConstraint><" +
+                "/Association><Association Name=\"FK_repair_stuff\"><End Type=\"AutoMgrDbModel.staff" +
+                "\" Role=\"staff\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.repair\" Role=\"repair" +
+                "\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"staff\"><PropertyRef" +
+                " Name=\"id\" /></Principal><Dependent Role=\"repair\"><PropertyRef Name=\"recv_stuff_" +
+                "id\" /></Dependent></ReferentialConstraint></Association><Association Name=\"FK_re" +
+                "pair_vehicle\"><End Type=\"AutoMgrDbModel.vehicle\" Role=\"vehicle\" Multiplicity=\"1\"" +
+                " /><End Type=\"AutoMgrDbModel.repair\" Role=\"repair\" Multiplicity=\"*\" /><Referenti" +
+                "alConstraint><Principal Role=\"vehicle\"><PropertyRef Name=\"id\" /></Principal><Dep" +
+                "endent Role=\"repair\"><PropertyRef Name=\"vehicle_id\" /></Dependent></ReferentialC" +
+                "onstraint></Association><Association Name=\"FK_shelf_io_repair\"><End Type=\"AutoMg" +
+                "rDbModel.repair\" Role=\"repair\" Multiplicity=\"0..1\" /><End Type=\"AutoMgrDbModel.s" +
+                "helf_io\" Role=\"shelf_io\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Ro" +
+                "le=\"repair\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"shelf_io\"><Pro" +
+                "pertyRef Name=\"repair_id\" /></Dependent></ReferentialConstraint></Association><A" +
+                "ssociation Name=\"FK_repair_cate_item_repair_cate\"><End Type=\"AutoMgrDbModel.repa" +
+                "ir_cate\" Role=\"repair_cate\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.repair_" +
+                "cate_item\" Role=\"repair_cate_item\" Multiplicity=\"*\" /><ReferentialConstraint><Pr" +
                 "incipal Role=\"repair_cate\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=" +
-                "\"repair_item_detail\"><PropertyRef Name=\"cate_id\" /></Dependent></ReferentialCons" +
-                "traint></Association><Association Name=\"FK_repair_cate_item_repair_item\"><End Ty" +
-                "pe=\"AutoMgrDbModel.repair_item\" Role=\"repair_item\" Multiplicity=\"1\" /><End Type=" +
-                "\"AutoMgrDbModel.repair_cate_item\" Role=\"repair_cate_item\" Multiplicity=\"*\" /><Re" +
-                "ferentialConstraint><Principal Role=\"repair_item\"><PropertyRef Name=\"id\" /></Pri" +
-                "ncipal><Dependent Role=\"repair_cate_item\"><PropertyRef Name=\"item_id\" /></Depend" +
-                "ent></ReferentialConstraint></Association><Association Name=\"FK_repair_item_deta" +
-                "il_repair_item\"><End Type=\"AutoMgrDbModel.repair_item\" Role=\"repair_item\" Multip" +
-                "licity=\"1\" /><End Type=\"AutoMgrDbModel.repair_item_detail\" Role=\"repair_item_det" +
-                "ail\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"repair_item\"><Pr" +
-                "opertyRef Name=\"id\" /></Principal><Dependent Role=\"repair_item_detail\"><Property" +
-                "Ref Name=\"item_id\" /></Dependent></ReferentialConstraint></Association><Associat" +
-                "ion Name=\"FK_repair_parts_shelf_io\"><End Type=\"AutoMgrDbModel.shelf_io\" Role=\"sh" +
-                "elf_io\" Multiplicity=\"0..1\" /><End Type=\"AutoMgrDbModel.repair_parts\" Role=\"repa" +
-                "ir_parts\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"shelf_io\"><" +
-                "PropertyRef Name=\"id\" /></Principal><Dependent Role=\"repair_parts\"><PropertyRef " +
-                "Name=\"shelf_io_id\" /></Dependent></ReferentialConstraint></Association><Associat" +
-                "ion Name=\"FK_staff_role\"><End Type=\"AutoMgrDbModel.role\" Role=\"role\" Multiplicit" +
-                "y=\"1\" /><End Type=\"AutoMgrDbModel.staff\" Role=\"staff\" Multiplicity=\"*\" /><Refere" +
-                "ntialConstraint><Principal Role=\"role\"><PropertyRef Name=\"id\" /></Principal><Dep" +
-                "endent Role=\"staff\"><PropertyRef Name=\"role_id\" /></Dependent></ReferentialConst" +
-                "raint></Association><Association Name=\"FK_sale_detail_sale\"><End Type=\"AutoMgrDb" +
-                "Model.sale\" Role=\"sale\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.sale_detail" +
-                "\" Role=\"sale_detail\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"" +
-                "sale\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"sale_detail\"><Proper" +
-                "tyRef Name=\"sale_id\" /></Dependent></ReferentialConstraint></Association><Associ" +
-                "ation Name=\"FK_sale_stuff\"><End Type=\"AutoMgrDbModel.staff\" Role=\"staff\" Multipl" +
-                "icity=\"1\" /><End Type=\"AutoMgrDbModel.sale\" Role=\"sale\" Multiplicity=\"*\" /><Refe" +
-                "rentialConstraint><Principal Role=\"staff\"><PropertyRef Name";
+                "\"repair_cate_item\"><PropertyRef Name=\"cate_id\" /></Dependent></ReferentialConstr" +
+                "aint></Association><Association Name=\"FK_repair_item_detail_repair_cate\"><End Ty" +
+                "pe=\"AutoMgrDbModel.repair_cate\" Role=\"repair_cate\" Multiplicity=\"0..1\" /><End Ty" +
+                "pe=\"AutoMgrDbModel.repair_item_detail\" Role=\"repair_item_detail\" Multiplicity=\"*" +
+                "\" /><ReferentialConstraint><Principal Role=\"repair_cate\"><PropertyRef Name=\"id\" " +
+                "/></Principal><Dependent Role=\"repair_item_detail\"><PropertyRef Name=\"cate_id\" /" +
+                "></Dependent></ReferentialConstraint></Association><Association Name=\"FK_repair_" +
+                "cate_item_repair_item\"><End Type=\"AutoMgrDbModel.repair_item\" Role=\"repair_item\"" +
+                " Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.repair_cate_item\" Role=\"repair_cat" +
+                "e_item\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"repair_item\">" +
+                "<PropertyRef Name=\"id\" /></Principal><Dependent Role=\"repair_cate_item\"><Propert" +
+                "yRef Name=\"item_id\" /></Dependent></ReferentialConstraint></Association><Associa" +
+                "tion Name=\"FK_repair_item_detail_repair_item\"><End Type=\"AutoMgrDbModel.repair_i" +
+                "tem\" Role=\"repair_item\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.repair_item" +
+                "_detail\" Role=\"repair_item_detail\" Multiplicity=\"*\" /><ReferentialConstraint><Pr" +
+                "incipal Role=\"repair_item\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=" +
+                "\"repair_item_detail\"><PropertyRef Name=\"item_id\" /></Dependent></ReferentialCons" +
+                "traint></Association><Association Name=\"FK_repair_parts_shelf_io\"><End Type=\"Aut" +
+                "oMgrDbModel.shelf_io\" Role=\"shelf_io\" Multiplicity=\"0..1\" /><End Type=\"AutoMgrDb" +
+                "Model.repair_parts\" Role=\"repair_parts\" Multiplicity=\"*\" /><ReferentialConstrain" +
+                "t><Principal Role=\"shelf_io\"><PropertyRef Name=\"id\" /></Principal><Dependent Rol" +
+                "e=\"repair_parts\"><PropertyRef Name=\"shelf_io_id\" /></Dependent></ReferentialCons" +
+                "traint></Association><Association Name=\"FK_staff_role\"><End Type=\"AutoMgrDbModel" +
+                ".role\" Role=\"role\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.staff\" Role=\"sta" +
+                "ff\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"role\"><PropertyRe" +
+                "f Name=\"id\" /></Principal><Dependent Role=\"staff\"><PropertyRef Name=\"role_id\" />" +
+                "</Dependent></ReferentialConstraint></Association><Association Name=\"FK_sale_det" +
+                "ail_sale\"><End Type=\"AutoMgrDbModel.sale\" Role=\"sale\" Multiplicity=\"1\" /><End Ty" +
+                "pe=\"AutoMgrDbModel.sale_detail\" Role=\"sale_detail\" Multiplicity=\"*\" /><Referenti" +
+                "alConstraint><Principal Role=\"sale\"><PropertyRef Name=\"id\" /></Principal><Depend" +
+                "ent Role=\"sale_detail\"><PropertyRef Name=\"sale_id\" /></Dependent></ReferentialCo" +
+                "nstraint></Association><Association Name=\"FK_sale_stuff\"><End Type=\"AutoMgrDbMod" +
+                "el.staff\" Role=\"staff\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.sale\" Role=\"" +
+                "sale\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"staff\"><Propert" +
+                "yRef Name=\"id\" /></Principal><Dependent Role=\"sale\"><PropertyRef Name=\"stuff_id\"" +
+                " /></Dependent></ReferentialConstraint></Association><Association Name=\"FK_shelf" +
+                "_io_sale\"><End Type=\"AutoMgrDbModel.sale\" Role=\"sale\" Multiplicity=\"0..1\" /><End" +
+                " Type=\"AutoMgrDbModel.shelf_io\" Role=\"shelf_io\" Multiplicity=\"*\" /><ReferentialC" +
+                "onstraint><Principal Role=\"sale\"><PropertyRef Name=\"id\" /></Principal><Dependent" +
+                " Role=\"shelf_io\"><PropertyRef Name=\"sale_id\" /></Dependent></ReferentialConstrai" +
+                "nt></Association><Association Name=\"FK_sale_detail_shelf_io\"><End Type=\"AutoMgrD" +
+                "bModel.shelf_io\" Role=\"shelf_io\" Multiplicity=\"0..1\" /><End Type=\"AutoMgrDbModel" +
+                ".sale_detail\" Role=\"sale_detail\" Multiplicity=\"*\" /><ReferentialConstraint><Prin" +
+                "cipal Role=\"shelf_io\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"sale" +
+                "_detail\"><PropertyRef Name=\"shelf_io_id\" /></Dependent></ReferentialConstraint><" +
+                "/Association><Association Name=\"FK_shelf_io_shelf\"><End Type=\"AutoMgrDbModel.she" +
+                "lf\" Role=\"shelf\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.shelf_io\" Role=\"sh" +
+                "elf_io\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"shelf\"><Prope" +
+                "rtyRef Name=\"id\" /></Principal><Dependent Role=\"shelf_io\"><PropertyRef Name=\"she" +
+                "lf_id\" /></Dependent></ReferentialConstraint></Association>";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-            private const string ModelPart6 = "=\"id\" /></Principal><Dependent Role=\"sale\"><PropertyRef Name=\"stuff_id\" /></Depen" +
-                "dent></ReferentialConstraint></Association><Association Name=\"FK_shelf_io_sale\">" +
-                "<End Type=\"AutoMgrDbModel.sale\" Role=\"sale\" Multiplicity=\"0..1\" /><End Type=\"Aut" +
-                "oMgrDbModel.shelf_io\" Role=\"shelf_io\" Multiplicity=\"*\" /><ReferentialConstraint>" +
-                "<Principal Role=\"sale\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"she" +
-                "lf_io\"><PropertyRef Name=\"sale_id\" /></Dependent></ReferentialConstraint></Assoc" +
-                "iation><Association Name=\"FK_sale_detail_shelf_io\"><End Type=\"AutoMgrDbModel.she" +
-                "lf_io\" Role=\"shelf_io\" Multiplicity=\"0..1\" /><End Type=\"AutoMgrDbModel.sale_deta" +
-                "il\" Role=\"sale_detail\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role" +
-                "=\"shelf_io\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"sale_detail\"><" +
-                "PropertyRef Name=\"shelf_io_id\" /></Dependent></ReferentialConstraint></Associati" +
-                "on><Association Name=\"FK_shelf_io_shelf\"><End Type=\"AutoMgrDbModel.shelf\" Role=\"" +
-                "shelf\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.shelf_io\" Role=\"shelf_io\" Mu" +
-                "ltiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"shelf\"><PropertyRef Nam" +
-                "e=\"id\" /></Principal><Dependent Role=\"shelf_io\"><PropertyRef Name=\"shelf_id\" /><" +
-                "/Dependent></ReferentialConstraint></Association><Association Name=\"FK_supplyer_" +
-                "contact_supplyer\"><End Type=\"AutoMgrDbModel.supplyer\" Role=\"supplyer\" Multiplici" +
-                "ty=\"1\" /><End Type=\"AutoMgrDbModel.supplyer_contact\" Role=\"supplyer_contact\" Mul" +
-                "tiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"supplyer\"><PropertyRef N" +
-                "ame=\"id\" /></Principal><Dependent Role=\"supplyer_contact\"><PropertyRef Name=\"sup" +
-                "plyer_id\" /></Dependent></ReferentialConstraint></Association></Schema><Schema N" +
-                "amespace=\"AutoMgrWeb.Db\" xmlns=\"http://schemas.microsoft.com/ado/2009/11/edm\"><E" +
-                "ntityContainer Name=\"AutoMgrDbEntities\" m:IsDefaultEntityContainer=\"true\" p6:Laz" +
-                "yLoadingEnabled=\"true\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/an" +
-                "notation\"><EntitySet Name=\"C__RefactorLog\" EntityType=\"AutoMgrDbModel.C__Refacto" +
-                "rLog\" /><EntitySet Name=\"barcode_goods\" EntityType=\"AutoMgrDbModel.barcode_goods" +
-                "\" /><EntitySet Name=\"branch\" EntityType=\"AutoMgrDbModel.branch\" /><EntitySet Nam" +
-                "e=\"contact\" EntityType=\"AutoMgrDbModel.contact\" /><EntitySet Name=\"customer\" Ent" +
-                "ityType=\"AutoMgrDbModel.customer\" /><EntitySet Name=\"customer_contact\" EntityTyp" +
-                "e=\"AutoMgrDbModel.customer_contact\" /><EntitySet Name=\"department\" EntityType=\"A" +
-                "utoMgrDbModel.department\" /><EntitySet Name=\"express\" EntityType=\"AutoMgrDbModel" +
-                ".express\" /><EntitySet Name=\"goods\" EntityType=\"AutoMgrDbModel.goods\" /><EntityS" +
-                "et Name=\"goods_alias\" EntityType=\"AutoMgrDbModel.goods_alias\" /><EntitySet Name=" +
-                "\"goods_photo\" EntityType=\"AutoMgrDbModel.goods_photo\" /><EntitySet Name=\"invento" +
-                "ry\" EntityType=\"AutoMgrDbModel.inventory\" /><EntitySet Name=\"procure\" EntityType" +
-                "=\"AutoMgrDbModel.procure\" /><EntitySet Name=\"procure_detail\" EntityType=\"AutoMgr" +
-                "DbModel.procure_detail\" /><EntitySet Name=\"repair\" EntityType=\"AutoMgrDbModel.re" +
-                "pair\" /><EntitySet Name=\"repair_cate\" EntityType=\"AutoMgrDbModel.repair_cate\" />" +
-                "<EntitySet Name=\"repair_cate_item\" EntityType=\"AutoMgrDbModel.repair_cate_item\" " +
-                "/><EntitySet Name=\"repair_item\" EntityType=\"AutoMgrDbModel.repair_item\" /><Entit" +
-                "ySet Name=\"repair_item_detail\" EntityType=\"AutoMgrDbModel.repair_item_detail\" />" +
-                "<EntitySet Name=\"repair_parts\" EntityType=\"AutoMgrDbModel.repair_parts\" /><Entit" +
-                "ySet Name=\"repair_photo\" EntityType=\"AutoMgrDbModel.repair_photo\" /><EntitySet N" +
-                "ame=\"role\" EntityType=\"AutoMgrDbModel.role\" /><EntitySet Name=\"sale\" EntityType=" +
-                "\"AutoMgrDbModel.sale\" /><EntitySet Name=\"sale_detail\" EntityType=\"AutoMgrDbModel" +
-                ".sale_detail\" /><EntitySet Name=\"shelf\" EntityType=\"AutoMgrDbModel.shelf\" /><Ent" +
-                "itySet Name=\"shelf_io\" EntityType=\"AutoMgrDbModel.shelf_io\" /><EntitySet Name=\"s" +
-                "taff\" EntityType=\"AutoMgrDbModel.staff\" /><EntitySet Name=\"supplyer\" EntityType=" +
-                "\"AutoMgrDbModel.supplyer\" /><EntitySet Name=\"supplyer_contact\" EntityType=\"AutoM" +
-                "grDbModel.supplyer_contact\" /><EntitySet Name=\"vehicle\" EntityType=\"AutoMgrDbMod" +
-                "el.vehicle\" /><AssociationSet Name=\"FK_barcode_goods_goods\" Association=\"AutoMgr" +
-                "DbModel.FK_barcode_goods_goods\"><End Role=\"barcode_goods\" EntitySet=\"barcode_goo" +
-                "ds\" /><End Role=\"goods\" EntitySet=\"goods\" /></AssociationSet><AssociationSet Nam" +
-                "e=\"FK_inventory_branch\" Association=\"AutoMgrDbModel.FK_inventory_branch\"><End Ro" +
-                "le=\"branch\" EntitySet=\"branch\" /><End Role=\"inventory\" EntitySet=\"inventory\" /><" +
-                "/AssociationSet><AssociationSet Name=\"FK_procure_branch\" Association=\"AutoMgrDbM" +
-                "odel.FK_procure_branch\"><End Role=\"branch\" EntitySet=\"branch\" /><End Role=\"procu" +
-                "re\" EntitySet=\"procure\" /></AssociationSet><AssociationSet Name=\"FK_repair_branc" +
-                "h\" Association=\"AutoMgrDbModel.FK_repair_branch\"><End Role=\"branch\" EntitySet=\"b" +
-                "ranch\" /><End Role=\"repair\" EntitySet=\"repair\" /></AssociationSet><AssociationSe" +
-                "t Name=\"FK_shelf_branch\" Association=\"AutoMgrDbModel.FK_shelf_branch\"><End Role=" +
-                "\"branch\" EntitySet=\"branch\" /><End Role=\"shelf\" EntitySet=\"shelf\" /></Associatio" +
-                "nSet><AssociationSet Name=\"FK_staff_branch\" Association=\"AutoMgrDbModel.FK_staff" +
-                "_branch\"><End Role=\"branch\" EntitySet=\"branch\" /><End Role=\"staff\" EntitySet=\"st" +
-                "aff\" /></AssociationSet><AssociationSet Name=\"FK_customer_contact_contact\" Assoc" +
-                "iation=\"AutoMgrDbModel.FK_customer_contact_contact\"><End Role=\"contact\" EntitySe" +
-                "t=\"contact\" /><End Role=\"customer_contact\" EntitySet=\"customer_contact\" /></Asso" +
-                "ciationSet><AssociationSet Name=\"FK_procure_contact\" Association=\"AutoMgrDbModel" +
-                ".FK_procure_contact\"><End Role=\"contact\" EntitySet=\"contact\" /><End Role=\"procur" +
-                "e\" EntitySet=\"procure\" /></AssociationSet><AssociationSet Name=\"FK_repair_contac" +
-                "t\" Association=\"AutoMgrDbModel.FK_repair_contact\"><End Role=\"contact\" EntitySet=" +
-                "\"contact\" /><End Role=\"repair\" EntitySet=\"repair\" /></AssociationSet><Associatio" +
-                "nSet Name=\"FK_supplyer_contact_contact\" Association=\"AutoMgrDbModel.FK_supplyer_" +
-                "contact_contact\"><End Role=\"contact\" EntitySet=\"contact\" /><End Role=\"supplyer_c" +
-                "ontact\" EntitySet=\"supplyer_contact\" /></AssociationSet><AssociationSet Name=\"FK" +
-                "_customer_contact_customer\" Association=\"AutoMgrDbModel.FK_customer_contact_cust" +
-                "omer\"><End Role=\"customer\" EntitySet=\"customer\" /><End Role=\"customer_contact\" E" +
-                "ntitySet=\"customer_contact\" /></AssociationSet><AssociationSet Name=\"FK_repair_c" +
-                "ustomer\" Association=\"AutoMgrDbModel.FK_repair_customer\"><End Role=\"customer\" En" +
-                "titySet=\"customer\" /><End Role=\"repair\" EntitySet=\"repair\" /></AssociationSet><A" +
-                "ssociationSet Name=\"FK_sale_customer\" Association=\"AutoMgrDbModel.FK_sale_custom" +
-                "er\"><End Role=\"customer\" EntitySet=\"customer\" /><End Role=\"sale\" EntitySet=\"sale" +
-                "\" /></AssociationSet><AssociationSet Name=\"FK_vehicle_customer\" Association=\"Aut" +
-                "oMgrDbModel.FK_vehicle_customer\"><End Role=\"customer\" EntitySet=\"customer\" /><En" +
-                "d Role=\"vehicle\" EntitySet=\"vehicle\" /></AssociationSet><AssociationSet Name=\"FK" +
-                "_repair_item_detail_department\" Association=\"AutoMgrDbModel.FK_repair_item_detai" +
-                "l_department\"><End Role=\"department\" EntitySet=\"department\" /><End Role=\"repair_" +
-                "item_detail\" EntitySet=\"repair_item_detail\" /></AssociationSet><AssociationSet N" +
-                "ame=\"FK_staff_department\" Association=\"AutoMgrDbModel.FK_staff_department\"><End " +
-                "Role=\"department\" EntitySet=\"department\" /><End Role=\"staff\" EntitySet=\"staff\" /" +
-                "></AssociationSet><AssociationSet Name=\"FK_sale_express\" Association=\"AutoMgrDbM" +
-                "odel.FK_sale_express\"><End Role=\"express\" EntitySet=\"express\" /><End Role=\"sale\"" +
-                " EntitySet=\"sale\" /></AssociationSet><AssociationSet Name=\"FK_goods_alias_goods\"" +
-                " Association=\"AutoMgrDbModel.FK_goods_alias_goods\"><End Rol";
+            private const string ModelPart6 = "<Association Name=\"FK_supplyer_contact_supplyer\"><End Type=\"AutoMgrDbModel.supply" +
+                "er\" Role=\"supplyer\" Multiplicity=\"1\" /><End Type=\"AutoMgrDbModel.supplyer_contac" +
+                "t\" Role=\"supplyer_contact\" Multiplicity=\"*\" /><ReferentialConstraint><Principal " +
+                "Role=\"supplyer\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"supplyer_c" +
+                "ontact\"><PropertyRef Name=\"supplyer_id\" /></Dependent></ReferentialConstraint></" +
+                "Association></Schema><Schema Namespace=\"AutoMgrWeb.Db\" xmlns=\"http://schemas.mic" +
+                "rosoft.com/ado/2009/11/edm\"><EntityContainer Name=\"AutoMgrDbEntities\" m:IsDefaul" +
+                "tEntityContainer=\"true\" p6:LazyLoadingEnabled=\"true\" xmlns:p6=\"http://schemas.mi" +
+                "crosoft.com/ado/2009/02/edm/annotation\"><EntitySet Name=\"C__RefactorLog\" EntityT" +
+                "ype=\"AutoMgrDbModel.C__RefactorLog\" /><EntitySet Name=\"barcode_goods\" EntityType" +
+                "=\"AutoMgrDbModel.barcode_goods\" /><EntitySet Name=\"branch\" EntityType=\"AutoMgrDb" +
+                "Model.branch\" /><EntitySet Name=\"contact\" EntityType=\"AutoMgrDbModel.contact\" />" +
+                "<EntitySet Name=\"customer\" EntityType=\"AutoMgrDbModel.customer\" /><EntitySet Nam" +
+                "e=\"customer_contact\" EntityType=\"AutoMgrDbModel.customer_contact\" /><EntitySet N" +
+                "ame=\"department\" EntityType=\"AutoMgrDbModel.department\" /><EntitySet Name=\"expre" +
+                "ss\" EntityType=\"AutoMgrDbModel.express\" /><EntitySet Name=\"goods\" EntityType=\"Au" +
+                "toMgrDbModel.goods\" /><EntitySet Name=\"goods_alias\" EntityType=\"AutoMgrDbModel.g" +
+                "oods_alias\" /><EntitySet Name=\"goods_photo\" EntityType=\"AutoMgrDbModel.goods_pho" +
+                "to\" /><EntitySet Name=\"inventory\" EntityType=\"AutoMgrDbModel.inventory\" /><Entit" +
+                "ySet Name=\"procure\" EntityType=\"AutoMgrDbModel.procure\" /><EntitySet Name=\"procu" +
+                "re_detail\" EntityType=\"AutoMgrDbModel.procure_detail\" /><EntitySet Name=\"repair\"" +
+                " EntityType=\"AutoMgrDbModel.repair\" /><EntitySet Name=\"repair_cate\" EntityType=\"" +
+                "AutoMgrDbModel.repair_cate\" /><EntitySet Name=\"repair_cate_item\" EntityType=\"Aut" +
+                "oMgrDbModel.repair_cate_item\" /><EntitySet Name=\"repair_item\" EntityType=\"AutoMg" +
+                "rDbModel.repair_item\" /><EntitySet Name=\"repair_item_detail\" EntityType=\"AutoMgr" +
+                "DbModel.repair_item_detail\" /><EntitySet Name=\"repair_parts\" EntityType=\"AutoMgr" +
+                "DbModel.repair_parts\" /><EntitySet Name=\"repair_photo\" EntityType=\"AutoMgrDbMode" +
+                "l.repair_photo\" /><EntitySet Name=\"role\" EntityType=\"AutoMgrDbModel.role\" /><Ent" +
+                "itySet Name=\"sale\" EntityType=\"AutoMgrDbModel.sale\" /><EntitySet Name=\"sale_deta" +
+                "il\" EntityType=\"AutoMgrDbModel.sale_detail\" /><EntitySet Name=\"shelf\" EntityType" +
+                "=\"AutoMgrDbModel.shelf\" /><EntitySet Name=\"shelf_io\" EntityType=\"AutoMgrDbModel." +
+                "shelf_io\" /><EntitySet Name=\"staff\" EntityType=\"AutoMgrDbModel.staff\" /><EntityS" +
+                "et Name=\"supplyer\" EntityType=\"AutoMgrDbModel.supplyer\" /><EntitySet Name=\"suppl" +
+                "yer_contact\" EntityType=\"AutoMgrDbModel.supplyer_contact\" /><EntitySet Name=\"veh" +
+                "icle\" EntityType=\"AutoMgrDbModel.vehicle\" /><AssociationSet Name=\"FK_barcode_goo" +
+                "ds_goods\" Association=\"AutoMgrDbModel.FK_barcode_goods_goods\"><End Role=\"barcode" +
+                "_goods\" EntitySet=\"barcode_goods\" /><End Role=\"goods\" EntitySet=\"goods\" /></Asso" +
+                "ciationSet><AssociationSet Name=\"FK_inventory_branch\" Association=\"AutoMgrDbMode" +
+                "l.FK_inventory_branch\"><End Role=\"branch\" EntitySet=\"branch\" /><End Role=\"invent" +
+                "ory\" EntitySet=\"inventory\" /></AssociationSet><AssociationSet Name=\"FK_procure_b" +
+                "ranch\" Association=\"AutoMgrDbModel.FK_procure_branch\"><End Role=\"branch\" EntityS" +
+                "et=\"branch\" /><End Role=\"procure\" EntitySet=\"procure\" /></AssociationSet><Associ" +
+                "ationSet Name=\"FK_repair_branch\" Association=\"AutoMgrDbModel.FK_repair_branch\"><" +
+                "End Role=\"branch\" EntitySet=\"branch\" /><End Role=\"repair\" EntitySet=\"repair\" /><" +
+                "/AssociationSet><AssociationSet Name=\"FK_shelf_branch\" Association=\"AutoMgrDbMod" +
+                "el.FK_shelf_branch\"><End Role=\"branch\" EntitySet=\"branch\" /><End Role=\"shelf\" En" +
+                "titySet=\"shelf\" /></AssociationSet><AssociationSet Name=\"FK_staff_branch\" Associ" +
+                "ation=\"AutoMgrDbModel.FK_staff_branch\"><End Role=\"branch\" EntitySet=\"branch\" /><" +
+                "End Role=\"staff\" EntitySet=\"staff\" /></AssociationSet><AssociationSet Name=\"FK_c" +
+                "ustomer_contact_contact\" Association=\"AutoMgrDbModel.FK_customer_contact_contact" +
+                "\"><End Role=\"contact\" EntitySet=\"contact\" /><End Role=\"customer_contact\" EntityS" +
+                "et=\"customer_contact\" /></AssociationSet><AssociationSet Name=\"FK_procure_contac" +
+                "t\" Association=\"AutoMgrDbModel.FK_procure_contact\"><End Role=\"contact\" EntitySet" +
+                "=\"contact\" /><End Role=\"procure\" EntitySet=\"procure\" /></AssociationSet><Associa" +
+                "tionSet Name=\"FK_supplyer_contact_contact\" Association=\"AutoMgrDbModel.FK_supply" +
+                "er_contact_contact\"><End Role=\"contact\" EntitySet=\"contact\" /><End Role=\"supplye" +
+                "r_contact\" EntitySet=\"supplyer_contact\" /></AssociationSet><AssociationSet Name=" +
+                "\"FK_customer_contact_customer\" Association=\"AutoMgrDbModel.FK_customer_contact_c" +
+                "ustomer\"><End Role=\"customer\" EntitySet=\"customer\" /><End Role=\"customer_contact" +
+                "\" EntitySet=\"customer_contact\" /></AssociationSet><AssociationSet Name=\"FK_sale_" +
+                "customer\" Association=\"AutoMgrDbModel.FK_sale_customer\"><End Role=\"customer\" Ent" +
+                "itySet=\"customer\" /><End Role=\"sale\" EntitySet=\"sale\" /></AssociationSet><Associ" +
+                "ationSet Name=\"FK_vehicle_customer\" Association=\"AutoMgrDbModel.FK_vehicle_custo" +
+                "mer\"><End Role=\"customer\" EntitySet=\"customer\" /><End Role=\"vehicle\" EntitySet=\"" +
+                "vehicle\" /></AssociationSet><AssociationSet Name=\"FK_repair_item_detail_departme" +
+                "nt\" Association=\"AutoMgrDbModel.FK_repair_item_detail_department\"><End Role=\"dep" +
+                "artment\" EntitySet=\"department\" /><End Role=\"repair_item_detail\" EntitySet=\"repa" +
+                "ir_item_detail\" /></AssociationSet><AssociationSet Name=\"FK_staff_department\" As" +
+                "sociation=\"AutoMgrDbModel.FK_staff_department\"><End Role=\"department\" EntitySet=" +
+                "\"department\" /><End Role=\"staff\" EntitySet=\"staff\" /></AssociationSet><Associati" +
+                "onSet Name=\"FK_sale_express\" Association=\"AutoMgrDbModel.FK_sale_express\"><End R" +
+                "ole=\"express\" EntitySet=\"express\" /><End Role=\"sale\" EntitySet=\"sale\" /></Associ" +
+                "ationSet><AssociationSet Name=\"FK_goods_alias_goods\" Association=\"AutoMgrDbModel" +
+                ".FK_goods_alias_goods\"><End Role=\"goods\" EntitySet=\"goods\" /><End Role=\"goods_al" +
+                "ias\" EntitySet=\"goods_alias\" /></AssociationSet><AssociationSet Name=\"FK_goods_p" +
+                "hoto_goods\" Association=\"AutoMgrDbModel.FK_goods_photo_goods\"><End Role=\"goods\" " +
+                "EntitySet=\"goods\" /><End Role=\"goods_photo\" EntitySet=\"goods_photo\" /></Associat" +
+                "ionSet><AssociationSet Name=\"FK_procure_detail_goods\" Association=\"AutoMgrDbMode" +
+                "l.FK_procure_detail_goods\"><End Role=\"goods\" EntitySet=\"goods\" /><End Role=\"proc" +
+                "ure_detail\" EntitySet=\"procure_detail\" /></AssociationSet><AssociationSet Name=\"" +
+                "FK_repair_parts_goods\" Association=\"AutoMgrDbModel.FK_repair_parts_goods\"><End R" +
+                "ole=\"goods\" EntitySet=\"goods\" /><End Role=\"repair_parts\" EntitySet=\"repair_parts" +
+                "\" /></AssociationSet><AssociationSet Name=\"FK_sale_detail_goods\" Association=\"Au" +
+                "toMgrDbModel.FK_sale_detail_goods\"><End Role=\"goods\" EntitySet=\"goods\" /><End Ro" +
+                "le=\"sale_detail\" EntitySet=\"sale_detail\" /></AssociationSet><AssociationSet Name" +
+                "=\"FK_shelf_goods\" Association=\"AutoMgrDbModel.FK_shelf_goods\"><End Role=\"goods\" " +
+                "EntitySet=\"goods\" /><End Role=\"shelf\" EntitySet=\"shelf\" /></AssociationSet><Asso" +
+                "ciationSet Name=\"FK_inventory_staff\" Association=\"AutoMgrDbModel.FK_inventory_st" +
+                "aff\"><End Role=\"inventory\" EntitySet=\"inventory\" /><End Role=\"staff\" EntitySet=\"" +
+                "staff\" /></AssociationSet><AssociationSet Name=\"FK_shelf_io_inventory\" Associati" +
+                "on=\"AutoMgrDbModel.FK_shelf_io_inventory\"><End Role=\"inventory\" EntitySet=\"inven" +
+                "tory\" /><End Role=\"shelf_io\" EntitySet=\"shelf_io\" /></AssociationSet><Associatio" +
+                "nSet Name=\"FK_procure_detail_procure\" Association=\"AutoMgrDbModel.FK_procure_det" +
+                "ail_procure\"><End Role=\"procure\" EntitySet=\"procure\" /><End";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-            private const string ModelPart7 = "e=\"goods\" EntitySet=\"goods\" /><End Role=\"goods_alias\" EntitySet=\"goods_alias\" /><" +
-                "/AssociationSet><AssociationSet Name=\"FK_goods_photo_goods\" Association=\"AutoMgr" +
-                "DbModel.FK_goods_photo_goods\"><End Role=\"goods\" EntitySet=\"goods\" /><End Role=\"g" +
-                "oods_photo\" EntitySet=\"goods_photo\" /></AssociationSet><AssociationSet Name=\"FK_" +
-                "procure_detail_goods\" Association=\"AutoMgrDbModel.FK_procure_detail_goods\"><End " +
-                "Role=\"goods\" EntitySet=\"goods\" /><End Role=\"procure_detail\" EntitySet=\"procure_d" +
-                "etail\" /></AssociationSet><AssociationSet Name=\"FK_repair_parts_goods\" Associati" +
-                "on=\"AutoMgrDbModel.FK_repair_parts_goods\"><End Role=\"goods\" EntitySet=\"goods\" />" +
-                "<End Role=\"repair_parts\" EntitySet=\"repair_parts\" /></AssociationSet><Associatio" +
-                "nSet Name=\"FK_sale_detail_goods\" Association=\"AutoMgrDbModel.FK_sale_detail_good" +
-                "s\"><End Role=\"goods\" EntitySet=\"goods\" /><End Role=\"sale_detail\" EntitySet=\"sale" +
-                "_detail\" /></AssociationSet><AssociationSet Name=\"FK_shelf_goods\" Association=\"A" +
-                "utoMgrDbModel.FK_shelf_goods\"><End Role=\"goods\" EntitySet=\"goods\" /><End Role=\"s" +
-                "helf\" EntitySet=\"shelf\" /></AssociationSet><AssociationSet Name=\"FK_inventory_st" +
-                "aff\" Association=\"AutoMgrDbModel.FK_inventory_staff\"><End Role=\"inventory\" Entit" +
-                "ySet=\"inventory\" /><End Role=\"staff\" EntitySet=\"staff\" /></AssociationSet><Assoc" +
-                "iationSet Name=\"FK_shelf_io_inventory\" Association=\"AutoMgrDbModel.FK_shelf_io_i" +
-                "nventory\"><End Role=\"inventory\" EntitySet=\"inventory\" /><End Role=\"shelf_io\" Ent" +
-                "itySet=\"shelf_io\" /></AssociationSet><AssociationSet Name=\"FK_procure_detail_pro" +
-                "cure\" Association=\"AutoMgrDbModel.FK_procure_detail_procure\"><End Role=\"procure\"" +
-                " EntitySet=\"procure\" /><End Role=\"procure_detail\" EntitySet=\"procure_detail\" /><" +
-                "/AssociationSet><AssociationSet Name=\"FK_procure_stuff\" Association=\"AutoMgrDbMo" +
-                "del.FK_procure_stuff\"><End Role=\"procure\" EntitySet=\"procure\" /><End Role=\"staff" +
-                "\" EntitySet=\"staff\" /></AssociationSet><AssociationSet Name=\"FK_procure_supplyer" +
-                "\" Association=\"AutoMgrDbModel.FK_procure_supplyer\"><End Role=\"procure\" EntitySet" +
-                "=\"procure\" /><End Role=\"supplyer\" EntitySet=\"supplyer\" /></AssociationSet><Assoc" +
-                "iationSet Name=\"FK_shelf_io_procure\" Association=\"AutoMgrDbModel.FK_shelf_io_pro" +
-                "cure\"><End Role=\"procure\" EntitySet=\"procure\" /><End Role=\"shelf_io\" EntitySet=\"" +
-                "shelf_io\" /></AssociationSet><AssociationSet Name=\"FK_repair_item_detail_repair\"" +
-                " Association=\"AutoMgrDbModel.FK_repair_item_detail_repair\"><End Role=\"repair\" En" +
-                "titySet=\"repair\" /><End Role=\"repair_item_detail\" EntitySet=\"repair_item_detail\"" +
-                " /></AssociationSet><AssociationSet Name=\"FK_repair_parts_repair\" Association=\"A" +
-                "utoMgrDbModel.FK_repair_parts_repair\"><End Role=\"repair\" EntitySet=\"repair\" /><E" +
-                "nd Role=\"repair_parts\" EntitySet=\"repair_parts\" /></AssociationSet><AssociationS" +
-                "et Name=\"FK_repair_photo_repair\" Association=\"AutoMgrDbModel.FK_repair_photo_rep" +
-                "air\"><End Role=\"repair\" EntitySet=\"repair\" /><End Role=\"repair_photo\" EntitySet=" +
-                "\"repair_photo\" /></AssociationSet><AssociationSet Name=\"FK_repair_stuff\" Associa" +
-                "tion=\"AutoMgrDbModel.FK_repair_stuff\"><End Role=\"repair\" EntitySet=\"repair\" /><E" +
-                "nd Role=\"staff\" EntitySet=\"staff\" /></AssociationSet><AssociationSet Name=\"FK_re" +
-                "pair_vehicle\" Association=\"AutoMgrDbModel.FK_repair_vehicle\"><End Role=\"repair\" " +
-                "EntitySet=\"repair\" /><End Role=\"vehicle\" EntitySet=\"vehicle\" /></AssociationSet>" +
-                "<AssociationSet Name=\"FK_shelf_io_repair\" Association=\"AutoMgrDbModel.FK_shelf_i" +
-                "o_repair\"><End Role=\"repair\" EntitySet=\"repair\" /><End Role=\"shelf_io\" EntitySet" +
-                "=\"shelf_io\" /></AssociationSet><AssociationSet Name=\"FK_repair_cate_item_repair_" +
-                "cate\" Association=\"AutoMgrDbModel.FK_repair_cate_item_repair_cate\"><End Role=\"re" +
-                "pair_cate\" EntitySet=\"repair_cate\" /><End Role=\"repair_cate_item\" EntitySet=\"rep" +
-                "air_cate_item\" /></AssociationSet><AssociationSet Name=\"FK_repair_item_detail_re" +
-                "pair_cate\" Association=\"AutoMgrDbModel.FK_repair_item_detail_repair_cate\"><End R" +
-                "ole=\"repair_cate\" EntitySet=\"repair_cate\" /><End Role=\"repair_item_detail\" Entit" +
-                "ySet=\"repair_item_detail\" /></AssociationSet><AssociationSet Name=\"FK_repair_cat" +
-                "e_item_repair_item\" Association=\"AutoMgrDbModel.FK_repair_cate_item_repair_item\"" +
-                "><End Role=\"repair_cate_item\" EntitySet=\"repair_cate_item\" /><End Role=\"repair_i" +
-                "tem\" EntitySet=\"repair_item\" /></AssociationSet><AssociationSet Name=\"FK_repair_" +
-                "item_detail_repair_item\" Association=\"AutoMgrDbModel.FK_repair_item_detail_repai" +
-                "r_item\"><End Role=\"repair_item\" EntitySet=\"repair_item\" /><End Role=\"repair_item" +
-                "_detail\" EntitySet=\"repair_item_detail\" /></AssociationSet><AssociationSet Name=" +
-                "\"FK_repair_parts_shelf_io\" Association=\"AutoMgrDbModel.FK_repair_parts_shelf_io\"" +
-                "><End Role=\"repair_parts\" EntitySet=\"repair_parts\" /><End Role=\"shelf_io\" Entity" +
-                "Set=\"shelf_io\" /></AssociationSet><AssociationSet Name=\"FK_staff_role\" Associati" +
-                "on=\"AutoMgrDbModel.FK_staff_role\"><End Role=\"role\" EntitySet=\"role\" /><End Role=" +
-                "\"staff\" EntitySet=\"staff\" /></AssociationSet><AssociationSet Name=\"FK_sale_detai" +
-                "l_sale\" Association=\"AutoMgrDbModel.FK_sale_detail_sale\"><End Role=\"sale\" Entity" +
-                "Set=\"sale\" /><End Role=\"sale_detail\" EntitySet=\"sale_detail\" /></AssociationSet>" +
-                "<AssociationSet Name=\"FK_sale_stuff\" Association=\"AutoMgrDbModel.FK_sale_stuff\">" +
-                "<End Role=\"sale\" EntitySet=\"sale\" /><End Role=\"staff\" EntitySet=\"staff\" /></Asso" +
-                "ciationSet><AssociationSet Name=\"FK_shelf_io_sale\" Association=\"AutoMgrDbModel.F" +
-                "K_shelf_io_sale\"><End Role=\"sale\" EntitySet=\"sale\" /><End Role=\"shelf_io\" Entity" +
-                "Set=\"shelf_io\" /></AssociationSet><AssociationSet Name=\"FK_sale_detail_shelf_io\"" +
-                " Association=\"AutoMgrDbModel.FK_sale_detail_shelf_io\"><End Role=\"sale_detail\" En" +
-                "titySet=\"sale_detail\" /><End Role=\"shelf_io\" EntitySet=\"shelf_io\" /></Associatio" +
-                "nSet><AssociationSet Name=\"FK_shelf_io_shelf\" Association=\"AutoMgrDbModel.FK_she" +
-                "lf_io_shelf\"><End Role=\"shelf\" EntitySet=\"shelf\" /><End Role=\"shelf_io\" EntitySe" +
-                "t=\"shelf_io\" /></AssociationSet><AssociationSet Name=\"FK_supplyer_contact_supply" +
-                "er\" Association=\"AutoMgrDbModel.FK_supplyer_contact_supplyer\"><End Role=\"supplye" +
-                "r\" EntitySet=\"supplyer\" /><End Role=\"supplyer_contact\" EntitySet=\"supplyer_conta" +
-                "ct\" /></AssociationSet></EntityContainer></Schema></edmx:DataServices></edmx:Edm" +
-                "x>";
+            private const string ModelPart7 = " Role=\"procure_detail\" EntitySet=\"procure_detail\" /></AssociationSet><Association" +
+                "Set Name=\"FK_procure_stuff\" Association=\"AutoMgrDbModel.FK_procure_stuff\"><End R" +
+                "ole=\"procure\" EntitySet=\"procure\" /><End Role=\"staff\" EntitySet=\"staff\" /></Asso" +
+                "ciationSet><AssociationSet Name=\"FK_procure_supplyer\" Association=\"AutoMgrDbMode" +
+                "l.FK_procure_supplyer\"><End Role=\"procure\" EntitySet=\"procure\" /><End Role=\"supp" +
+                "lyer\" EntitySet=\"supplyer\" /></AssociationSet><AssociationSet Name=\"FK_shelf_io_" +
+                "procure\" Association=\"AutoMgrDbModel.FK_shelf_io_procure\"><End Role=\"procure\" En" +
+                "titySet=\"procure\" /><End Role=\"shelf_io\" EntitySet=\"shelf_io\" /></AssociationSet" +
+                "><AssociationSet Name=\"FK_repair_item_detail_repair\" Association=\"AutoMgrDbModel" +
+                ".FK_repair_item_detail_repair\"><End Role=\"repair\" EntitySet=\"repair\" /><End Role" +
+                "=\"repair_item_detail\" EntitySet=\"repair_item_detail\" /></AssociationSet><Associa" +
+                "tionSet Name=\"FK_repair_parts_repair\" Association=\"AutoMgrDbModel.FK_repair_part" +
+                "s_repair\"><End Role=\"repair\" EntitySet=\"repair\" /><End Role=\"repair_parts\" Entit" +
+                "ySet=\"repair_parts\" /></AssociationSet><AssociationSet Name=\"FK_repair_photo_rep" +
+                "air\" Association=\"AutoMgrDbModel.FK_repair_photo_repair\"><End Role=\"repair\" Enti" +
+                "tySet=\"repair\" /><End Role=\"repair_photo\" EntitySet=\"repair_photo\" /></Associati" +
+                "onSet><AssociationSet Name=\"FK_repair_stuff\" Association=\"AutoMgrDbModel.FK_repa" +
+                "ir_stuff\"><End Role=\"repair\" EntitySet=\"repair\" /><End Role=\"staff\" EntitySet=\"s" +
+                "taff\" /></AssociationSet><AssociationSet Name=\"FK_repair_vehicle\" Association=\"A" +
+                "utoMgrDbModel.FK_repair_vehicle\"><End Role=\"repair\" EntitySet=\"repair\" /><End Ro" +
+                "le=\"vehicle\" EntitySet=\"vehicle\" /></AssociationSet><AssociationSet Name=\"FK_she" +
+                "lf_io_repair\" Association=\"AutoMgrDbModel.FK_shelf_io_repair\"><End Role=\"repair\"" +
+                " EntitySet=\"repair\" /><End Role=\"shelf_io\" EntitySet=\"shelf_io\" /></AssociationS" +
+                "et><AssociationSet Name=\"FK_repair_cate_item_repair_cate\" Association=\"AutoMgrDb" +
+                "Model.FK_repair_cate_item_repair_cate\"><End Role=\"repair_cate\" EntitySet=\"repair" +
+                "_cate\" /><End Role=\"repair_cate_item\" EntitySet=\"repair_cate_item\" /></Associati" +
+                "onSet><AssociationSet Name=\"FK_repair_item_detail_repair_cate\" Association=\"Auto" +
+                "MgrDbModel.FK_repair_item_detail_repair_cate\"><End Role=\"repair_cate\" EntitySet=" +
+                "\"repair_cate\" /><End Role=\"repair_item_detail\" EntitySet=\"repair_item_detail\" />" +
+                "</AssociationSet><AssociationSet Name=\"FK_repair_cate_item_repair_item\" Associat" +
+                "ion=\"AutoMgrDbModel.FK_repair_cate_item_repair_item\"><End Role=\"repair_cate_item" +
+                "\" EntitySet=\"repair_cate_item\" /><End Role=\"repair_item\" EntitySet=\"repair_item\"" +
+                " /></AssociationSet><AssociationSet Name=\"FK_repair_item_detail_repair_item\" Ass" +
+                "ociation=\"AutoMgrDbModel.FK_repair_item_detail_repair_item\"><End Role=\"repair_it" +
+                "em\" EntitySet=\"repair_item\" /><End Role=\"repair_item_detail\" EntitySet=\"repair_i" +
+                "tem_detail\" /></AssociationSet><AssociationSet Name=\"FK_repair_parts_shelf_io\" A" +
+                "ssociation=\"AutoMgrDbModel.FK_repair_parts_shelf_io\"><End Role=\"repair_parts\" En" +
+                "titySet=\"repair_parts\" /><End Role=\"shelf_io\" EntitySet=\"shelf_io\" /></Associati" +
+                "onSet><AssociationSet Name=\"FK_staff_role\" Association=\"AutoMgrDbModel.FK_staff_" +
+                "role\"><End Role=\"role\" EntitySet=\"role\" /><End Role=\"staff\" EntitySet=\"staff\" />" +
+                "</AssociationSet><AssociationSet Name=\"FK_sale_detail_sale\" Association=\"AutoMgr" +
+                "DbModel.FK_sale_detail_sale\"><End Role=\"sale\" EntitySet=\"sale\" /><End Role=\"sale" +
+                "_detail\" EntitySet=\"sale_detail\" /></AssociationSet><AssociationSet Name=\"FK_sal" +
+                "e_stuff\" Association=\"AutoMgrDbModel.FK_sale_stuff\"><End Role=\"sale\" EntitySet=\"" +
+                "sale\" /><End Role=\"staff\" EntitySet=\"staff\" /></AssociationSet><AssociationSet N" +
+                "ame=\"FK_shelf_io_sale\" Association=\"AutoMgrDbModel.FK_shelf_io_sale\"><End Role=\"" +
+                "sale\" EntitySet=\"sale\" /><End Role=\"shelf_io\" EntitySet=\"shelf_io\" /></Associati" +
+                "onSet><AssociationSet Name=\"FK_sale_detail_shelf_io\" Association=\"AutoMgrDbModel" +
+                ".FK_sale_detail_shelf_io\"><End Role=\"sale_detail\" EntitySet=\"sale_detail\" /><End" +
+                " Role=\"shelf_io\" EntitySet=\"shelf_io\" /></AssociationSet><AssociationSet Name=\"F" +
+                "K_shelf_io_shelf\" Association=\"AutoMgrDbModel.FK_shelf_io_shelf\"><End Role=\"shel" +
+                "f\" EntitySet=\"shelf\" /><End Role=\"shelf_io\" EntitySet=\"shelf_io\" /></Association" +
+                "Set><AssociationSet Name=\"FK_supplyer_contact_supplyer\" Association=\"AutoMgrDbMo" +
+                "del.FK_supplyer_contact_supplyer\"><End Role=\"supplyer\" EntitySet=\"supplyer\" /><E" +
+                "nd Role=\"supplyer_contact\" EntitySet=\"supplyer_contact\" /></AssociationSet></Ent" +
+                "ityContainer></Schema></edmx:DataServices></edmx:Edmx>";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
             private static string GetConcatenatedEdmxString()
             {
@@ -2101,24 +2080,6 @@ namespace AutoMgrW8.AutoMgrSvc
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceCollection<procure> _procure = new global::System.Data.Services.Client.DataServiceCollection<procure>(null, global::System.Data.Services.Client.TrackingMode.None);
         /// <summary>
-        /// There are no comments for repair in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceCollection<repair> repair
-        {
-            get
-            {
-                return this._repair;
-            }
-            set
-            {
-                this._repair = value;
-                this.OnPropertyChanged("repair");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceCollection<repair> _repair = new global::System.Data.Services.Client.DataServiceCollection<repair>(null, global::System.Data.Services.Client.TrackingMode.None);
-        /// <summary>
         /// There are no comments for supplyer_contact in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -2276,24 +2237,6 @@ namespace AutoMgrW8.AutoMgrSvc
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceCollection<customer_contact> _customer_contact = new global::System.Data.Services.Client.DataServiceCollection<customer_contact>(null, global::System.Data.Services.Client.TrackingMode.None);
-        /// <summary>
-        /// There are no comments for repair in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceCollection<repair> repair
-        {
-            get
-            {
-                return this._repair;
-            }
-            set
-            {
-                this._repair = value;
-                this.OnPropertyChanged("repair");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceCollection<repair> _repair = new global::System.Data.Services.Client.DataServiceCollection<repair>(null, global::System.Data.Services.Client.TrackingMode.None);
         /// <summary>
         /// There are no comments for sale in the schema.
         /// </summary>
@@ -4080,11 +4023,9 @@ namespace AutoMgrW8.AutoMgrSvc
         /// <param name="repair_price">Initial value of repair_price.</param>
         /// <param name="discount">Initial value of discount.</param>
         /// <param name="real_price">Initial value of real_price.</param>
-        /// <param name="customer_id">Initial value of customer_id.</param>
-        /// <param name="contact_id">Initial value of contact_id.</param>
         /// <param name="vehicle_id">Initial value of vehicle_id.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static repair Createrepair(int ID, int branch_id, int recv_stuff_id, global::System.DateTime recv_date, bool quote_only, decimal parts_price, decimal repair_price, decimal discount, decimal real_price, int customer_id, int contact_id, int vehicle_id)
+        public static repair Createrepair(int ID, int branch_id, int recv_stuff_id, global::System.DateTime recv_date, bool quote_only, decimal parts_price, decimal repair_price, decimal discount, decimal real_price, int vehicle_id)
         {
             repair repair = new repair();
             repair.id = ID;
@@ -4096,8 +4037,6 @@ namespace AutoMgrW8.AutoMgrSvc
             repair.repair_price = repair_price;
             repair.discount = discount;
             repair.real_price = real_price;
-            repair.customer_id = customer_id;
-            repair.contact_id = contact_id;
             repair.vehicle_id = vehicle_id;
             return repair;
         }
@@ -4322,50 +4261,6 @@ namespace AutoMgrW8.AutoMgrSvc
         partial void Onout_dateChanging(global::System.Nullable<global::System.DateTime> value);
         partial void Onout_dateChanged();
         /// <summary>
-        /// There are no comments for Property customer_id in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int customer_id
-        {
-            get
-            {
-                return this._customer_id;
-            }
-            set
-            {
-                this.Oncustomer_idChanging(value);
-                this._customer_id = value;
-                this.Oncustomer_idChanged();
-                this.OnPropertyChanged("customer_id");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _customer_id;
-        partial void Oncustomer_idChanging(int value);
-        partial void Oncustomer_idChanged();
-        /// <summary>
-        /// There are no comments for Property contact_id in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int contact_id
-        {
-            get
-            {
-                return this._contact_id;
-            }
-            set
-            {
-                this.Oncontact_idChanging(value);
-                this._contact_id = value;
-                this.Oncontact_idChanged();
-                this.OnPropertyChanged("contact_id");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _contact_id;
-        partial void Oncontact_idChanging(int value);
-        partial void Oncontact_idChanged();
-        /// <summary>
         /// There are no comments for Property vehicle_id in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -4405,42 +4300,6 @@ namespace AutoMgrW8.AutoMgrSvc
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private branch _branch;
-        /// <summary>
-        /// There are no comments for contact in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public contact contact
-        {
-            get
-            {
-                return this._contact;
-            }
-            set
-            {
-                this._contact = value;
-                this.OnPropertyChanged("contact");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private contact _contact;
-        /// <summary>
-        /// There are no comments for customer in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public customer customer
-        {
-            get
-            {
-                return this._customer;
-            }
-            set
-            {
-                this._customer = value;
-                this.OnPropertyChanged("customer");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private customer _customer;
         /// <summary>
         /// There are no comments for repair_item_detail in the schema.
         /// </summary>

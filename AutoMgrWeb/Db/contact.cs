@@ -18,7 +18,6 @@ namespace AutoMgrWeb.Db
         {
             this.customer_contact = new HashSet<customer_contact>();
             this.procure = new HashSet<procure>();
-            this.repair = new HashSet<repair>();
             this.supplyer_contact = new HashSet<supplyer_contact>();
         }
     
@@ -30,7 +29,6 @@ namespace AutoMgrWeb.Db
     
         public virtual ICollection<customer_contact> customer_contact { get; set; }
         public virtual ICollection<procure> procure { get; set; }
-        public virtual ICollection<repair> repair { get; set; }
         public virtual ICollection<supplyer_contact> supplyer_contact { get; set; }
     }
 }
