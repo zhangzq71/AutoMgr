@@ -17,6 +17,7 @@
 
             <converter:InvertoryConverter x:Key="InvertoryConverter" />
             <converter:RepairFtyIsenableConverter x:Key="RepairFtyIsenableConverter" />
+            <converter:DepartmentConverter x:Key="DepartmentConverter" />
         </ResourceDictionary>
   </Application.Resources>
 </Application>

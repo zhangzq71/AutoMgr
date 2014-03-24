@@ -123,6 +123,7 @@
     <Compile Include="Controls\UIContainer.xaml.cs">
       <DependentUpon>UIContainer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converter\DepartmentConverter.cs" />
     <Compile Include="Converter\InvertoryConverter.cs" />
     <Compile Include="Converter\RepairFtyIsenableConverter.cs" />
     <Compile Include="Design\DesignNavigationService.cs" />
