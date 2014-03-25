@@ -8,15 +8,18 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using AutoMgrW8.Helpers;
 using System.Data.Services.Client;
+using Windows.UI.Xaml.Data;
 
 namespace AutoMgrW8.ViewModel
 {
     public class VMReposityOutput : ViewModelBase
     {
         private readonly INavigationService _navigationService;
-        //private readonly AutoMgrSvc.AutoMgrDbEntities _context = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.1.200/Service/AutoMgrDbSvc.svc/"));
+#if USE_SERVER
+        private readonly AutoMgrSvc.AutoMgrDbEntities _context = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.1.200:8123/Service/AutoMgrDbSvc.svc/"));
+#else
         private readonly AutoMgrSvc.AutoMgrDbEntities _context = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
-
+#endif
         public VMReposityOutput(INavigationService navigationService)
         {
             ////if (IsInDesignMode)
@@ -54,6 +57,17 @@ namespace AutoMgrW8.ViewModel
             }
         }
         private AutoMgrSvc.staff _applyStaff;
+
+        public CollectionViewSource Repairs
+        {
+            get { return _repairs; }
+            set
+            {
+                _repairs = value;
+                RaisePropertyChanged();
+            }
+        }
+        private CollectionViewSource _repairs;
 
         /// <summary>
         /// 确定命令
@@ -117,5 +131,35 @@ namespace AutoMgrW8.ViewModel
             }
         }
         private RelayCommand _commandSelectGoods;
+
+        public RelayCommand CommandRefresh
+        {
+            get
+            {
+                if (_commandRefresh == null)
+                    _commandRefresh = new RelayCommand(() =>
+                    {
+                        var repairs = new DataServiceCollection<AutoMgrSvc.repair>();
+
+                        repairs.LoadCompleted += new EventHandler<LoadCompletedEventArgs>((sender, e) =>
+                        {
+                            if (e.Error == null)
+                            {
+                                Repairs = new CollectionViewSource() { Source = repairs };
+
+                                Repairs.View.CurrentChanged += new EventHandler<object>((s1, e1) =>
+                                {
+                                });
+                            }
+                        });
+
+                        var query = from repair in _context.repair.Expand("vehicle/customer").Expand("staff").Expand("repair_item_detail/repair_item").Expand("repair_item_detail/department").Expand("repair_parts/goods") select repair;
+                        repairs.LoadAsync(query);
+                    });
+
+                return _commandRefresh;
+            }
+        }
+        private RelayCommand _commandRefresh;
     }
 }

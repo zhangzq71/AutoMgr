@@ -19,6 +19,12 @@
 		<Binding Path="VMReposityOutput" Source="{StaticResource Locator}"/>
 	</Page.DataContext>
 
+    <Interactivity:Interaction.Behaviors>
+        <Core:EventTriggerBehavior EventName="Loaded">
+            <Core:InvokeCommandAction Command="{Binding CommandRefresh, Mode=OneWay}" />
+        </Core:EventTriggerBehavior>
+    </Interactivity:Interaction.Behaviors>
+
     <!--
         This grid acts as a root panel for the page that defines two rows:
         * Row 0 contains the back button and page title
@@ -66,11 +72,12 @@
                 </Grid.RowDefinitions>
                 <StackPanel>
                     <TextBlock Text="请选择在修车辆" FontSize="28" />
-                    <ComboBox FontSize="28" Margin="0, 8, 20, 30">
-                        <ComboBox.Items>
-                            <x:String>东风日产</x:String>
-                            <x:String>东风日野</x:String>
-                        </ComboBox.Items>
+                    <ComboBox FontSize="20" Margin="0, 8, 20, 30" ItemsSource="{Binding Repairs.View}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding vehicle.car_num}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Grid.Row="1">

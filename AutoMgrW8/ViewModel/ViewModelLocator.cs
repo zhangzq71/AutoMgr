@@ -44,7 +44,11 @@ namespace AutoMgrW8.ViewModel
                 SimpleIoc.Default.Register<INavigationService>(() => new NavigationService());
                 SimpleIoc.Default.Register<AutoMgrSvc.AutoMgrDbEntities>(() =>
                 {
+#if USE_SERVER
+                    return new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.1.200:8123/Service/AutoMgrDbSvc.svc/"));
+#else
                     return new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://localhost:23796/Service/AutoMgrDbSvc.svc/"));
+#endif
                 });
 
                 //SimpleIoc.Default.Register<AutoMgrSvc.AutoMgrDbEntities>(() => new AutoMgrSvc.AutoMgrDbEntities(new System.Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/")));

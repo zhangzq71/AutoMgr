@@ -20,7 +20,11 @@ namespace AutoMgrW8.ViewModel
     {
         private AutoMgrSvc.repair_item_detail _currentRepairItemDetail;
         private readonly INavigationService _navigationService;
+#if USE_SERVER
+        private AutoMgrSvc.AutoMgrDbEntities _context = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.1.200:8123/Service/AutoMgrDbSvc.svc/"));
+#else
         private AutoMgrSvc.AutoMgrDbEntities _context = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
+#endif
 
         public VMRepairFty(INavigationService navigationService)
         {
@@ -268,20 +272,24 @@ namespace AutoMgrW8.ViewModel
                                     parts_price = 0,
                                     discount = 0,
                                     real_price = 0,
-                                    vehicle = new AutoMgrSvc.vehicle()
-                                    {
-                                        car_num = "12345",
-                                        engine_num = "54321",
-                                        frame_num = "9876543",
-                                        brand = "东风日产2",
-                                        model = "A200",
-                                        customer = new AutoMgrSvc.customer()
-                                        {
-                                            company = "第3运输公司",
-                                            address = "广州市",
-                                            phone = "13316161002",
-                                        },
+                                    vehicle = new AutoMgrSvc.vehicle() 
+                                    { 
+                                        customer = new AutoMgrSvc.customer(),
                                     },
+                                    //vehicle = new AutoMgrSvc.vehicle()
+                                    //{
+                                    //    car_num = "12345",
+                                    //    engine_num = "54321",
+                                    //    frame_num = "9876543",
+                                    //    brand = "东风日产2",
+                                    //    model = "A200",
+                                    //    customer = new AutoMgrSvc.customer()
+                                    //    {
+                                    //        company = "第3运输公司",
+                                    //        address = "广州市",
+                                    //        phone = "13316161002",
+                                    //    },
+                                    //},
                                 };
 
                                 Isediting = true;

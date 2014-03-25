@@ -50,7 +50,7 @@
                 </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="0, 10" Background="LightGray" Opacity="0.3" >
+                        <Grid Margin="0, 10" Background="#0d97fb" Opacity="0.3" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50*" />
                                 <ColumnDefinition Width="50*" />
@@ -130,7 +130,7 @@
 				</ListView.ItemContainerStyle>
 				<ListView.ItemTemplate>
 					<DataTemplate>
-						<Grid Margin="0, 0, 0, -40" Background="LightGray" Opacity="0.3" >
+                        <Grid Margin="0, 0, 0, -40" Background="#008000" Opacity="0.3" >
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="50*" />
 								<ColumnDefinition Width="50*" />
