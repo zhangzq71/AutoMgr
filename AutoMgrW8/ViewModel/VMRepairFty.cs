@@ -11,6 +11,8 @@ using AutoMgrW8.Helpers;
 using System.Data.Services.Client;
 using Windows.UI.Xaml.Data;
 using Microsoft.Practices.ServiceLocation;
+using Windows.UI.Core;
+using Windows.ApplicationModel.Core;
 
 namespace AutoMgrW8.ViewModel
 {
@@ -18,7 +20,7 @@ namespace AutoMgrW8.ViewModel
     {
         private AutoMgrSvc.repair_item_detail _currentRepairItemDetail;
         private readonly INavigationService _navigationService;
-        private readonly AutoMgrSvc.AutoMgrDbEntities _context = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
+        private AutoMgrSvc.AutoMgrDbEntities _context = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
 
         public VMRepairFty(INavigationService navigationService)
         {
@@ -311,6 +313,35 @@ namespace AutoMgrW8.ViewModel
                                 //_context.BeginSaveChanges(result => { _context.EndSaveChanges(result); }, null);
                                 break;
 
+                            case "确定接车":
+                                Isediting = false;
+
+                                _context.AddTocustomer(RepairDetail.vehicle.customer);
+                                _context.AddTovehicle(RepairDetail.vehicle);
+                                _context.SetLink(RepairDetail.vehicle, "customer", RepairDetail.vehicle.customer);
+
+                                _context.AddTorepair(RepairDetail);
+                                _context.SetLink(RepairDetail, "vehicle", RepairDetail.vehicle);
+
+                                foreach (var item in RepairDetail.repair_item_detail)
+                                {
+                                    _context.AddTorepair_item_detail(item);
+                                    _context.SetLink(item, "repair", RepairDetail);
+                                    _context.AddLink(RepairDetail, "repair_item_detail", item);
+                                }
+
+                                _context.BeginSaveChanges(result => 
+                                {
+                                    CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                                    {
+                                        _context.EndSaveChanges(result);
+                                    });
+
+                                    //_context.Detach(RepairDetail);
+                                    //_context = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.1.200:23796/Service/AutoMgrDbSvc.svc/"));
+                                }, null);
+                                break;
+
                             case "取消接车":
                                 Isediting = false;
                                 break;
@@ -333,6 +364,12 @@ namespace AutoMgrW8.ViewModel
                                     if (e.Error == null)
                                     {
                                         Repairs = new CollectionViewSource() { Source = repairs };
+                                        RepairDetail = (AutoMgrSvc.repair)Repairs.View.CurrentItem;
+
+                                        Repairs.View.CurrentChanged += new EventHandler<object>((s1, e1) =>
+                                        {
+                                            RepairDetail = (AutoMgrSvc.repair)Repairs.View.CurrentItem;
+                                        });
                                     }
                                 });
                                 //var query = from repair in _context.repair.Expand("vehicle/customer").Expand("staff").Expand("repair_item_detail/repair_item").Expand("repair_item_detail/department").Expand("repair_parts/goods") select repair;

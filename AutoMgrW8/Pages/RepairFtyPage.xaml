@@ -185,7 +185,7 @@
                                 </ComboBox>
                                 <Button Margin="10, 0" Content="添加" FontSize="18" Command="{Binding CommandButton}" CommandParameter="添加项目" IsEnabled="{Binding Isediting, Converter={StaticResource RepairFtyIsenableConverter}}" />
                             </StackPanel>
-                            <ListView Grid.Row="2" ItemsSource="{Binding RepairDetail.repair_item_detail, Mode=TwoWay}">
+                            <ListView Grid.Row="2" ItemsSource="{Binding RepairDetail.repair_item_detail, Mode=TwoWay}" IsEnabled="{Binding Isediting, Converter={StaticResource RepairFtyIsenableConverter}}">
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
                                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
