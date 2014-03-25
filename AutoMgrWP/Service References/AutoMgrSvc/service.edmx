@@ -39,19 +39,17 @@
         <Property Name="email" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
         <NavigationProperty Name="customer_contact" Relationship="AutoMgrDbModel.FK_customer_contact_contact" ToRole="customer_contact" FromRole="contact" />
         <NavigationProperty Name="procure" Relationship="AutoMgrDbModel.FK_procure_contact" ToRole="procure" FromRole="contact" />
-        <NavigationProperty Name="repair" Relationship="AutoMgrDbModel.FK_repair_contact" ToRole="repair" FromRole="contact" />
         <NavigationProperty Name="supplyer_contact" Relationship="AutoMgrDbModel.FK_supplyer_contact_contact" ToRole="supplyer_contact" FromRole="contact" />
       </EntityType>
       <EntityType Name="customer">
         <Key>
           <PropertyRef Name="id" />
         </Key>
-        <Property Name="id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         <Property Name="company" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         <Property Name="address" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="true" />
         <Property Name="phone" Type="Edm.String" MaxLength="20" FixedLength="false" Unicode="true" />
         <NavigationProperty Name="customer_contact" Relationship="AutoMgrDbModel.FK_customer_contact_customer" ToRole="customer_contact" FromRole="customer" />
-        <NavigationProperty Name="repair" Relationship="AutoMgrDbModel.FK_repair_customer" ToRole="repair" FromRole="customer" />
         <NavigationProperty Name="sale" Relationship="AutoMgrDbModel.FK_sale_customer" ToRole="sale" FromRole="customer" />
         <NavigationProperty Name="vehicle" Relationship="AutoMgrDbModel.FK_vehicle_customer" ToRole="vehicle" FromRole="customer" />
       </EntityType>
@@ -98,6 +96,7 @@
         <Property Name="width" Type="Edm.Single" />
         <Property Name="height" Type="Edm.Single" />
         <Property Name="weight" Type="Edm.Single" />
+        <Property Name="alias" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="true" />
         <NavigationProperty Name="barcode_goods" Relationship="AutoMgrDbModel.FK_barcode_goods_goods" ToRole="barcode_goods" FromRole="goods" />
         <NavigationProperty Name="goods_alias" Relationship="AutoMgrDbModel.FK_goods_alias_goods" ToRole="goods_alias" FromRole="goods" />
         <NavigationProperty Name="goods_photo" Relationship="AutoMgrDbModel.FK_goods_photo_goods" ToRole="goods_photo" FromRole="goods" />
@@ -180,12 +179,8 @@
         <Property Name="discount" Type="Edm.Decimal" Nullable="false" Precision="4" Scale="2" />
         <Property Name="real_price" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" />
         <Property Name="out_date" Type="Edm.DateTime" Precision="3" />
-        <Property Name="customer_id" Type="Edm.Int32" Nullable="false" />
-        <Property Name="contact_id" Type="Edm.Int32" Nullable="false" />
         <Property Name="vehicle_id" Type="Edm.Int32" Nullable="false" />
         <NavigationProperty Name="branch" Relationship="AutoMgrDbModel.FK_repair_branch" ToRole="branch" FromRole="repair" />
-        <NavigationProperty Name="contact" Relationship="AutoMgrDbModel.FK_repair_contact" ToRole="contact" FromRole="repair" />
-        <NavigationProperty Name="customer" Relationship="AutoMgrDbModel.FK_repair_customer" ToRole="customer" FromRole="repair" />
         <NavigationProperty Name="repair_item_detail" Relationship="AutoMgrDbModel.FK_repair_item_detail_repair" ToRole="repair_item_detail" FromRole="repair" />
         <NavigationProperty Name="repair_parts" Relationship="AutoMgrDbModel.FK_repair_parts_repair" ToRole="repair_parts" FromRole="repair" />
         <NavigationProperty Name="repair_photo" Relationship="AutoMgrDbModel.FK_repair_photo_repair" ToRole="repair_photo" FromRole="repair" />
@@ -489,18 +484,6 @@
           </Dependent>
         </ReferentialConstraint>
       </Association>
-      <Association Name="FK_repair_contact">
-        <End Type="AutoMgrDbModel.contact" Role="contact" Multiplicity="1" />
-        <End Type="AutoMgrDbModel.repair" Role="repair" Multiplicity="*" />
-        <ReferentialConstraint>
-          <Principal Role="contact">
-            <PropertyRef Name="id" />
-          </Principal>
-          <Dependent Role="repair">
-            <PropertyRef Name="contact_id" />
-          </Dependent>
-        </ReferentialConstraint>
-      </Association>
       <Association Name="FK_supplyer_contact_contact">
         <End Type="AutoMgrDbModel.contact" Role="contact" Multiplicity="1" />
         <End Type="AutoMgrDbModel.supplyer_contact" Role="supplyer_contact" Multiplicity="*" />
@@ -521,18 +504,6 @@
             <PropertyRef Name="id" />
           </Principal>
           <Dependent Role="customer_contact">
-            <PropertyRef Name="customer_id" />
-          </Dependent>
-        </ReferentialConstraint>
-      </Association>
-      <Association Name="FK_repair_customer">
-        <End Type="AutoMgrDbModel.customer" Role="customer" Multiplicity="1" />
-        <End Type="AutoMgrDbModel.repair" Role="repair" Multiplicity="*" />
-        <ReferentialConstraint>
-          <Principal Role="customer">
-            <PropertyRef Name="id" />
-          </Principal>
-          <Dependent Role="repair">
             <PropertyRef Name="customer_id" />
           </Dependent>
         </ReferentialConstraint>
@@ -1022,10 +993,6 @@
           <End Role="contact" EntitySet="contact" />
           <End Role="procure" EntitySet="procure" />
         </AssociationSet>
-        <AssociationSet Name="FK_repair_contact" Association="AutoMgrDbModel.FK_repair_contact">
-          <End Role="contact" EntitySet="contact" />
-          <End Role="repair" EntitySet="repair" />
-        </AssociationSet>
         <AssociationSet Name="FK_supplyer_contact_contact" Association="AutoMgrDbModel.FK_supplyer_contact_contact">
           <End Role="contact" EntitySet="contact" />
           <End Role="supplyer_contact" EntitySet="supplyer_contact" />
@@ -1033,10 +1000,6 @@
         <AssociationSet Name="FK_customer_contact_customer" Association="AutoMgrDbModel.FK_customer_contact_customer">
           <End Role="customer" EntitySet="customer" />
           <End Role="customer_contact" EntitySet="customer_contact" />
-        </AssociationSet>
-        <AssociationSet Name="FK_repair_customer" Association="AutoMgrDbModel.FK_repair_customer">
-          <End Role="customer" EntitySet="customer" />
-          <End Role="repair" EntitySet="repair" />
         </AssociationSet>
         <AssociationSet Name="FK_sale_customer" Association="AutoMgrDbModel.FK_sale_customer">
           <End Role="customer" EntitySet="customer" />

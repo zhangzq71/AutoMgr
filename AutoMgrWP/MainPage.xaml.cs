@@ -18,6 +18,11 @@ namespace AutoMgrWP
         DataServiceCollection<AutoMgrSvc.goods> goodses;
         AutoMgrSvc.AutoMgrDbEntities ctx;
 
+        private OpticalReaderLib.IProcessor _processor = null;
+        private OpticalReaderLib.OpticalReaderTask _task = null;
+        private OpticalReaderLib.OpticalReaderResult _taskResult = null;
+
+
         // Constructor
         public MainPage()
         {
@@ -28,7 +33,9 @@ namespace AutoMgrWP
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
-            db();
+            //db();
+
+            ctx = new AutoMgrSvc.AutoMgrDbEntities(new Uri("http://192.168.0.101:23796/Service/AutoMgrDbSvc.svc/"));
         }
 
         async void db()
@@ -106,10 +113,61 @@ namespace AutoMgrWP
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (!App.ViewModel.IsDataLoaded)
+            base.OnNavigatedTo(e);
+
+            try
             {
-                App.ViewModel.LoadData();
+                if (_taskResult != null)
+                {
+                    var bg = new DataServiceCollection<AutoMgrSvc.barcode_goods>();
+                    bg.LoadCompleted += new EventHandler<LoadCompletedEventArgs>((sender, e1) => 
+                    { 
+                        if (e1.Error == null)
+                        {
+                            if (bg.Count > 0)
+                                goods.Text = bg[0].goods.name;
+                        }
+                    });
+
+                    var query = from bgs in ctx.barcode_goods.Expand("goods") where bgs.barcode == _taskResult.Text select bgs;
+                    bg.LoadAsync(query);
+                }
             }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void Button_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            if (_task != null)
+            {
+                _task.Completed -= _task_Completed;
+                _task.Dispose();
+                _task = null;
+            }
+
+            _processor = new Helpers.CustomProcessor();
+
+            _task = new OpticalReaderLib.OpticalReaderTask()
+            {
+                Processor = _processor,
+                ShowDebugInformation = false,
+                FocusInterval = new TimeSpan(0, 0, 0, 0, 1000),
+                ObjectSize = new Windows.Foundation.Size(90, 90),
+                RequireConfirmation = false
+            };
+
+            _task.Completed += _task_Completed;
+            _task.Show();
+        }
+
+        void _task_Completed(object sender, OpticalReaderLib.OpticalReaderResult e)
+        {
+            _taskResult = e;
+
+            System.Diagnostics.Debug.WriteLine(e.Text);
         }
 
         // Sample code for building a localized ApplicationBar
